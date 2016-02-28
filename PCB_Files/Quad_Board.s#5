@@ -19899,6 +19899,11 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <wire x1="-282.448" y1="10.414" x2="-282.448" y2="5.08" width="0.1524" layer="91"/>
 <label x="-281.94" y="5.08" size="2.54" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$2"/>
+<wire x1="-424.18" y1="160.02" x2="-426.72" y2="160.02" width="0.1524" layer="91"/>
+<label x="-423.926" y="162.306" size="1.778" layer="95" rot="R180"/>
+</segment>
 </net>
 <net name="VCORE" class="0">
 <segment>
@@ -20586,6 +20591,11 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <pinref part="MSP1" gate="MSP432" pin="DVCC1"/>
 <label x="-169.164" y="127.508" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$7"/>
+<wire x1="-408.94" y1="160.02" x2="-406.4" y2="160.02" width="0.1524" layer="91"/>
+<label x="-403.86" y="162.56" size="1.778" layer="95" rot="R180"/>
+</segment>
 </net>
 <net name="P5.2/XT2IN1" class="0">
 <segment>
@@ -20747,6 +20757,11 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <wire x1="88.9" y1="-38.1" x2="88.9" y2="-7.62" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="-7.62" x2="73.66" y2="-7.62" width="0.1524" layer="91"/>
 <junction x="73.66" y="-7.62"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$3"/>
+<wire x1="-424.18" y1="154.94" x2="-426.72" y2="154.94" width="0.1524" layer="91"/>
+<label x="-424.18" y="157.48" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="P5.6_5V" class="0">
@@ -21037,12 +21052,48 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <junction x="53.34" y="63.5"/>
 </segment>
 </net>
-<net name="N$3" class="0">
+<net name="B1" class="0">
 <segment>
-<pinref part="MOTHERBOPARD_TX" gate="G$1" pin="2"/>
-<wire x1="-452.374" y1="156.21" x2="-306.07" y2="156.21" width="0.1524" layer="91"/>
+<pinref part="U$1" gate="G$1" pin="P$8"/>
+<label x="-403.86" y="167.64" size="1.778" layer="95" rot="R180"/>
+<wire x1="-408.94" y1="165.1" x2="-390.398" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="-390.398" y1="165.1" x2="-390.398" y2="156.21" width="0.1524" layer="91"/>
 <wire x1="-305.816" y1="156.21" x2="-306.07" y2="156.21" width="0.1524" layer="91"/>
 <pinref part="MSP1" gate="MSP432" pin="P3.2/PM_UCA2RXD/PM_UCA2SOMI"/>
+<wire x1="-390.398" y1="156.21" x2="-306.07" y2="156.21" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="OE" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$6"/>
+<wire x1="-408.94" y1="154.94" x2="-406.4" y2="154.94" width="0.1524" layer="91"/>
+<label x="-403.86" y="157.48" size="1.778" layer="95" rot="R180"/>
+</segment>
+</net>
+<net name="A1" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$5"/>
+<wire x1="-408.94" y1="149.86" x2="-406.4" y2="149.86" width="0.1524" layer="91"/>
+<label x="-402.844" y="152.4" size="1.778" layer="95" rot="R180"/>
+</segment>
+</net>
+<net name="B2" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$1"/>
+<label x="-429.006" y="165.608" size="1.778" layer="95"/>
+<pinref part="MOTHERBOPARD_TX" gate="G$1" pin="2"/>
+<wire x1="-452.374" y1="156.21" x2="-438.912" y2="156.21" width="0.1524" layer="91"/>
+<wire x1="-438.912" y1="156.21" x2="-438.912" y2="164.084" width="0.1524" layer="91"/>
+<wire x1="-438.912" y1="164.084" x2="-438.912" y2="164.338" width="0.1524" layer="91"/>
+<wire x1="-424.18" y1="165.1" x2="-438.912" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="-438.912" y1="165.1" x2="-438.912" y2="164.338" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="A2" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$4"/>
+<wire x1="-424.18" y1="149.86" x2="-426.72" y2="149.86" width="0.1524" layer="91"/>
+<label x="-426.72" y="152.4" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 </nets>

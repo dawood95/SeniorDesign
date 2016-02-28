@@ -75,6 +75,7 @@
 <layer number="110" name="fp0" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="111" name="LPC17xx" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="112" name="tSilk" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="113" name="IDFDebug" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="116" name="Patch_BOT" color="9" fill="4" visible="yes" active="yes"/>
 <layer number="118" name="Rect_Pads" color="7" fill="1" visible="no" active="no"/>
 <layer number="121" name="tTestdril" color="7" fill="1" visible="yes" active="yes"/>
@@ -123,6 +124,12 @@
 <layer number="222" name="222bmp" color="23" fill="1" visible="yes" active="yes"/>
 <layer number="223" name="223bmp" color="24" fill="1" visible="yes" active="yes"/>
 <layer number="224" name="224bmp" color="25" fill="1" visible="yes" active="yes"/>
+<layer number="225" name="225bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="226" name="226bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="227" name="227bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="228" name="228bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="229" name="229bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="230" name="230bmp" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="231" name="Eagle3D_PG1" color="14" fill="1" visible="yes" active="yes"/>
 <layer number="232" name="Eagle3D_PG2" color="14" fill="2" visible="yes" active="yes"/>
 <layer number="233" name="Eagle3D_PG3" color="14" fill="4" visible="yes" active="yes"/>
@@ -131,6 +138,7 @@
 <layer number="250" name="Descript" color="3" fill="1" visible="no" active="no"/>
 <layer number="251" name="SMDround" color="12" fill="11" visible="no" active="no"/>
 <layer number="254" name="OrgLBR" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="255" name="routoute" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
 <schematic xreflabel="%F%N/%S.%C%R" xrefpart="/%S.%C%R">
 <libraries>
@@ -16393,6 +16401,11 @@ We've spent an enormous amount of time creating and checking these footprints an
 <text x="-1.016" y="3.556" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="3.3V" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
 </symbol>
+<symbol name="DGND">
+<wire x1="-1.905" y1="0" x2="1.905" y2="0" width="0.254" layer="94"/>
+<text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="GND" x="0" y="2.54" visible="off" length="short" direction="sup" rot="R270"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="5V" prefix="SUPPLY">
@@ -16411,6 +16424,19 @@ We've spent an enormous amount of time creating and checking these footprints an
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
 <gate name="G$1" symbol="3.3V" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="GND" prefix="GND">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
+<gates>
+<gate name="1" symbol="DGND" x="0" y="0"/>
 </gates>
 <devices>
 <device name="">
@@ -19509,6 +19535,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <part name="FRAME1" library="frames" deviceset="FRAME_D_L" device=""/>
 <part name="U$1" library="TXS0102-bi-directional-translator" deviceset="TXS0102" device=""/>
 <part name="R7" library="rcl" deviceset="R-US_" device="0204/5"/>
+<part name="GND1" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -19576,7 +19603,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <instance part="ULTRA6" gate="A" x="-422.91" y="84.328" rot="R180"/>
 <instance part="ULTRA5" gate="A" x="-423.164" y="107.696" rot="R180"/>
 <instance part="ULTRA4" gate="A" x="-53.34" y="119.38"/>
-<instance part="5V_PDB" gate="G$1" x="-292.354" y="10.414"/>
+<instance part="5V_PDB" gate="G$1" x="-307.594" y="10.414"/>
 <instance part="IC2" gate="G$1" x="-279.654" y="-17.526"/>
 <instance part="C1" gate="G$1" x="-297.434" y="-30.226"/>
 <instance part="C2" gate="G$1" x="-251.714" y="-32.766"/>
@@ -19677,7 +19704,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <attribute name="NAME" x="-37.084" y="55.499" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="-37.084" y="60.579" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="12V_PDB" gate="G$1" x="-272.034" y="10.414"/>
+<instance part="12V_PDB" gate="G$1" x="-272.034" y="7.874"/>
 <instance part="D1" gate="G$1" x="7.62" y="58.42" rot="R90"/>
 <instance part="L2" gate="G$1" x="25.4" y="63.5" rot="R90"/>
 <instance part="C15" gate="G$1" x="39.37" y="58.42" smashed="yes">
@@ -19688,6 +19715,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <instance part="FRAME1" gate="G$1" x="-175.26" y="-208.28"/>
 <instance part="U$1" gate="G$1" x="-416.56" y="157.48"/>
 <instance part="R7" gate="G$1" x="-401.066" y="139.954" rot="R270"/>
+<instance part="GND1" gate="1" x="-282.448" y="0.762"/>
 </instances>
 <busses>
 </busses>
@@ -19695,8 +19723,8 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <net name="GND" class="0">
 <segment>
 <pinref part="5V_PDB" gate="G$1" pin="2"/>
-<wire x1="-406.4" y1="10.668" x2="-294.894" y2="10.414" width="0.1524" layer="91"/>
-<label x="-307.594" y="7.874" size="1.778" layer="95"/>
+<wire x1="-406.4" y1="10.668" x2="-310.134" y2="10.414" width="0.1524" layer="91"/>
+<label x="-322.834" y="7.874" size="1.778" layer="95"/>
 <wire x1="-406.4" y1="10.668" x2="-416.814" y2="10.668" width="0.1524" layer="91"/>
 <wire x1="-416.814" y1="10.668" x2="-416.814" y2="22.352" width="0.1524" layer="91"/>
 <wire x1="-416.814" y1="22.352" x2="-427.482" y2="22.352" width="0.1524" layer="91"/>
@@ -19896,10 +19924,12 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <label x="68.58" y="53.34" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
+<pinref part="GND1" gate="1" pin="GND"/>
+<wire x1="-282.448" y1="3.302" x2="-282.448" y2="2.54" width="0.1524" layer="91"/>
+<label x="-281.94" y="2.54" size="2.54" layer="95"/>
 <pinref part="12V_PDB" gate="G$1" pin="2"/>
-<wire x1="-274.574" y1="10.414" x2="-282.448" y2="10.414" width="0.1524" layer="91"/>
-<wire x1="-282.448" y1="10.414" x2="-282.448" y2="5.08" width="0.1524" layer="91"/>
-<label x="-281.94" y="5.08" size="2.54" layer="95"/>
+<wire x1="-274.574" y1="7.874" x2="-282.448" y2="7.874" width="0.1524" layer="91"/>
+<wire x1="-282.448" y1="7.874" x2="-282.448" y2="3.302" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="P$2"/>
@@ -19981,46 +20011,10 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <wire x1="-152.146" y1="60.198" x2="-152.146" y2="59.436" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="P1.0_LED1" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P1.0/UCA0STE"/>
-<wire x1="-306.07" y1="207.01" x2="-335.28" y2="207.01" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P1.1_BUTTON1" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P1.1/UCA0CLK"/>
-<wire x1="-306.07" y1="204.47" x2="-335.28" y2="204.47" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="P6.0_A15_J1.2" class="0">
 <segment>
 <pinref part="MSP1" gate="MSP432" pin="P6.0/A15"/>
 <wire x1="-306.07" y1="92.71" x2="-335.28" y2="92.71" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P1.4_BUTTON2" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P1.4/UCB0STE"/>
-<wire x1="-306.07" y1="196.85" x2="-335.28" y2="196.85" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P1.5_SPICLK_J1.7" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P1.5/UCB0CLK"/>
-<wire x1="-306.07" y1="194.31" x2="-335.28" y2="194.31" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P1.6_SPIMOSI_J2.15" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P1.6/UCB0SIMO/UCB0SDA"/>
-<wire x1="-306.07" y1="191.77" x2="-335.28" y2="191.77" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P1.7_SPIMISO_J2.14" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P1.7/UCB0SOMI/UCB0SCL"/>
-<wire x1="-306.07" y1="189.23" x2="-335.28" y2="189.23" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="!RST" class="0">
@@ -20032,24 +20026,6 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <wire x1="-160.02" y1="67.31" x2="-160.02" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="-160.02" y1="63.5" x2="-149.606" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="-149.606" y1="63.5" x2="-149.606" y2="64.516" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P2.0_RGBLED_RED" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P2.0/PM_UCA1STE"/>
-<wire x1="-306.07" y1="184.15" x2="-335.28" y2="184.15" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P2.1_RGBLED_GREEN" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P2.1/PM_UCA1CLK"/>
-<wire x1="-306.07" y1="181.61" x2="-335.28" y2="181.61" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P2.2_RGBLED_BLUE" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P2.2/PM_UCA1RXD/PM_UCA1SOMI"/>
-<wire x1="-306.07" y1="179.07" x2="-335.28" y2="179.07" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="P2.4_PWM_J4.38" class="0">
@@ -20098,120 +20074,6 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <wire x1="-410.21" y1="41.148" x2="-410.21" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="-410.21" y1="38.1" x2="-429.26" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="NAZE32_PINHEAD" gate="A" pin="7"/>
-</segment>
-</net>
-<net name="P2.3_IO_J4.34" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P2.3/PM_UCA1TXD/PM_UCA1SIMO"/>
-<wire x1="-306.07" y1="176.53" x2="-335.28" y2="176.53" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P3.0_IO_J2.18" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P3.0/PM_UCA2STE"/>
-<wire x1="-306.07" y1="161.29" x2="-335.28" y2="161.29" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P3.1_BCLUART_RTS" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P3.1/PM_UCA2CLK"/>
-<wire x1="-306.07" y1="158.75" x2="-335.28" y2="158.75" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P3.4_BCLUART_CTS" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P3.4/PM_UCB2STE"/>
-<wire x1="-306.07" y1="151.13" x2="-335.28" y2="151.13" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P3.5_IO_J4.32" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P3.5/PM_UCB2CLK"/>
-<wire x1="-306.07" y1="148.59" x2="-335.28" y2="148.59" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P3.6_IO_J2.11" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P3.6/PM_UCB2SIMO/PM_UCB2SDA"/>
-<wire x1="-306.07" y1="146.05" x2="-335.28" y2="146.05" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P3.7_IO_J4.31" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P3.7/PM_UCB2SOMI/PM_UCB2SCL"/>
-<wire x1="-306.07" y1="143.51" x2="-335.28" y2="143.51" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P4.0_A13_J3.24" class="0">
-<segment>
-<wire x1="-306.07" y1="138.43" x2="-335.28" y2="138.43" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P4.0/A13"/>
-</segment>
-</net>
-<net name="P4.1_IO_J1.5" class="0">
-<segment>
-<wire x1="-306.07" y1="135.89" x2="-335.28" y2="135.89" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P4.1/A12"/>
-</segment>
-</net>
-<net name="P4.2_A11_J3.25" class="0">
-<segment>
-<wire x1="-306.07" y1="133.35" x2="-335.28" y2="133.35" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P4.2/ACLK/TA2CLK/A11"/>
-</segment>
-</net>
-<net name="P4.3_A10_J1.6" class="0">
-<segment>
-<wire x1="-306.07" y1="130.81" x2="-335.28" y2="130.81" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P4.3/MCLK/RTCCLK/A10"/>
-</segment>
-</net>
-<net name="P4.4_A9_J3.26" class="0">
-<segment>
-<wire x1="-306.07" y1="128.27" x2="-335.28" y2="128.27" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P4.4/HSMCLK/SVMHOUT/A9"/>
-</segment>
-</net>
-<net name="P4.5_A8_J3.27" class="0">
-<segment>
-<wire x1="-306.07" y1="125.73" x2="-335.28" y2="125.73" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P4.5/A8"/>
-</segment>
-</net>
-<net name="P4.6_IO_J1.8" class="0">
-<segment>
-<wire x1="-306.07" y1="123.19" x2="-335.28" y2="123.19" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P4.6/A7"/>
-</segment>
-</net>
-<net name="P4.7_A6_J3.28" class="0">
-<segment>
-<wire x1="-306.07" y1="120.65" x2="-335.28" y2="120.65" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P4.7/A6"/>
-</segment>
-</net>
-<net name="P5.0_IO_J2.13" class="0">
-<segment>
-<wire x1="-306.07" y1="115.57" x2="-335.28" y2="115.57" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P5.0/A5"/>
-</segment>
-</net>
-<net name="P5.1_IO_J4.33" class="0">
-<segment>
-<wire x1="-306.07" y1="113.03" x2="-335.28" y2="113.03" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P5.1/A4"/>
-</segment>
-</net>
-<net name="P5.2_IO_J2.12" class="0">
-<segment>
-<wire x1="-306.07" y1="110.49" x2="-335.28" y2="110.49" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P5.2/A3"/>
-</segment>
-</net>
-<net name="P5.3" class="0">
-<segment>
-<wire x1="-306.07" y1="107.95" x2="-335.28" y2="107.95" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P5.3/A2"/>
 </segment>
 </net>
 <net name="P7.0" class="0">
@@ -20484,27 +20346,15 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <pinref part="MSP1" gate="MSP432" pin="P6.1/A14"/>
 </segment>
 </net>
-<net name="P1.2_BCLUART_RXD" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P1.2/UCA0RXD/UCA0SOMI"/>
-<wire x1="-306.07" y1="201.93" x2="-335.28" y2="201.93" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="P1.3_BCLUART_TXD" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P1.3/UCA0TXD/UCA0SIMO"/>
-<wire x1="-306.07" y1="199.39" x2="-335.28" y2="199.39" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="5VDC" class="0">
 <segment>
-<wire x1="-305.308" y1="12.954" x2="-305.308" y2="15.748" width="0.1524" layer="91"/>
-<wire x1="-305.308" y1="15.748" x2="-412.242" y2="15.748" width="0.1524" layer="91"/>
+<wire x1="-320.548" y1="12.954" x2="-320.548" y2="15.748" width="0.1524" layer="91"/>
+<wire x1="-320.548" y1="15.748" x2="-412.242" y2="15.748" width="0.1524" layer="91"/>
 <pinref part="NAZE32_PINHEAD" gate="A" pin="2"/>
 <wire x1="-429.26" y1="25.4" x2="-412.242" y2="25.4" width="0.1524" layer="91"/>
 <wire x1="-412.242" y1="25.4" x2="-412.242" y2="15.748" width="0.1524" layer="91"/>
 <label x="-406.4" y="17.78" size="1.778" layer="95"/>
-<wire x1="-305.308" y1="12.954" x2="-294.894" y2="12.954" width="0.1524" layer="91"/>
+<wire x1="-320.548" y1="12.954" x2="-310.134" y2="12.954" width="0.1524" layer="91"/>
 <pinref part="5V_PDB" gate="G$1" pin="1"/>
 </segment>
 <segment>
@@ -20881,18 +20731,6 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <label x="-214.63" y="202.184" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$19" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P5.4/A1"/>
-<wire x1="-306.07" y1="105.41" x2="-335.534" y2="105.41" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$20" class="0">
-<segment>
-<pinref part="MSP1" gate="MSP432" pin="P5.5/A0"/>
-<wire x1="-306.07" y1="102.87" x2="-335.026" y2="102.87" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$1" class="0">
 <segment>
 <pinref part="MSP1" gate="MSP432" pin="P9.1/A16"/>
@@ -21000,15 +20838,13 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <net name="12VDC" class="0">
 <segment>
 <pinref part="12V_PDB" gate="G$1" pin="1"/>
-<wire x1="-274.574" y1="12.954" x2="-284.988" y2="12.954" width="0.1524" layer="91"/>
-<label x="-284.48" y="17.78" size="1.778" layer="95" xref="yes"/>
+<wire x1="-274.574" y1="10.414" x2="-297.434" y2="10.414" width="0.1524" layer="91"/>
+<label x="-284.48" y="15.24" size="1.778" layer="95" xref="yes"/>
 <pinref part="IC2" gate="G$1" pin="IN"/>
 <pinref part="C1" gate="G$1" pin="1"/>
 <wire x1="-297.434" y1="-17.526" x2="-297.434" y2="-27.686" width="0.1524" layer="91"/>
 <wire x1="-297.434" y1="-17.526" x2="-287.274" y2="-17.526" width="0.1524" layer="91"/>
-<wire x1="-297.434" y1="-17.526" x2="-297.434" y2="-1.27" width="0.1524" layer="91"/>
-<wire x1="-297.434" y1="-1.27" x2="-284.988" y2="-1.27" width="0.1524" layer="91"/>
-<wire x1="-284.988" y1="-1.27" x2="-284.988" y2="12.954" width="0.1524" layer="91"/>
+<wire x1="-297.434" y1="-17.526" x2="-297.434" y2="10.414" width="0.1524" layer="91"/>
 <junction x="-297.434" y="-17.526"/>
 </segment>
 <segment>

@@ -19363,6 +19363,83 @@ Source: www.sumida.com/products/pdf/CEP125.pdf</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="TXS0102-bi-directional-translator">
+<packages>
+<package name="SM8">
+<description>&lt;b&gt;SM8 Package&lt;/b&gt;</description>
+<wire x1="3.177" y1="1.778" x2="3.177" y2="-1.778" width="0.2032" layer="21"/>
+<wire x1="3.177" y1="-1.778" x2="-3.177" y2="-1.778" width="0.2032" layer="21"/>
+<wire x1="-3.177" y1="-1.778" x2="-3.177" y2="1.778" width="0.2032" layer="21"/>
+<wire x1="-3.177" y1="1.778" x2="3.177" y2="1.778" width="0.2032" layer="21"/>
+<wire x1="-2.9" y1="1.7" x2="-2.9" y2="-0.9" width="0.1016" layer="25"/>
+<wire x1="-2.9" y1="-0.9" x2="2.9" y2="-0.9" width="0.1016" layer="25"/>
+<wire x1="2.9" y1="-0.9" x2="2.9" y2="1.7" width="0.1016" layer="25"/>
+<wire x1="-2.9" y1="-0.9" x2="-3.1" y2="-1.7" width="0.1016" layer="25"/>
+<wire x1="2.9" y1="-0.9" x2="3.1" y2="-1.7" width="0.1016" layer="25"/>
+<smd name="1" x="-2.286" y="-3.0988" dx="1.016" dy="2.2352" layer="1"/>
+<smd name="2" x="-0.762" y="-3.0988" dx="1.016" dy="2.2352" layer="1"/>
+<smd name="3" x="0.762" y="-3.0988" dx="1.016" dy="2.2352" layer="1"/>
+<smd name="4" x="2.286" y="-3.0988" dx="1.016" dy="2.2352" layer="1"/>
+<smd name="5" x="2.286" y="3.0988" dx="1.016" dy="2.2352" layer="1"/>
+<smd name="6" x="0.762" y="3.0988" dx="1.016" dy="2.2352" layer="1"/>
+<smd name="7" x="-0.762" y="3.0988" dx="1.016" dy="2.2352" layer="1"/>
+<smd name="8" x="-2.286" y="3.0988" dx="1.016" dy="2.2352" layer="1"/>
+<text x="-2.54" y="0.0508" size="1.27" layer="25">&gt;NAME</text>
+<text x="-3.3792" y="-3.09" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<rectangle x1="-2.636" y1="-3.65" x2="-1.936" y2="-1.9" layer="51"/>
+<rectangle x1="-1.112" y1="-3.65" x2="-0.412" y2="-1.9" layer="51"/>
+<rectangle x1="0.412" y1="-3.65" x2="1.112" y2="-1.9" layer="51"/>
+<rectangle x1="1.936" y1="-3.65" x2="2.636" y2="-1.9" layer="51"/>
+<rectangle x1="1.936" y1="1.9" x2="2.636" y2="3.65" layer="51"/>
+<rectangle x1="0.412" y1="1.9" x2="1.112" y2="3.65" layer="51"/>
+<rectangle x1="-1.112" y1="1.9" x2="-0.412" y2="3.65" layer="51"/>
+<rectangle x1="-2.636" y1="1.9" x2="-1.936" y2="3.65" layer="51"/>
+</package>
+</packages>
+<symbols>
+<symbol name="BIDIR-TRANSLATOR">
+<pin name="P$1" x="-7.62" y="7.62" length="short"/>
+<pin name="P$2" x="-7.62" y="2.54" length="short"/>
+<pin name="P$3" x="-7.62" y="-2.54" length="short"/>
+<pin name="P$4" x="-7.62" y="-7.62" length="short"/>
+<pin name="P$8" x="7.62" y="7.62" length="short" rot="R180"/>
+<pin name="P$7" x="7.62" y="2.54" length="short" rot="R180"/>
+<pin name="P$6" x="7.62" y="-2.54" length="short" rot="R180"/>
+<pin name="P$5" x="7.62" y="-7.62" length="short" rot="R180"/>
+<wire x1="-5.08" y1="10.16" x2="-5.08" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-10.16" x2="5.08" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-10.16" x2="5.08" y2="10.16" width="0.254" layer="94"/>
+<wire x1="5.08" y1="10.16" x2="-5.08" y2="10.16" width="0.254" layer="94"/>
+<text x="-7.112" y="10.922" size="1.27" layer="95">TXS0102 V Translator</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="TXS0102">
+<description>Texas Instruments Bi-Driectional Voltage Level Translator
+Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
+<gates>
+<gate name="G$1" symbol="BIDIR-TRANSLATOR" x="-15.24" y="25.4"/>
+</gates>
+<devices>
+<device name="" package="SM8">
+<connects>
+<connect gate="G$1" pin="P$1" pad="1"/>
+<connect gate="G$1" pin="P$2" pad="2"/>
+<connect gate="G$1" pin="P$3" pad="3"/>
+<connect gate="G$1" pin="P$4" pad="4"/>
+<connect gate="G$1" pin="P$5" pad="5"/>
+<connect gate="G$1" pin="P$6" pad="6"/>
+<connect gate="G$1" pin="P$7" pad="7"/>
+<connect gate="G$1" pin="P$8" pad="8"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -19430,6 +19507,7 @@ Source: www.sumida.com/products/pdf/CEP125.pdf</description>
 <part name="C15" library="rcl" deviceset="C-EU" device="CM0402" value="220u"/>
 <part name="MOTHERBOARD_POWER_PINS" library="pinhead" deviceset="PINHD-1X2" device=""/>
 <part name="FRAME1" library="frames" deviceset="FRAME_D_L" device=""/>
+<part name="U$1" library="TXS0102-bi-directional-translator" deviceset="TXS0102" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -19607,6 +19685,7 @@ Source: www.sumida.com/products/pdf/CEP125.pdf</description>
 </instance>
 <instance part="MOTHERBOARD_POWER_PINS" gate="G$1" x="81.28" y="58.42"/>
 <instance part="FRAME1" gate="G$1" x="-175.26" y="-208.28"/>
+<instance part="U$1" gate="G$1" x="-416.56" y="157.48"/>
 </instances>
 <busses>
 </busses>
@@ -19819,6 +19898,11 @@ Source: www.sumida.com/products/pdf/CEP125.pdf</description>
 <wire x1="-274.574" y1="10.414" x2="-282.448" y2="10.414" width="0.1524" layer="91"/>
 <wire x1="-282.448" y1="10.414" x2="-282.448" y2="5.08" width="0.1524" layer="91"/>
 <label x="-281.94" y="5.08" size="2.54" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$2"/>
+<wire x1="-424.18" y1="160.02" x2="-426.72" y2="160.02" width="0.1524" layer="91"/>
+<label x="-423.926" y="162.306" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="VCORE" class="0">
@@ -20960,10 +21044,57 @@ Source: www.sumida.com/products/pdf/CEP125.pdf</description>
 </net>
 <net name="N$3" class="0">
 <segment>
-<pinref part="MOTHERBOPARD_TX" gate="G$1" pin="2"/>
-<wire x1="-452.374" y1="156.21" x2="-306.07" y2="156.21" width="0.1524" layer="91"/>
 <wire x1="-305.816" y1="156.21" x2="-306.07" y2="156.21" width="0.1524" layer="91"/>
 <pinref part="MSP1" gate="MSP432" pin="P3.2/PM_UCA2RXD/PM_UCA2SOMI"/>
+</segment>
+</net>
+<net name="B1" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$8"/>
+<wire x1="-408.94" y1="165.1" x2="-406.4" y2="165.1" width="0.1524" layer="91"/>
+<label x="-403.86" y="167.64" size="1.778" layer="95" rot="R180"/>
+</segment>
+</net>
+<net name="VCCB" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$7"/>
+<wire x1="-408.94" y1="160.02" x2="-406.4" y2="160.02" width="0.1524" layer="91"/>
+<label x="-403.86" y="162.56" size="1.778" layer="95" rot="R180"/>
+</segment>
+</net>
+<net name="OE" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$6"/>
+<wire x1="-408.94" y1="154.94" x2="-406.4" y2="154.94" width="0.1524" layer="91"/>
+<label x="-403.86" y="157.48" size="1.778" layer="95" rot="R180"/>
+</segment>
+</net>
+<net name="A1" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$5"/>
+<wire x1="-408.94" y1="149.86" x2="-406.4" y2="149.86" width="0.1524" layer="91"/>
+<label x="-402.844" y="152.4" size="1.778" layer="95" rot="R180"/>
+</segment>
+</net>
+<net name="B2" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$1"/>
+<wire x1="-424.18" y1="165.1" x2="-426.72" y2="165.1" width="0.1524" layer="91"/>
+<label x="-429.006" y="165.608" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="VCCA" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$3"/>
+<wire x1="-424.18" y1="154.94" x2="-426.72" y2="154.94" width="0.1524" layer="91"/>
+<label x="-424.18" y="157.48" size="1.778" layer="95" rot="R180"/>
+</segment>
+</net>
+<net name="A2" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="P$4"/>
+<wire x1="-424.18" y1="149.86" x2="-426.72" y2="149.86" width="0.1524" layer="91"/>
+<label x="-426.72" y="152.4" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 </nets>
