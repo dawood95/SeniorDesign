@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.5.0">
+<eagle version="6.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -1226,6 +1226,81 @@
 <rectangle x1="8.509" y1="-2.921" x2="9.271" y2="-1.905" layer="21"/>
 <rectangle x1="11.049" y1="-2.921" x2="11.811" y2="-1.905" layer="21"/>
 </package>
+<package name="2X03">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<wire x1="-3.81" y1="-1.905" x2="-3.175" y2="-2.54" width="0.1524" layer="21"/>
+<wire x1="-1.905" y1="-2.54" x2="-1.27" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="-1.905" x2="-0.635" y2="-2.54" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="-2.54" x2="1.27" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="-3.81" y1="-1.905" x2="-3.81" y2="1.905" width="0.1524" layer="21"/>
+<wire x1="-3.81" y1="1.905" x2="-3.175" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="-3.175" y1="2.54" x2="-1.905" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="-1.905" y1="2.54" x2="-1.27" y2="1.905" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="1.905" x2="-0.635" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="-0.635" y1="2.54" x2="0.635" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="2.54" x2="1.27" y2="1.905" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="1.905" x2="-1.27" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="1.905" x2="1.27" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="-0.635" y1="-2.54" x2="0.635" y2="-2.54" width="0.1524" layer="21"/>
+<wire x1="-3.175" y1="-2.54" x2="-1.905" y2="-2.54" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="-1.905" x2="1.905" y2="-2.54" width="0.1524" layer="21"/>
+<wire x1="3.175" y1="-2.54" x2="3.81" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="1.905" x2="1.905" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="2.54" x2="3.175" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="3.175" y1="2.54" x2="3.81" y2="1.905" width="0.1524" layer="21"/>
+<wire x1="3.81" y1="1.905" x2="3.81" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="-2.54" x2="3.175" y2="-2.54" width="0.1524" layer="21"/>
+<pad name="1" x="-2.54" y="-1.27" drill="1.016" shape="octagon"/>
+<pad name="2" x="-2.54" y="1.27" drill="1.016" shape="octagon"/>
+<pad name="3" x="0" y="-1.27" drill="1.016" shape="octagon"/>
+<pad name="4" x="0" y="1.27" drill="1.016" shape="octagon"/>
+<pad name="5" x="2.54" y="-1.27" drill="1.016" shape="octagon"/>
+<pad name="6" x="2.54" y="1.27" drill="1.016" shape="octagon"/>
+<text x="-3.81" y="3.175" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-3.81" y="-4.445" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-2.794" y1="-1.524" x2="-2.286" y2="-1.016" layer="51"/>
+<rectangle x1="-2.794" y1="1.016" x2="-2.286" y2="1.524" layer="51"/>
+<rectangle x1="-0.254" y1="1.016" x2="0.254" y2="1.524" layer="51"/>
+<rectangle x1="-0.254" y1="-1.524" x2="0.254" y2="-1.016" layer="51"/>
+<rectangle x1="2.286" y1="1.016" x2="2.794" y2="1.524" layer="51"/>
+<rectangle x1="2.286" y1="-1.524" x2="2.794" y2="-1.016" layer="51"/>
+</package>
+<package name="2X03/90">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<wire x1="-3.81" y1="-1.905" x2="-1.27" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="-1.905" x2="-1.27" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="0.635" x2="-3.81" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="-3.81" y1="0.635" x2="-3.81" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="-2.54" y1="6.985" x2="-2.54" y2="1.27" width="0.762" layer="21"/>
+<wire x1="-1.27" y1="-1.905" x2="1.27" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="-1.905" x2="1.27" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="0.635" x2="-1.27" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="0" y1="6.985" x2="0" y2="1.27" width="0.762" layer="21"/>
+<wire x1="1.27" y1="-1.905" x2="3.81" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="3.81" y1="-1.905" x2="3.81" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="3.81" y1="0.635" x2="1.27" y2="0.635" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="6.985" x2="2.54" y2="1.27" width="0.762" layer="21"/>
+<pad name="2" x="-2.54" y="-3.81" drill="1.016" shape="octagon"/>
+<pad name="4" x="0" y="-3.81" drill="1.016" shape="octagon"/>
+<pad name="6" x="2.54" y="-3.81" drill="1.016" shape="octagon"/>
+<pad name="1" x="-2.54" y="-6.35" drill="1.016" shape="octagon"/>
+<pad name="3" x="0" y="-6.35" drill="1.016" shape="octagon"/>
+<pad name="5" x="2.54" y="-6.35" drill="1.016" shape="octagon"/>
+<text x="-4.445" y="-3.81" size="1.27" layer="25" ratio="10" rot="R90">&gt;NAME</text>
+<text x="5.715" y="-3.81" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<rectangle x1="-2.921" y1="0.635" x2="-2.159" y2="1.143" layer="21"/>
+<rectangle x1="-0.381" y1="0.635" x2="0.381" y2="1.143" layer="21"/>
+<rectangle x1="2.159" y1="0.635" x2="2.921" y2="1.143" layer="21"/>
+<rectangle x1="-2.921" y1="-2.921" x2="-2.159" y2="-1.905" layer="21"/>
+<rectangle x1="-0.381" y1="-2.921" x2="0.381" y2="-1.905" layer="21"/>
+<rectangle x1="-2.921" y1="-5.461" x2="-2.159" y2="-4.699" layer="21"/>
+<rectangle x1="-2.921" y1="-4.699" x2="-2.159" y2="-2.921" layer="51"/>
+<rectangle x1="-0.381" y1="-4.699" x2="0.381" y2="-2.921" layer="51"/>
+<rectangle x1="-0.381" y1="-5.461" x2="0.381" y2="-4.699" layer="21"/>
+<rectangle x1="2.159" y1="-2.921" x2="2.921" y2="-1.905" layer="21"/>
+<rectangle x1="2.159" y1="-5.461" x2="2.921" y2="-4.699" layer="21"/>
+<rectangle x1="2.159" y1="-4.699" x2="2.921" y2="-2.921" layer="51"/>
+</package>
 </packages>
 <symbols>
 <symbol name="PINHD4">
@@ -1267,6 +1342,20 @@
 <pin name="8" x="-2.54" y="-7.62" visible="pad" length="short" direction="pas" function="dot"/>
 <pin name="9" x="-2.54" y="-10.16" visible="pad" length="short" direction="pas" function="dot"/>
 <pin name="10" x="-2.54" y="-12.7" visible="pad" length="short" direction="pas" function="dot"/>
+</symbol>
+<symbol name="PINH2X3">
+<wire x1="-6.35" y1="-5.08" x2="8.89" y2="-5.08" width="0.4064" layer="94"/>
+<wire x1="8.89" y1="-5.08" x2="8.89" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="8.89" y1="5.08" x2="-6.35" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="-6.35" y1="5.08" x2="-6.35" y2="-5.08" width="0.4064" layer="94"/>
+<text x="-6.35" y="5.715" size="1.778" layer="95">&gt;NAME</text>
+<text x="-6.35" y="-7.62" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="1" x="-2.54" y="2.54" visible="pad" length="short" direction="pas" function="dot"/>
+<pin name="2" x="5.08" y="2.54" visible="pad" length="short" direction="pas" function="dot" rot="R180"/>
+<pin name="3" x="-2.54" y="0" visible="pad" length="short" direction="pas" function="dot"/>
+<pin name="4" x="5.08" y="0" visible="pad" length="short" direction="pas" function="dot" rot="R180"/>
+<pin name="5" x="-2.54" y="-2.54" visible="pad" length="short" direction="pas" function="dot"/>
+<pin name="6" x="5.08" y="-2.54" visible="pad" length="short" direction="pas" function="dot" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -1361,6 +1450,40 @@
 <connect gate="A" pin="7" pad="7"/>
 <connect gate="A" pin="8" pad="8"/>
 <connect gate="A" pin="9" pad="9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="PINHD-2X3" prefix="JP" uservalue="yes">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<gates>
+<gate name="A" symbol="PINH2X3" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="2X03">
+<connects>
+<connect gate="A" pin="1" pad="1"/>
+<connect gate="A" pin="2" pad="2"/>
+<connect gate="A" pin="3" pad="3"/>
+<connect gate="A" pin="4" pad="4"/>
+<connect gate="A" pin="5" pad="5"/>
+<connect gate="A" pin="6" pad="6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="/90" package="2X03/90">
+<connects>
+<connect gate="A" pin="1" pad="1"/>
+<connect gate="A" pin="2" pad="2"/>
+<connect gate="A" pin="3" pad="3"/>
+<connect gate="A" pin="4" pad="4"/>
+<connect gate="A" pin="5" pad="5"/>
+<connect gate="A" pin="6" pad="6"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -19476,7 +19599,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </class>
 </classes>
 <parts>
-<part name="MSP1" library="MSP-EXP432" deviceset="MSP432" device="" value="MSP432"/>
+<part name="MSP432P401R" library="MSP-EXP432" deviceset="MSP432" device="" value="MSP432"/>
 <part name="ULTRA2" library="pinhead" deviceset="PINHD-1X4" device=""/>
 <part name="ULTRA3" library="pinhead" deviceset="PINHD-1X4" device=""/>
 <part name="ULTRA1" library="pinhead" deviceset="PINHD-1X4" device=""/>
@@ -19511,7 +19634,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <part name="C13" library="rcl" deviceset="C-EU" device="CM0402" value="22p"/>
 <part name="GND56" library="supply1" deviceset="GND" device=""/>
 <part name="MINIJTAG" library="kblom" deviceset="JTAG-AVR" device="-IDC"/>
-<part name="MOTHERBOPARD_TX" library="pinhead" deviceset="PINHD-1X2" device=""/>
+<part name="MOTHERBOARD_UART" library="pinhead" deviceset="PINHD-1X2" device=""/>
 <part name="NAZE32_PINHEAD" library="pinhead" deviceset="PINHD-1X10" device=""/>
 <part name="LEVEL_TRANSLATOR1" library="SparkFun-DigitalIC" deviceset="TXB0104PWR" device="SOIC14"/>
 <part name="SUPPLY1" library="SparkFun-Aesthetics" deviceset="5V" device=""/>
@@ -19543,6 +19666,8 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <part name="GND6" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="GND7" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="GND8" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
+<part name="BATTERY_MONITORING_PINS" library="pinhead" deviceset="PINHD-2X3" device=""/>
+<part name="GND9" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -19577,18 +19702,15 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <text x="-149.098" y="140.716" size="2.54" layer="95">DC-DC</text>
 <text x="-198.12" y="7.62" size="1.778" layer="95">A side Vcc from 1.2 to 3.6V</text>
 <text x="-144.78" y="7.62" size="1.778" layer="95">B side Vcc from 1.65 to 5V</text>
-<text x="-177.8" y="15.24" size="1.778" layer="95">VccA *must* be less than VccB!</text>
 <text x="-83.82" y="7.62" size="1.778" layer="95">A side Vcc from 1.2 to 3.6V</text>
 <text x="-30.48" y="7.62" size="1.778" layer="95">B side Vcc from 1.65 to 5V</text>
-<text x="-63.5" y="15.24" size="1.778" layer="95">VccA *must* be less than VccB!</text>
 <wire x1="-73.66" y1="-3.302" x2="-73.66" y2="-1.524" width="0.1524" layer="94"/>
 <text x="27.94" y="5.08" size="1.778" layer="95">A side Vcc from 1.2 to 3.6V</text>
 <text x="81.28" y="5.08" size="1.778" layer="95">B side Vcc from 1.65 to 5V</text>
-<text x="48.26" y="12.7" size="1.778" layer="95">VccA *must* be less than VccB!</text>
-<wire x1="-213.36" y1="27.94" x2="-213.36" y2="-55.88" width="0.1524" layer="95" style="shortdash"/>
-<wire x1="-213.36" y1="-55.88" x2="124.46" y2="-55.88" width="0.1524" layer="95" style="shortdash"/>
-<wire x1="124.46" y1="-55.88" x2="124.46" y2="27.94" width="0.1524" layer="95" style="shortdash"/>
-<wire x1="124.46" y1="27.94" x2="-213.36" y2="27.94" width="0.1524" layer="95" style="shortdash"/>
+<wire x1="-208.28" y1="22.86" x2="-208.28" y2="-53.34" width="0.1524" layer="95" style="shortdash"/>
+<wire x1="-208.28" y1="-53.34" x2="119.38" y2="-53.34" width="0.1524" layer="95" style="shortdash"/>
+<wire x1="119.38" y1="-53.34" x2="119.38" y2="22.86" width="0.1524" layer="95" style="shortdash"/>
+<wire x1="119.38" y1="22.86" x2="-208.28" y2="22.86" width="0.1524" layer="95" style="shortdash"/>
 <text x="-68.58" y="-48.26" size="2.54" layer="95">Level Translators ICs for Ultrasonic Sensors</text>
 <wire x1="-497.84" y1="233.68" x2="-497.84" y2="187.96" width="0.1524" layer="95" style="shortdash"/>
 <wire x1="-497.84" y1="187.96" x2="-332.74" y2="187.96" width="0.1524" layer="95" style="shortdash"/>
@@ -19600,19 +19722,19 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <wire x1="-233.68" y1="-53.34" x2="-233.68" y2="25.4" width="0.1524" layer="95" style="shortdash"/>
 <wire x1="-233.68" y1="25.4" x2="-325.12" y2="25.4" width="0.1524" layer="95" style="shortdash"/>
 <text x="-296.164" y="21.844" size="2.54" layer="95">Power Suppply Regulation</text>
-<wire x1="-459.74" y1="127" x2="-459.74" y2="76.2" width="0.1524" layer="95" style="shortdash"/>
-<wire x1="-459.74" y1="76.2" x2="-391.16" y2="76.2" width="0.1524" layer="95" style="shortdash"/>
-<wire x1="-391.16" y1="76.2" x2="-391.16" y2="127" width="0.1524" layer="95" style="shortdash"/>
-<wire x1="-391.16" y1="127" x2="-459.74" y2="127" width="0.1524" layer="95" style="shortdash"/>
-<text x="-452.12" y="121.92" size="2.54" layer="95">Ultrasonic Sensors  - Top and Bottom</text>
-<wire x1="-91.44" y1="220.98" x2="-91.44" y2="109.22" width="0.1524" layer="95" style="shortdash"/>
-<wire x1="-91.44" y1="109.22" x2="-33.02" y2="109.22" width="0.1524" layer="95" style="shortdash"/>
-<wire x1="-33.02" y1="109.22" x2="-33.02" y2="220.98" width="0.1524" layer="95" style="shortdash"/>
-<wire x1="-33.02" y1="220.98" x2="-91.44" y2="220.98" width="0.1524" layer="95" style="shortdash"/>
-<text x="-83.82" y="213.36" size="2.54" layer="95">Ultrasonic Sensors along Horizontal Plane</text>
-<wire x1="-452.12" y1="66.04" x2="-452.12" y2="7.62" width="0.1524" layer="95" style="shortdash"/>
-<wire x1="-452.12" y1="7.62" x2="-398.78" y2="7.62" width="0.1524" layer="95" style="shortdash"/>
-<wire x1="-398.78" y1="7.62" x2="-398.78" y2="66.04" width="0.1524" layer="95" style="shortdash"/>
+<wire x1="-454.66" y1="127" x2="-454.66" y2="76.2" width="0.1524" layer="95" style="shortdash"/>
+<wire x1="-454.66" y1="76.2" x2="-408.94" y2="76.2" width="0.1524" layer="95" style="shortdash"/>
+<wire x1="-408.94" y1="76.2" x2="-408.94" y2="127" width="0.1524" layer="95" style="shortdash"/>
+<wire x1="-408.94" y1="127" x2="-454.66" y2="127" width="0.1524" layer="95" style="shortdash"/>
+<text x="-447.04" y="121.92" size="2.54" layer="95">Ultrasonic Sensors  </text>
+<wire x1="-96.52" y1="220.98" x2="-96.52" y2="109.22" width="0.1524" layer="95" style="shortdash"/>
+<wire x1="-96.52" y1="109.22" x2="-25.4" y2="109.22" width="0.1524" layer="95" style="shortdash"/>
+<wire x1="-25.4" y1="109.22" x2="-25.4" y2="220.98" width="0.1524" layer="95" style="shortdash"/>
+<wire x1="-25.4" y1="220.98" x2="-96.52" y2="220.98" width="0.1524" layer="95" style="shortdash"/>
+<text x="-93.98" y="210.82" size="2.54" layer="95">Ultrasonic Sensors along Horizontal Plane</text>
+<wire x1="-452.12" y1="66.04" x2="-452.12" y2="-33.02" width="0.1524" layer="95" style="shortdash"/>
+<wire x1="-452.12" y1="-33.02" x2="-398.78" y2="-33.02" width="0.1524" layer="95" style="shortdash"/>
+<wire x1="-398.78" y1="-33.02" x2="-398.78" y2="66.04" width="0.1524" layer="95" style="shortdash"/>
 <wire x1="-398.78" y1="66.04" x2="-452.12" y2="66.04" width="0.1524" layer="95" style="shortdash"/>
 <wire x1="-467.36" y1="180.34" x2="-467.36" y2="132.08" width="0.1524" layer="95" style="shortdash"/>
 <wire x1="-467.36" y1="132.08" x2="-388.62" y2="132.08" width="0.1524" layer="95" style="shortdash"/>
@@ -19620,14 +19742,19 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <wire x1="-388.62" y1="180.34" x2="-467.36" y2="180.34" width="0.1524" layer="95" style="shortdash"/>
 <text x="-444.5" y="60.96" size="2.54" layer="95">Flight Controller Interfacing</text>
 <text x="-457.2" y="175.26" size="2.54" layer="95">MCU &lt;--&gt; Motherboard Communication</text>
+<text x="-439.42" y="5.08" size="2.1844" layer="95">Battery Voltage Monitoring </text>
+<text x="-447.04" y="116.84" size="2.1844" layer="95">Top and Bottom</text>
 </plain>
 <instances>
-<instance part="MSP1" gate="MSP432" x="-262.89" y="138.43"/>
+<instance part="MSP432P401R" gate="MSP432" x="-262.89" y="138.43" smashed="yes">
+<attribute name="NAME" x="-265.0744" y="211.0486" size="2.0828" layer="95" ratio="6" rot="SR0"/>
+<attribute name="VALUE" x="-263.4742" y="45.9486" size="2.0828" layer="96" ratio="6" rot="SR0"/>
+</instance>
 <instance part="ULTRA2" gate="A" x="-56.388" y="173.99"/>
 <instance part="ULTRA3" gate="A" x="-56.388" y="150.876"/>
 <instance part="ULTRA1" gate="A" x="-56.642" y="196.85"/>
 <instance part="ULTRA6" gate="A" x="-443.23" y="89.408" rot="R180"/>
-<instance part="ULTRA5" gate="A" x="-443.484" y="112.776" rot="R180"/>
+<instance part="ULTRA5" gate="A" x="-443.484" y="107.696" rot="R180"/>
 <instance part="ULTRA4" gate="A" x="-55.88" y="121.92"/>
 <instance part="5V_PDB" gate="G$1" x="-307.594" y="10.414"/>
 <instance part="IC2" gate="G$1" x="-279.654" y="-17.526"/>
@@ -19702,7 +19829,10 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <attribute name="NAME" x="-144.272" y="50.165" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="-139.7" y="55.372" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="MOTHERBOPARD_TX" gate="G$1" x="-454.914" y="156.21" rot="R180"/>
+<instance part="MOTHERBOARD_UART" gate="G$1" x="-454.914" y="156.21" smashed="yes" rot="R180">
+<attribute name="NAME" x="-448.564" y="150.495" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="-448.564" y="161.29" size="1.778" layer="96" rot="R180"/>
+</instance>
 <instance part="NAZE32_PINHEAD" gate="A" x="-431.8" y="33.02" smashed="yes" rot="R180">
 <attribute name="NAME" x="-425.45" y="19.685" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="-425.45" y="50.8" size="1.778" layer="96" rot="R180"/>
@@ -19752,6 +19882,8 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <instance part="GND6" gate="1" x="-401.066" y="136.906"/>
 <instance part="GND7" gate="1" x="-319.786" y="4.572"/>
 <instance part="GND8" gate="1" x="-416.814" y="16.002"/>
+<instance part="BATTERY_MONITORING_PINS" gate="A" x="-429.26" y="-7.62"/>
+<instance part="GND9" gate="1" x="-414.02" y="-15.24"/>
 </instances>
 <busses>
 </busses>
@@ -19800,8 +19932,8 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </segment>
 <segment>
 <pinref part="ULTRA5" gate="A" pin="4"/>
-<wire x1="-440.944" y1="115.316" x2="-433.07" y2="115.316" width="0.1524" layer="91"/>
-<label x="-429.26" y="117.602" size="1.778" layer="95" rot="R180"/>
+<wire x1="-440.944" y1="110.236" x2="-433.07" y2="110.236" width="0.1524" layer="91"/>
+<label x="-429.26" y="112.522" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
 <pinref part="ULTRA6" gate="A" pin="4"/>
@@ -19845,12 +19977,12 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <wire x1="-217.17" y1="92.71" x2="-219.71" y2="92.71" width="0.1524" layer="91"/>
 <wire x1="-208.28" y1="95.25" x2="-217.17" y2="95.25" width="0.1524" layer="91"/>
 <junction x="-208.28" y="95.25"/>
-<pinref part="MSP1" gate="MSP432" pin="DVSS3"/>
-<pinref part="MSP1" gate="MSP432" pin="AVSS3"/>
-<pinref part="MSP1" gate="MSP432" pin="DVSS2"/>
-<pinref part="MSP1" gate="MSP432" pin="DVSS1"/>
-<pinref part="MSP1" gate="MSP432" pin="AVSS2"/>
-<pinref part="MSP1" gate="MSP432" pin="AVSS1"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="DVSS3"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="AVSS3"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="DVSS2"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="DVSS1"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="AVSS2"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="AVSS1"/>
 </segment>
 <segment>
 <pinref part="GND54" gate="1" pin="GND"/>
@@ -19975,6 +20107,17 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <wire x1="-319.786" y1="10.414" x2="-319.786" y2="7.112" width="0.1524" layer="91"/>
 <pinref part="GND7" gate="1" pin="GND"/>
 </segment>
+<segment>
+<wire x1="-424.18" y1="-10.16" x2="-414.02" y2="-10.16" width="0.1524" layer="91"/>
+<pinref part="BATTERY_MONITORING_PINS" gate="A" pin="6"/>
+<wire x1="-414.02" y1="-10.16" x2="-414.02" y2="-12.7" width="0.1524" layer="91"/>
+<pinref part="GND9" gate="1" pin="GND"/>
+</segment>
+<segment>
+<wire x1="-424.18" y1="-5.08" x2="-414.02" y2="-5.08" width="0.1524" layer="91"/>
+<pinref part="BATTERY_MONITORING_PINS" gate="A" pin="2"/>
+<label x="-411.48" y="-5.08" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="VCORE" class="0">
 <segment>
@@ -19987,7 +20130,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <junction x="-146.05" y="130.81"/>
 <wire x1="-219.71" y1="130.81" x2="-146.05" y2="130.81" width="0.1524" layer="91"/>
 <pinref part="C11" gate="G$1" pin="1"/>
-<pinref part="MSP1" gate="MSP432" pin="VCORE"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="VCORE"/>
 </segment>
 </net>
 <net name="VSW" class="0">
@@ -19995,19 +20138,19 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <pinref part="L1" gate="G$1" pin="2"/>
 <wire x1="-219.71" y1="135.89" x2="-157.48" y2="135.89" width="0.1524" layer="91"/>
 <label x="-214.63" y="135.89" size="1.778" layer="95"/>
-<pinref part="MSP1" gate="MSP432" pin="VSW"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="VSW"/>
 </segment>
 </net>
 <net name="DCOR" class="0">
 <segment>
 <label x="-214.63" y="140.97" size="1.778" layer="95"/>
 <wire x1="-219.71" y1="140.97" x2="-186.69" y2="141.224" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="DCOR"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="DCOR"/>
 </segment>
 </net>
 <net name="TMS_SWDIO" class="0">
 <segment>
-<pinref part="MSP1" gate="MSP432" pin="SWDIOTMS"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="SWDIOTMS"/>
 <label x="-217.17" y="62.23" size="1.778" layer="95"/>
 <wire x1="-219.71" y1="62.23" x2="-149.606" y2="62.23" width="0.1524" layer="91"/>
 <pinref part="MINIJTAG" gate="A" pin="TMS"/>
@@ -20016,7 +20159,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </net>
 <net name="TCK_SWCLK" class="0">
 <segment>
-<pinref part="MSP1" gate="MSP432" pin="SWCLKTCK"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="SWCLKTCK"/>
 <label x="-217.17" y="59.69" size="1.778" layer="95"/>
 <wire x1="-219.71" y1="59.69" x2="-154.686" y2="59.69" width="0.1524" layer="91"/>
 <pinref part="MINIJTAG" gate="A" pin="TCK"/>
@@ -20025,7 +20168,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </net>
 <net name="TDI" class="0">
 <segment>
-<pinref part="MSP1" gate="MSP432" pin="PJ.4/TDI/ADC14CLK"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="PJ.4/TDI/ADC14CLK"/>
 <label x="-217.17" y="54.61" size="1.778" layer="95"/>
 <wire x1="-219.71" y1="54.61" x2="-143.002" y2="54.61" width="0.1524" layer="91"/>
 <wire x1="-143.002" y1="54.61" x2="-143.002" y2="59.944" width="0.1524" layer="91"/>
@@ -20036,7 +20179,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </net>
 <net name="TDO_SWO" class="0">
 <segment>
-<pinref part="MSP1" gate="MSP432" pin="PJ.5/TDO/SWO"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="PJ.5/TDO/SWO"/>
 <label x="-217.17" y="52.07" size="1.778" layer="95"/>
 <wire x1="-219.71" y1="52.07" x2="-150.876" y2="52.07" width="0.1524" layer="91"/>
 <wire x1="-150.876" y1="52.07" x2="-150.876" y2="60.198" width="0.1524" layer="91"/>
@@ -20049,7 +20192,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <segment>
 <label x="-217.17" y="67.31" size="1.778" layer="95"/>
 <pinref part="MINIJTAG" gate="A" pin="RESET_N"/>
-<pinref part="MSP1" gate="MSP432" pin="RSTN/NMI"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="RSTN/NMI"/>
 <wire x1="-219.71" y1="67.31" x2="-160.02" y2="67.31" width="0.1524" layer="91"/>
 <wire x1="-160.02" y1="67.31" x2="-160.02" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="-160.02" y1="63.5" x2="-149.606" y2="63.5" width="0.1524" layer="91"/>
@@ -20058,10 +20201,10 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </net>
 <net name="P2.4_PWM_J4.38" class="0">
 <segment>
-<pinref part="MSP1" gate="MSP432" pin="P2.4/PM_TA0.1"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P2.4/PM_TA0.1"/>
 <wire x1="-418.084" y1="56.642" x2="-373.38" y2="56.642" width="0.1524" layer="91"/>
-<wire x1="-373.38" y1="56.642" x2="-372.872" y2="173.99" width="0.1524" layer="91"/>
-<wire x1="-372.872" y1="173.99" x2="-306.07" y2="173.99" width="0.1524" layer="91"/>
+<wire x1="-373.38" y1="56.642" x2="-373.38" y2="173.736" width="0.1524" layer="91"/>
+<wire x1="-373.38" y1="173.736" x2="-306.07" y2="173.99" width="0.1524" layer="91"/>
 <pinref part="NAZE32_PINHEAD" gate="A" pin="10"/>
 <wire x1="-429.26" y1="45.72" x2="-418.084" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="-418.084" y1="45.72" x2="-418.084" y2="56.642" width="0.1524" layer="91"/>
@@ -20070,11 +20213,11 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </net>
 <net name="P2.5_PWM_J2.19" class="0">
 <segment>
-<pinref part="MSP1" gate="MSP432" pin="P2.5/PM_TA0.2"/>
-<wire x1="-306.07" y1="171.45" x2="-370.586" y2="170.942" width="0.1524" layer="91"/>
-<wire x1="-415.544" y1="52.07" x2="-370.84" y2="51.816" width="0.1524" layer="91"/>
-<wire x1="-370.84" y1="51.816" x2="-370.586" y2="170.942" width="0.1524" layer="91"/>
-<wire x1="-415.544" y1="52.07" x2="-415.544" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P2.5/PM_TA0.2"/>
+<wire x1="-306.07" y1="171.45" x2="-371.094" y2="171.45" width="0.1524" layer="91"/>
+<wire x1="-415.544" y1="51.816" x2="-371.348" y2="51.816" width="0.1524" layer="91"/>
+<wire x1="-371.348" y1="51.816" x2="-371.094" y2="171.45" width="0.1524" layer="91"/>
+<wire x1="-415.544" y1="51.816" x2="-415.544" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="NAZE32_PINHEAD" gate="A" pin="9"/>
 <wire x1="-429.26" y1="43.18" x2="-415.544" y2="43.18" width="0.1524" layer="91"/>
 <label x="-424.18" y="48.26" size="1.778" layer="95"/>
@@ -20083,7 +20226,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </net>
 <net name="P2.6_PWM_J4.39" class="0">
 <segment>
-<pinref part="MSP1" gate="MSP432" pin="P2.6/PM_TA0.3"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P2.6/PM_TA0.3"/>
 <wire x1="-412.242" y1="46.228" x2="-368.808" y2="46.228" width="0.1524" layer="91"/>
 <wire x1="-368.808" y1="46.228" x2="-368.808" y2="168.91" width="0.1524" layer="91"/>
 <wire x1="-368.808" y1="168.91" x2="-306.07" y2="168.91" width="0.1524" layer="91"/>
@@ -20095,7 +20238,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </net>
 <net name="P2.7_PWM_J4.40" class="0">
 <segment>
-<pinref part="MSP1" gate="MSP432" pin="P2.7/PM_TA0.4"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P2.7/PM_TA0.4"/>
 <wire x1="-306.07" y1="166.37" x2="-366.776" y2="166.37" width="0.1524" layer="91"/>
 <wire x1="-410.21" y1="41.148" x2="-366.776" y2="41.148" width="0.1524" layer="91"/>
 <wire x1="-366.776" y1="41.148" x2="-366.776" y2="166.37" width="0.1524" layer="91"/>
@@ -20107,13 +20250,13 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <net name="P7.3" class="0">
 <segment>
 <wire x1="-306.07" y1="62.23" x2="-335.28" y2="62.23" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P7.3/PM_TA0.0"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P7.3/PM_TA0.0"/>
 </segment>
 </net>
 <net name="P7.4" class="0">
 <segment>
 <wire x1="-306.07" y1="59.69" x2="-357.378" y2="59.69" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P7.4/PM_TA1.4/C0.5"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P7.4/PM_TA1.4/C0.5"/>
 <wire x1="-428.498" y1="35.306" x2="-357.124" y2="35.306" width="0.1524" layer="91"/>
 <wire x1="-357.124" y1="35.306" x2="-357.378" y2="59.69" width="0.1524" layer="91"/>
 <wire x1="-428.498" y1="35.306" x2="-428.498" y2="35.56" width="0.1524" layer="91"/>
@@ -20125,7 +20268,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <net name="P7.5" class="0">
 <segment>
 <wire x1="-306.07" y1="57.15" x2="-355.346" y2="57.15" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P7.5/PM_TA1.3/C0.4"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P7.5/PM_TA1.3/C0.4"/>
 <wire x1="-406.4" y1="30.988" x2="-355.346" y2="30.988" width="0.1524" layer="91"/>
 <wire x1="-355.346" y1="30.988" x2="-355.346" y2="57.15" width="0.1524" layer="91"/>
 <pinref part="NAZE32_PINHEAD" gate="A" pin="5"/>
@@ -20137,7 +20280,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <net name="P7.6" class="0">
 <segment>
 <wire x1="-306.07" y1="54.61" x2="-353.568" y2="54.61" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P7.6/PM_TA1.2/C0.3"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P7.6/PM_TA1.2/C0.3"/>
 <wire x1="-407.67" y1="25.908" x2="-353.568" y2="25.908" width="0.1524" layer="91"/>
 <wire x1="-353.568" y1="25.908" x2="-353.568" y2="54.61" width="0.1524" layer="91"/>
 <pinref part="NAZE32_PINHEAD" gate="A" pin="4"/>
@@ -20149,7 +20292,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <net name="P7.7" class="0">
 <segment>
 <wire x1="-306.07" y1="52.07" x2="-351.536" y2="52.07" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P7.7/PM_TA1.1/C0.2"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P7.7/PM_TA1.1/C0.2"/>
 <wire x1="-410.21" y1="20.828" x2="-351.536" y2="20.828" width="0.1524" layer="91"/>
 <wire x1="-351.536" y1="20.828" x2="-351.536" y2="52.07" width="0.1524" layer="91"/>
 <wire x1="-429.26" y1="27.94" x2="-410.21" y2="27.94" width="0.1524" layer="91"/>
@@ -20160,7 +20303,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </net>
 <net name="P9.2" class="0">
 <segment>
-<pinref part="MSP1" gate="MSP432" pin="P9.2/TA3.3"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P9.2/TA3.3"/>
 <wire x1="-219.71" y1="179.07" x2="-186.69" y2="179.07" width="0.1524" layer="91"/>
 <label x="-214.884" y="179.324" size="1.778" layer="95"/>
 </segment>
@@ -20173,7 +20316,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <net name="P10.3" class="0">
 <segment>
 <wire x1="-186.69" y1="153.67" x2="-219.71" y2="153.67" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P10.3UCB3SOMI/UCB3SCL"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P10.3UCB3SOMI/UCB3SCL"/>
 <label x="-214.63" y="153.67" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -20189,7 +20332,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <label x="-83.82" y="-17.78" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="MSP1" gate="MSP432" pin="P10.4/TA3.0/C0.7"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P10.4/TA3.0/C0.7"/>
 <wire x1="-219.71" y1="151.13" x2="-187.198" y2="151.13" width="0.1524" layer="91"/>
 <label x="-214.884" y="151.384" size="1.778" layer="95"/>
 </segment>
@@ -20201,7 +20344,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <label x="-83.82" y="-20.32" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="MSP1" gate="MSP432" pin="P10.5/TA3.1/C0.6"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P10.5/TA3.1/C0.6"/>
 <wire x1="-219.71" y1="148.59" x2="-187.452" y2="148.59" width="0.1524" layer="91"/>
 <label x="-214.884" y="149.098" size="1.778" layer="95"/>
 </segment>
@@ -20209,7 +20352,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <net name="P8.0" class="0">
 <segment>
 <wire x1="-186.69" y1="207.01" x2="-219.71" y2="207.01" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P8.0/UCB3STE/TA1.0/C0.1"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P8.0/UCB3STE/TA1.0/C0.1"/>
 <label x="-214.63" y="207.01" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -20221,7 +20364,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <net name="P8.1" class="0">
 <segment>
 <wire x1="-186.69" y1="204.47" x2="-219.71" y2="204.47" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P8.1/UCB3CLK/TA2.0/C0.0"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P8.1/UCB3CLK/TA2.0/C0.0"/>
 <label x="-214.63" y="204.47" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -20265,8 +20408,8 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </segment>
 <segment>
 <pinref part="ULTRA5" gate="A" pin="1"/>
-<wire x1="-440.944" y1="107.696" x2="-433.07" y2="107.696" width="0.1524" layer="91"/>
-<label x="-427.99" y="107.442" size="1.778" layer="95" rot="R180"/>
+<wire x1="-440.944" y1="102.616" x2="-433.07" y2="102.616" width="0.1524" layer="91"/>
+<label x="-427.99" y="102.362" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
 <pinref part="ULTRA6" gate="A" pin="1"/>
@@ -20328,14 +20471,20 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <wire x1="-168.91" y1="123.19" x2="-168.91" y2="124.46" width="0.1524" layer="91"/>
 <junction x="-168.91" y="123.19"/>
 <label x="-214.63" y="123.19" size="1.778" layer="95"/>
-<pinref part="MSP1" gate="MSP432" pin="DVCC2"/>
-<pinref part="MSP1" gate="MSP432" pin="DVCC1"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="DVCC2"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="DVCC1"/>
 <label x="-169.164" y="127.508" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="P$7"/>
 <wire x1="-408.94" y1="160.02" x2="-406.4" y2="160.02" width="0.1524" layer="91"/>
 <label x="-403.86" y="162.56" size="1.778" layer="95" rot="R180"/>
+</segment>
+<segment>
+<wire x1="-431.8" y1="-10.16" x2="-439.42" y2="-10.16" width="0.1524" layer="91"/>
+<pinref part="BATTERY_MONITORING_PINS" gate="A" pin="5"/>
+<wire x1="-439.42" y1="-10.16" x2="-439.42" y2="-15.24" width="0.1524" layer="91"/>
+<label x="-439.42" y="-15.24" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="P5.2/XT2IN1" class="0">
@@ -20346,7 +20495,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <pinref part="C13" gate="G$1" pin="1"/>
 <wire x1="-107.95" y1="74.93" x2="-113.03" y2="74.93" width="0.1524" layer="91"/>
 <junction x="-113.03" y="74.93"/>
-<pinref part="MSP1" gate="MSP432" pin="PJ.3/HFXIN"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="PJ.3/HFXIN"/>
 </segment>
 </net>
 <net name="P5.3/XT2OUT1" class="0">
@@ -20359,7 +20508,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <pinref part="C12" gate="G$1" pin="1"/>
 <wire x1="-113.03" y1="85.09" x2="-106.68" y2="85.09" width="0.1524" layer="91"/>
 <junction x="-113.03" y="85.09"/>
-<pinref part="MSP1" gate="MSP432" pin="PJ.2/HFXOUT"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="PJ.2/HFXOUT"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -20380,8 +20529,8 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <wire x1="-208.28" y1="106.68" x2="-212.09" y2="106.68" width="0.1524" layer="91"/>
 <wire x1="-208.28" y1="104.14" x2="-208.28" y2="106.68" width="0.1524" layer="91"/>
 <junction x="-208.28" y="106.68"/>
-<pinref part="MSP1" gate="MSP432" pin="AVCC2"/>
-<pinref part="MSP1" gate="MSP432" pin="AVCC1"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="AVCC2"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="AVCC1"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -20392,7 +20541,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <wire x1="-149.86" y1="82.55" x2="-144.78" y2="82.55" width="0.1524" layer="91"/>
 <wire x1="-149.86" y1="85.09" x2="-149.86" y2="82.55" width="0.1524" layer="91"/>
 <junction x="-149.86" y="82.55"/>
-<pinref part="MSP1" gate="MSP432" pin="PJ.1/LFXOUT"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="PJ.1/LFXOUT"/>
 </segment>
 </net>
 <net name="N$8" class="0">
@@ -20405,7 +20554,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <wire x1="-149.86" y1="95.25" x2="-156.21" y2="95.25" width="0.1524" layer="91"/>
 <wire x1="-149.86" y1="90.17" x2="-149.86" y2="95.25" width="0.1524" layer="91"/>
 <junction x="-149.86" y="95.25"/>
-<pinref part="MSP1" gate="MSP432" pin="PJ.0/LFXIN"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="PJ.0/LFXIN"/>
 </segment>
 </net>
 <net name="3.3V" class="0">
@@ -20513,8 +20662,8 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </segment>
 <segment>
 <pinref part="ULTRA5" gate="A" pin="3"/>
-<wire x1="-440.944" y1="112.776" x2="-430.53" y2="112.776" width="0.1524" layer="91"/>
-<label x="-424.18" y="114.3" size="1.778" layer="95"/>
+<wire x1="-440.944" y1="107.696" x2="-430.53" y2="107.696" width="0.1524" layer="91"/>
+<label x="-424.18" y="109.22" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="P5.7_5V" class="0">
@@ -20525,8 +20674,8 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </segment>
 <segment>
 <pinref part="ULTRA5" gate="A" pin="2"/>
-<wire x1="-440.944" y1="110.236" x2="-432.054" y2="110.236" width="0.1524" layer="91"/>
-<label x="-424.18" y="109.22" size="1.778" layer="95"/>
+<wire x1="-440.944" y1="105.156" x2="-432.054" y2="105.156" width="0.1524" layer="91"/>
+<label x="-424.18" y="104.14" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="P6.6_5V" class="0">
@@ -20555,7 +20704,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </net>
 <net name="P9.3" class="0">
 <segment>
-<pinref part="MSP1" gate="MSP432" pin="P9.3/TA3.4"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P9.3/TA3.4"/>
 <wire x1="-219.71" y1="176.53" x2="-187.452" y2="176.53" width="0.1524" layer="91"/>
 <label x="-214.63" y="176.784" size="1.778" layer="95"/>
 </segment>
@@ -20573,7 +20722,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </segment>
 <segment>
 <wire x1="-306.07" y1="74.93" x2="-335.28" y2="74.93" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P6.7/TA2.4/UCB3SOMI/UCB3SCL/C1.0"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P6.7/TA2.4/UCB3SOMI/UCB3SCL/C1.0"/>
 <label x="-332.74" y="75.184" size="1.778" layer="95"/>
 </segment>
 </net>
@@ -20585,7 +20734,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 </segment>
 <segment>
 <wire x1="-306.07" y1="77.47" x2="-335.28" y2="77.47" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P6.6/TA2.3/UCB3SIMO/UCB3SDA/C1.1"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P6.6/TA2.3/UCB3SIMO/UCB3SDA/C1.1"/>
 <label x="-332.74" y="77.978" size="1.778" layer="95"/>
 </segment>
 </net>
@@ -20598,7 +20747,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <segment>
 <wire x1="-305.816" y1="97.79" x2="-306.07" y2="97.79" width="0.1524" layer="91"/>
 <label x="-331.724" y="98.298" size="1.778" layer="95"/>
-<pinref part="MSP1" gate="MSP432" pin="P5.7/TA2.2/VREF-/VEREF-/C1.6"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P5.7/TA2.2/VREF-/VEREF-/C1.6"/>
 <wire x1="-306.07" y1="97.79" x2="-335.534" y2="97.79" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -20610,14 +20759,14 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <label x="27.94" y="-17.78" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="MSP1" gate="MSP432" pin="P5.6/TA2.1/VREF+/VEREF+/C1.7"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P5.6/TA2.1/VREF+/VEREF+/C1.7"/>
 <wire x1="-306.07" y1="100.33" x2="-334.772" y2="100.33" width="0.1524" layer="91"/>
 <label x="-331.724" y="100.584" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="P8.2" class="0">
 <segment>
-<pinref part="MSP1" gate="MSP432" pin="P8.2/TA3.2/A23"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P8.2/TA3.2/A23"/>
 <wire x1="-219.71" y1="201.93" x2="-187.198" y2="201.93" width="0.1524" layer="91"/>
 <label x="-214.63" y="202.184" size="1.778" layer="95"/>
 </segment>
@@ -20724,7 +20873,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <segment>
 <pinref part="12V_PDB" gate="G$1" pin="1"/>
 <wire x1="-274.574" y1="10.414" x2="-297.434" y2="10.414" width="0.1524" layer="91"/>
-<label x="-284.48" y="15.24" size="1.778" layer="95" xref="yes"/>
+<label x="-279.4" y="12.7" size="1.778" layer="95" rot="R180" xref="yes"/>
 <pinref part="IC2" gate="G$1" pin="IN"/>
 <pinref part="C1" gate="G$1" pin="1"/>
 <wire x1="-297.434" y1="-17.526" x2="-297.434" y2="-27.686" width="0.1524" layer="91"/>
@@ -20780,7 +20929,7 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <wire x1="-408.94" y1="165.1" x2="-390.398" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="-390.398" y1="165.1" x2="-390.398" y2="156.21" width="0.1524" layer="91"/>
 <wire x1="-305.816" y1="156.21" x2="-306.07" y2="156.21" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P3.2/PM_UCA2RXD/PM_UCA2SOMI"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P3.2/PM_UCA2RXD/PM_UCA2SOMI"/>
 <wire x1="-390.398" y1="156.21" x2="-306.07" y2="156.21" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -20797,18 +20946,17 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <segment>
 <pinref part="U$1" gate="G$1" pin="P$5"/>
 <label x="-402.844" y="152.4" size="1.778" layer="95" rot="R180"/>
-<wire x1="-408.94" y1="149.86" x2="-354.838" y2="149.86" width="0.1524" layer="91"/>
-<wire x1="-354.838" y1="149.86" x2="-354.838" y2="154.178" width="0.1524" layer="91"/>
-<pinref part="MSP1" gate="MSP432" pin="P3.3/PM_UCA2TXD/PM_UCA2SIMO"/>
-<wire x1="-354.838" y1="154.178" x2="-306.07" y2="154.178" width="0.1524" layer="91"/>
-<wire x1="-306.07" y1="154.178" x2="-306.07" y2="153.67" width="0.1524" layer="91"/>
+<wire x1="-408.94" y1="149.86" x2="-311.658" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="-311.658" y1="149.86" x2="-311.658" y2="153.67" width="0.1524" layer="91"/>
+<pinref part="MSP432P401R" gate="MSP432" pin="P3.3/PM_UCA2TXD/PM_UCA2SIMO"/>
+<wire x1="-311.658" y1="153.67" x2="-306.07" y2="153.67" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="B2" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="P$1"/>
 <label x="-429.006" y="165.608" size="1.778" layer="95"/>
-<pinref part="MOTHERBOPARD_TX" gate="G$1" pin="2"/>
+<pinref part="MOTHERBOARD_UART" gate="G$1" pin="2"/>
 <wire x1="-452.374" y1="156.21" x2="-438.912" y2="156.21" width="0.1524" layer="91"/>
 <wire x1="-438.912" y1="156.21" x2="-438.912" y2="164.084" width="0.1524" layer="91"/>
 <wire x1="-438.912" y1="164.084" x2="-438.912" y2="164.338" width="0.1524" layer="91"/>
@@ -20821,9 +20969,44 @@ Reference - http://www.ti.com/lit/ds/symlink/txs0102.pdf</description>
 <pinref part="U$1" gate="G$1" pin="P$4"/>
 <wire x1="-424.18" y1="149.86" x2="-426.72" y2="149.86" width="0.1524" layer="91"/>
 <label x="-426.72" y="152.4" size="1.778" layer="95" rot="R180"/>
-<pinref part="MOTHERBOPARD_TX" gate="G$1" pin="1"/>
+<pinref part="MOTHERBOARD_UART" gate="G$1" pin="1"/>
 <wire x1="-452.374" y1="153.67" x2="-426.72" y2="153.67" width="0.1524" layer="91"/>
 <wire x1="-426.72" y1="153.67" x2="-426.72" y2="149.86" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="P3.6_SDA" class="0">
+<segment>
+<pinref part="MSP432P401R" gate="MSP432" pin="P3.6/PM_UCB2SIMO/PM_UCB2SDA"/>
+<wire x1="-306.07" y1="146.05" x2="-319.532" y2="146.05" width="0.1524" layer="91"/>
+<label x="-325.12" y="147.32" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<wire x1="-431.8" y1="-7.62" x2="-439.42" y2="-7.62" width="0.1524" layer="91"/>
+<pinref part="BATTERY_MONITORING_PINS" gate="A" pin="3"/>
+<label x="-449.58" y="-7.62" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="P3.7_SCL" class="0">
+<segment>
+<pinref part="MSP432P401R" gate="MSP432" pin="P3.7/PM_UCB2SOMI/PM_UCB2SCL"/>
+<wire x1="-306.07" y1="143.51" x2="-319.532" y2="143.51" width="0.1524" layer="91"/>
+<label x="-325.12" y="144.78" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<wire x1="-424.18" y1="-7.62" x2="-414.02" y2="-7.62" width="0.1524" layer="91"/>
+<pinref part="BATTERY_MONITORING_PINS" gate="A" pin="4"/>
+<label x="-411.48" y="-7.62" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="P2.2_RX" class="0">
+<segment>
+<wire x1="-305.816" y1="179.07" x2="-328.93" y2="179.07" width="0.1524" layer="91"/>
+<label x="-327.66" y="180.34" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<wire x1="-431.8" y1="-5.08" x2="-439.42" y2="-5.08" width="0.1524" layer="91"/>
+<pinref part="BATTERY_MONITORING_PINS" gate="A" pin="1"/>
+<label x="-439.42" y="-5.08" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>
