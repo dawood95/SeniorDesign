@@ -4340,9 +4340,6 @@ design rules under a new name.</description>
 <contactref element="LEVEL_TRANSLATOR_3" pad="14"/>
 <contactref element="U$1" pad="3"/>
 <wire x1="8.89" y1="70.11" x2="8.89" y2="71.374" width="0.3048" layer="1"/>
-<wire x1="8.89" y1="71.374" x2="9.271" y2="71.755" width="0.3048" layer="1"/>
-<wire x1="9.271" y1="71.755" x2="25.654" y2="71.755" width="0.3048" layer="1"/>
-<wire x1="25.654" y1="71.755" x2="26.67" y2="70.739" width="0.3048" layer="1"/>
 <wire x1="26.67" y1="70.739" x2="26.67" y2="70.11" width="0.3048" layer="1"/>
 <wire x1="16.637" y1="24.8412" x2="16.637" y2="26.924" width="0.254" layer="1"/>
 <via x="16.637" y="26.924" extent="1-16" drill="0.381"/>
@@ -4379,7 +4376,12 @@ design rules under a new name.</description>
 <wire x1="8.763" y1="69.088" x2="8.763" y2="69.983" width="0.254" layer="1"/>
 <wire x1="8.763" y1="69.983" x2="8.89" y2="70.11" width="0.254" layer="1"/>
 <via x="6.223" y="67.945" extent="1-16" drill="0.5"/>
+<wire x1="8.89" y1="71.374" x2="10.287" y2="72.771" width="0.3048" layer="1"/>
+<wire x1="18.034" y1="71.755" x2="25.654" y2="71.755" width="0.3048" layer="1"/>
+<wire x1="25.654" y1="71.755" x2="26.67" y2="70.739" width="0.3048" layer="1"/>
 <wire x1="15.045515625" y1="36.770484375" x2="14.90183125" y2="36.83" width="0" layer="19" extent="1-1"/>
+<wire x1="10.287" y1="72.771" x2="17.018" y2="72.771" width="0.3048" layer="1"/>
+<wire x1="17.018" y1="72.771" x2="18.034" y2="71.755" width="0.3048" layer="1"/>
 </signal>
 <signal name="P5.6_5V">
 <contactref element="LEVEL_TRANSLATOR_3" pad="13"/>
@@ -4636,7 +4638,13 @@ design rules under a new name.</description>
 <signal name="P10.5_5V">
 <contactref element="LEVEL_TRANSLATOR_2" pad="11"/>
 <contactref element="ULTRA4" pad="2"/>
-<wire x1="12.7" y1="70.11" x2="31.75" y2="74.93" width="0" layer="19" extent="1-1"/>
+<wire x1="31.75" y1="74.93" x2="31.75" y2="73.66" width="0.3048" layer="16"/>
+<wire x1="31.75" y1="73.66" x2="29.718" y2="71.628" width="0.3048" layer="16"/>
+<via x="13.843" y="71.628" extent="1-16" drill="0.5"/>
+<wire x1="13.843" y1="71.628" x2="13.208" y2="71.628" width="0.3048" layer="1"/>
+<wire x1="13.208" y1="71.628" x2="12.7" y2="71.12" width="0.3048" layer="1"/>
+<wire x1="12.7" y1="71.12" x2="12.7" y2="70.11" width="0.3048" layer="1"/>
+<wire x1="13.843" y1="71.628" x2="29.718" y2="71.628" width="0.3048" layer="16"/>
 </signal>
 <signal name="P10.3_GPIO5V">
 <contactref element="LEVEL_TRANSLATOR_2" pad="10"/>
