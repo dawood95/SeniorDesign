@@ -1,36 +1,46 @@
-
+#include "socket.h"
 #include <iostream>
+#include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <string.h>
+#include <stdio.h>
 
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
 
-using namespace std;
 
-int initServer(char *);
-int acceptConnection (int );
-void sendMsg(int, const char *, int );
-void recvMsg(int, char *);
+int connectTo (char * address, char * port) {
 
-int main (int argc, char * argv[]) {
-  
-  if (argc != 2) {
-    cout << "Usage : ./server <port>" << endl;
+  //Get Address Information
+  struct addrinfo hints;
+  struct addrinfo *result, *rp;
+  memset(&hints, 0, sizeof(struct addrinfo));
+  hints.ai_family = AF_UNSPEC;
+  hints.ai_socktype = SOCK_STREAM;
+
+  if(getaddrinfo(address, port, &hints, &result) != 0){
+    perror("getaddrinfo");
+    exit(EXIT_FAILURE);
+  }
+
+  int clientSocket;
+  for (rp = result; rp != NULL; rp = rp->ai_next) {
+    clientSocket = socket(rp->ai_family, rp->ai_socktype, rp->ai_protocol);
+    if (clientSocket == -1) continue;
+    if(connect(clientSocket, rp->ai_addr, rp->ai_addrlen) != -1) break;
+    close(clientSocket);
+  }
+
+  if (rp == NULL) {
+    perror("Failed to connect");
     exit(EXIT_FAILURE);
   }
   
-  int server = initServer(argv[1]);
-  int client = acceptConnection(server);
+  freeaddrinfo(result);
 
-  for (int i = 0; i < 100; i++) {
-    sendMsg(client, "A", 1);
-  }
-
-  return EXIT_FAILURE;
+  return clientSocket;
 }
 
 int acceptConnection (int masterSocket) {
