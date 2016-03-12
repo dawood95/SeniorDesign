@@ -18241,7 +18241,7 @@ type RDH, grid 15 mm</description>
 <part name="GND50" library="supply1" deviceset="GND" device=""/>
 <part name="C3" library="rcl" deviceset="C-EU" device="C0805" value="100n"/>
 <part name="C4" library="rcl" deviceset="C-EU" device="C0805" value="100n"/>
-<part name="C10" library="cap" deviceset="CSMD0805" device="" value="4u7"/>
+<part name="CPOLARIZED" library="cap" deviceset="CSMD0805" device="" value="4u7"/>
 <part name="L1" library="Murata" deviceset="LQM2MP_G0" device="" value="4.7uH"/>
 <part name="GND41" library="supply1" deviceset="GND" device=""/>
 <part name="C7" library="rcl" deviceset="C-EU" device="C0805" value="100n"/>
@@ -18372,7 +18372,7 @@ type RDH, grid 15 mm</description>
 <attribute name="NAME" x="-208.534" y="98.679" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="-208.534" y="103.759" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C10" gate="G$2" x="-135.89" y="128.27" smashed="yes" rot="R270">
+<instance part="CPOLARIZED" gate="G$2" x="-135.89" y="128.27" smashed="yes" rot="R270">
 <attribute name="NAME" x="-134.62" y="128.905" size="1.6764" layer="95"/>
 <attribute name="VALUE" x="-134.62" y="123.571" size="1.6764" layer="96"/>
 </instance>
@@ -18565,7 +18565,7 @@ type RDH, grid 15 mm</description>
 <segment>
 <wire x1="-146.05" y1="123.19" x2="-146.05" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="-146.05" y1="121.92" x2="-135.89" y2="121.92" width="0.1524" layer="91"/>
-<pinref part="C10" gate="G$2" pin="2"/>
+<pinref part="CPOLARIZED" gate="G$2" pin="2"/>
 <wire x1="-135.89" y1="123.19" x2="-135.89" y2="121.92" width="0.1524" layer="91"/>
 <junction x="-135.89" y="121.92"/>
 <pinref part="GND44" gate="1" pin="GND"/>
@@ -18659,7 +18659,7 @@ type RDH, grid 15 mm</description>
 <net name="VCORE" class="0">
 <segment>
 <label x="-214.63" y="130.81" size="1.778" layer="95"/>
-<pinref part="C10" gate="G$2" pin="1"/>
+<pinref part="CPOLARIZED" gate="G$2" pin="1"/>
 <wire x1="-146.05" y1="130.81" x2="-135.89" y2="130.81" width="0.1524" layer="91"/>
 <pinref part="L1" gate="G$1" pin="1"/>
 <wire x1="-147.32" y1="135.89" x2="-146.05" y2="135.89" width="0.1524" layer="91"/>

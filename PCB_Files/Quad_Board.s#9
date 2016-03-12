@@ -17815,6 +17815,10 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="-306.07" y1="123.19" x2="-316.484" y2="123.19" width="0.1524" layer="91"/>
 <label x="-325.12" y="124.46" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="JP1" gate="A" pin="4"/>
+<wire x1="-347.98" y1="124.46" x2="-337.82" y2="124.46" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="N$6" class="0">
 <segment>
@@ -17832,12 +17836,6 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="-431.8" y1="-5.08" x2="-439.42" y2="-5.08" width="0.1524" layer="91"/>
 <label x="-439.42" y="-5.08" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="BATTERY_FC_PINS" gate="A" pin="1"/>
-</segment>
-</net>
-<net name="N$5" class="0">
-<segment>
-<pinref part="JP1" gate="A" pin="4"/>
-<wire x1="-347.98" y1="124.46" x2="-337.82" y2="124.46" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$7" class="0">

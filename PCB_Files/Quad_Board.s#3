@@ -18390,7 +18390,7 @@ type RDH, grid 15 mm</description>
 <attribute name="VALUE" x="-184.404" y="103.759" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="CPOLARISED" gate="G$1" x="-168.91" y="101.6" smashed="yes">
-<attribute name="NAME" x="-170.307" y="98.0694" size="1.524" layer="95" rot="R180"/>
+<attribute name="NAME" x="-160.147" y="98.0694" size="1.524" layer="95" rot="R180"/>
 <attribute name="VALUE" x="-170.815" y="103.9114" size="1.524" layer="96" rot="R180"/>
 </instance>
 <instance part="R3" gate="G$1" x="-194.31" y="118.11" smashed="yes" rot="R180">

@@ -18284,7 +18284,7 @@ type RDH, grid 15 mm</description>
 <part name="TP2" library="testpad" deviceset="TP" device="B2,54"/>
 <part name="TP3" library="testpad" deviceset="TP" device="B1,27"/>
 <part name="U$3" library="TXS0102-bi-directional-translator" deviceset="TXS0102" device=""/>
-<part name="R1" library="resistor" deviceset="R-EU_" device="M1206"/>
+<part name="R1" library="resistor" deviceset="R-EU_" device="M1206" value="100k"/>
 <part name="GND1" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="GPIO_EXTRA" library="pinhead" deviceset="PINHD-1X5" device=""/>
 </parts>

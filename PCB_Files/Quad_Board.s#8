@@ -17820,12 +17820,6 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="-347.98" y1="124.46" x2="-337.82" y2="124.46" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$6" class="0">
-<segment>
-<pinref part="MSP432P401R" gate="MSP432" pin="P4.7/A6"/>
-<wire x1="-306.07" y1="120.65" x2="-315.722" y2="120.65" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="VBAT_TX" class="0">
 <segment>
 <pinref part="U$3" gate="G$1" pin="P$4"/>
@@ -17838,10 +17832,15 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="BATTERY_FC_PINS" gate="A" pin="1"/>
 </segment>
 </net>
-<net name="N$7" class="0">
+<net name="P4.7_GPIO" class="0">
 <segment>
 <pinref part="JP1" gate="A" pin="5"/>
 <wire x1="-347.98" y1="121.92" x2="-337.82" y2="121.92" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="MSP432P401R" gate="MSP432" pin="P4.7/A6"/>
+<wire x1="-306.07" y1="120.65" x2="-315.722" y2="120.65" width="0.1524" layer="91"/>
+<label x="-325.12" y="121.92" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
