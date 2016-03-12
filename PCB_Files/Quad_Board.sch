@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="7.5.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -18241,12 +18241,12 @@ type RDH, grid 15 mm</description>
 <part name="GND50" library="supply1" deviceset="GND" device=""/>
 <part name="C3" library="rcl" deviceset="C-EU" device="C0805" value="100n"/>
 <part name="C4" library="rcl" deviceset="C-EU" device="C0805" value="100n"/>
-<part name="C10" library="cap" deviceset="CSMD0805" device="" value="4u7"/>
+<part name="CPOLARIZED" library="cap" deviceset="CSMD0805" device="" value="4u7"/>
 <part name="L1" library="Murata" deviceset="LQM2MP_G0" device="" value="4.7uH"/>
 <part name="GND41" library="supply1" deviceset="GND" device=""/>
 <part name="C7" library="rcl" deviceset="C-EU" device="C0805" value="100n"/>
 <part name="C8" library="rcl" deviceset="C-EU" device="C0805" value="100n"/>
-<part name="C9" library="rcl" deviceset="CPOL-EU" device="A/3216-18R" value="10u"/>
+<part name="CPOLARISED" library="rcl" deviceset="CPOL-EU" device="A/3216-18R" value="10u"/>
 <part name="R3" library="rcl" deviceset="R-EU_" device="RM0402" value="0R"/>
 <part name="GND44" library="supply1" deviceset="GND" device=""/>
 <part name="C11" library="rcl" deviceset="C-EU" device="C0805" value="100n"/>
@@ -18284,7 +18284,7 @@ type RDH, grid 15 mm</description>
 <part name="TP2" library="testpad" deviceset="TP" device="B2,54"/>
 <part name="TP3" library="testpad" deviceset="TP" device="B1,27"/>
 <part name="U$3" library="TXS0102-bi-directional-translator" deviceset="TXS0102" device=""/>
-<part name="R1" library="resistor" deviceset="R-EU_" device="M1206"/>
+<part name="R1" library="resistor" deviceset="R-EU_" device="M1206" value="100k"/>
 <part name="GND1" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="GPIO_EXTRA" library="pinhead" deviceset="PINHD-1X5" device=""/>
 </parts>
@@ -18372,7 +18372,7 @@ type RDH, grid 15 mm</description>
 <attribute name="NAME" x="-208.534" y="98.679" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="-208.534" y="103.759" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C10" gate="G$2" x="-135.89" y="128.27" smashed="yes" rot="R270">
+<instance part="CPOLARIZED" gate="G$2" x="-135.89" y="128.27" smashed="yes" rot="R270">
 <attribute name="NAME" x="-134.62" y="128.905" size="1.6764" layer="95"/>
 <attribute name="VALUE" x="-134.62" y="123.571" size="1.6764" layer="96"/>
 </instance>
@@ -18389,8 +18389,8 @@ type RDH, grid 15 mm</description>
 <attribute name="NAME" x="-184.404" y="98.679" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="-184.404" y="103.759" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="C9" gate="G$1" x="-168.91" y="101.6" smashed="yes">
-<attribute name="NAME" x="-170.307" y="98.0694" size="1.524" layer="95" rot="R180"/>
+<instance part="CPOLARISED" gate="G$1" x="-168.91" y="101.6" smashed="yes">
+<attribute name="NAME" x="-160.147" y="98.0694" size="1.524" layer="95" rot="R180"/>
 <attribute name="VALUE" x="-170.815" y="103.9114" size="1.524" layer="96" rot="R180"/>
 </instance>
 <instance part="R3" gate="G$1" x="-194.31" y="118.11" smashed="yes" rot="R180">
@@ -18535,7 +18535,7 @@ type RDH, grid 15 mm</description>
 <junction x="-176.53" y="95.25"/>
 <junction x="-184.15" y="95.25"/>
 <wire x1="-176.53" y1="95.25" x2="-168.91" y2="95.25" width="0.1524" layer="91"/>
-<pinref part="C9" gate="G$1" pin="-"/>
+<pinref part="CPOLARISED" gate="G$1" pin="-"/>
 <wire x1="-168.91" y1="96.52" x2="-168.91" y2="95.25" width="0.1524" layer="91"/>
 <wire x1="-200.66" y1="95.25" x2="-184.15" y2="95.25" width="0.1524" layer="91"/>
 <wire x1="-219.71" y1="110.49" x2="-217.17" y2="110.49" width="0.1524" layer="91"/>
@@ -18565,7 +18565,7 @@ type RDH, grid 15 mm</description>
 <segment>
 <wire x1="-146.05" y1="123.19" x2="-146.05" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="-146.05" y1="121.92" x2="-135.89" y2="121.92" width="0.1524" layer="91"/>
-<pinref part="C10" gate="G$2" pin="2"/>
+<pinref part="CPOLARIZED" gate="G$2" pin="2"/>
 <wire x1="-135.89" y1="123.19" x2="-135.89" y2="121.92" width="0.1524" layer="91"/>
 <junction x="-135.89" y="121.92"/>
 <pinref part="GND44" gate="1" pin="GND"/>
@@ -18659,7 +18659,7 @@ type RDH, grid 15 mm</description>
 <net name="VCORE" class="0">
 <segment>
 <label x="-214.63" y="130.81" size="1.778" layer="95"/>
-<pinref part="C10" gate="G$2" pin="1"/>
+<pinref part="CPOLARIZED" gate="G$2" pin="1"/>
 <wire x1="-146.05" y1="130.81" x2="-135.89" y2="130.81" width="0.1524" layer="91"/>
 <pinref part="L1" gate="G$1" pin="1"/>
 <wire x1="-147.32" y1="135.89" x2="-146.05" y2="135.89" width="0.1524" layer="91"/>
@@ -18984,7 +18984,7 @@ type RDH, grid 15 mm</description>
 </segment>
 <segment>
 <wire x1="-189.23" y1="118.11" x2="-168.91" y2="118.11" width="0.1524" layer="91"/>
-<pinref part="C9" gate="G$1" pin="+"/>
+<pinref part="CPOLARISED" gate="G$1" pin="+"/>
 <wire x1="-168.91" y1="118.11" x2="-168.91" y2="106.68" width="0.1524" layer="91"/>
 <pinref part="R3" gate="G$1" pin="1"/>
 <wire x1="-168.91" y1="106.68" x2="-168.91" y2="104.14" width="0.1524" layer="91"/>
