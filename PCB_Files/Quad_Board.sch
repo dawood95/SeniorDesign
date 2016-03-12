@@ -18236,8 +18236,8 @@ type RDH, grid 15 mm</description>
 <part name="ULTRA5" library="pinhead" deviceset="PINHD-1X4" device=""/>
 <part name="ULTRA4" library="pinhead" deviceset="PINHD-1X4" device=""/>
 <part name="5V_PDB" library="pinhead" deviceset="PINHD-1X2" device=""/>
-<part name="C1" library="rcl" deviceset="C-EU" device="C0805"/>
-<part name="C2" library="rcl" deviceset="C-EU" device="C0805"/>
+<part name="C1" library="rcl" deviceset="C-EU" device="C0805" value="1u"/>
+<part name="C2" library="rcl" deviceset="C-EU" device="C0805" value="1u"/>
 <part name="GND50" library="supply1" deviceset="GND" device=""/>
 <part name="C3" library="rcl" deviceset="C-EU" device="C0805" value="100n"/>
 <part name="C4" library="rcl" deviceset="C-EU" device="C0805" value="100n"/>
@@ -18268,7 +18268,7 @@ type RDH, grid 15 mm</description>
 <part name="R6" library="resistor" deviceset="R-EU_" device="M1206" value="100k"/>
 <part name="FRAME1" library="frames" deviceset="FRAME_D_L" device=""/>
 <part name="U$1" library="TXS0102-bi-directional-translator" deviceset="TXS0102" device=""/>
-<part name="R7" library="resistor" deviceset="R-EU_" device="M1206"/>
+<part name="R7" library="resistor" deviceset="R-EU_" device="M1206" value="100k"/>
 <part name="GND2" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="GND3" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="GND4" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
