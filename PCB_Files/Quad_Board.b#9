@@ -4976,9 +4976,12 @@ design rules under a new name.</description>
 <via x="38.354" y="34.417" extent="1-16" drill="0.6"/>
 <wire x1="38.354" y1="34.417" x2="49.276" y2="23.495" width="0.2032" layer="1"/>
 <via x="49.276" y="23.495" extent="1-16" drill="0.381"/>
-<wire x1="55.626" y1="20.32" x2="72.39" y2="20.32" width="0.254" layer="16"/>
-<wire x1="49.276" y1="23.495" x2="52.451" y2="20.32" width="0" layer="19" extent="1-16"/>
-<wire x1="52.451" y1="20.32" x2="55.626" y2="20.32" width="0" layer="19" extent="1-16"/>
+<wire x1="49.276" y1="23.495" x2="50.038" y2="22.733" width="0.254" layer="16"/>
+<wire x1="50.038" y1="22.733" x2="50.038" y2="19.812" width="0.254" layer="16"/>
+<wire x1="50.038" y1="19.812" x2="51.435" y2="18.415" width="0.254" layer="16"/>
+<wire x1="51.435" y1="18.415" x2="69.85" y2="18.415" width="0.254" layer="16"/>
+<wire x1="69.85" y1="18.415" x2="71.755" y2="20.32" width="0.254" layer="16"/>
+<wire x1="71.755" y1="20.32" x2="72.39" y2="20.32" width="0.254" layer="16"/>
 <wire x1="34.544" y1="34.798" x2="34.544" y2="34.798" width="0" layer="19" extent="1-16"/>
 </signal>
 <signal name="P4.6_GPIO">
@@ -4992,9 +4995,9 @@ design rules under a new name.</description>
 <wire x1="51.435" y1="17.78" x2="72.39" y2="17.78" width="0.254" layer="16"/>
 <wire x1="36.83" y1="34.417" x2="48.768" y2="22.479" width="0.2032" layer="1"/>
 <via x="48.768" y="22.479" extent="1-16" drill="0.381"/>
-<wire x1="48.768" y1="22.479" x2="48.768" y2="18.288" width="0.2032" layer="16"/>
-<wire x1="48.768" y1="18.288" x2="49.276" y2="17.78" width="0.2032" layer="16"/>
-<wire x1="49.276" y1="17.78" x2="51.435" y2="17.78" width="0.2032" layer="16"/>
+<wire x1="48.768" y1="22.479" x2="48.768" y2="18.288" width="0.254" layer="16"/>
+<wire x1="48.768" y1="18.288" x2="49.276" y2="17.78" width="0.254" layer="16"/>
+<wire x1="49.276" y1="17.78" x2="51.435" y2="17.78" width="0.254" layer="16"/>
 </signal>
 <signal name="VBAT_TX">
 <contactref element="U$3" pad="4"/>
