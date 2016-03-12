@@ -4067,12 +4067,10 @@ Please make sure your boards conform to these design rules.
 <wire x1="14.605" y1="56.261" x2="23.241" y2="56.261" width="0.3048" layer="1"/>
 <via x="23.241" y="56.261" extent="1-16" drill="0.6"/>
 <wire x1="23.241" y1="56.261" x2="31.623" y2="56.261" width="0.254" layer="16"/>
-<wire x1="32.766" y1="55.88" x2="37.973" y2="55.88" width="0" layer="19" extent="1-16"/>
 <wire x1="39.243" y1="40.767" x2="39.243" y2="54.61" width="0.254" layer="16"/>
 <wire x1="39.243" y1="54.61" x2="37.973" y2="55.88" width="0.254" layer="16"/>
 <wire x1="31.623" y1="56.261" x2="32.004" y2="55.88" width="0.254" layer="1"/>
 <wire x1="32.004" y1="55.88" x2="37.973" y2="55.88" width="0.254" layer="1"/>
-<wire x1="37.973" y1="55.88" x2="37.973" y2="55.88" width="0" layer="19" extent="1-16"/>
 <via x="37.973" y="55.88" extent="1-16" drill="0.381"/>
 <via x="31.623" y="56.261" extent="1-16" drill="0.381"/>
 </signal>

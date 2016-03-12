@@ -191,6 +191,8 @@
 <text x="74.803" y="14.986" size="0.8128" layer="25">P4.7</text>
 <text x="56.261" y="5.715" size="0.762" layer="25" rot="R90">TX</text>
 <text x="53.594" y="5.715" size="0.762" layer="25" rot="R90">RX</text>
+<text x="69.596" y="49.784" size="0.762" layer="25" rot="R180">VBAT_TX</text>
+<text x="67.818" y="46.609" size="0.762" layer="25">3V3</text>
 </plain>
 <libraries>
 <library name="pinhead">

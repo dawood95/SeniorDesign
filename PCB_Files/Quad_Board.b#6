@@ -3610,7 +3610,7 @@ Please make sure your boards conform to these design rules.
 </element>
 <element name="5V_PDB" library="pinhead" package="1X02" value="" x="8.89" y="26.67" rot="R90"/>
 <element name="C1" library="rcl" package="C0805" value="0.1u" x="59.69" y="36.83" rot="R90"/>
-<element name="C2" library="rcl" package="C0805" value="10u" x="54.61" y="36.83" rot="R90"/>
+<element name="C2" library="rcl" package="C0805" value="1u" x="54.61" y="36.83" rot="R90"/>
 <element name="C3" library="rcl" package="C0805" value="100n" x="28.575" y="30.099" smashed="yes" rot="MR315">
 <attribute name="NAME" x="28.4852" y="31.08683125" size="0.8128" layer="26" rot="MR315"/>
 <attribute name="VALUE" x="30.371053125" y="29.200975" size="0.8128" layer="28" rot="MR315"/>

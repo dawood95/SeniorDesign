@@ -189,6 +189,8 @@
 <text x="74.803" y="20.447" size="0.8128" layer="25">P4.5</text>
 <text x="74.676" y="17.526" size="0.8128" layer="25">P4.6</text>
 <text x="74.803" y="14.986" size="0.8128" layer="25">P4.7</text>
+<text x="56.261" y="5.715" size="0.762" layer="25" rot="R90">TX</text>
+<text x="53.594" y="5.715" size="0.762" layer="25" rot="R90">RX</text>
 </plain>
 <libraries>
 <library name="pinhead">
