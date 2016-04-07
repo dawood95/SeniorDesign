@@ -1,0 +1,1 @@
+"./msp432_startup_ccs.obj" "./printf.obj" "./timer_a_continuous_vlo_period_capture.obj" "C:/ti/msp430/MSPWare_2_40_00_37/driverlib/driverlib/MSP432P4xx/ccs/msp432p4xx_driverlib.lib" "../timer_a_continuous_vlo_period_capture_ccs.cmd" -l"libc.a" 

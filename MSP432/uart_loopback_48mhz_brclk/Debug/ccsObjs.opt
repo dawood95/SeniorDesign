@@ -1,0 +1,1 @@
+"./msp432_startup_ccs.obj" "./printf.obj" "./uart_loopback_48mhz_brclk.obj" "C:/ti/msp430/MSPWare_2_40_00_37/driverlib/driverlib/MSP432P4xx/ccs/msp432p4xx_driverlib.lib" "../uart_loopback_48mhz_brclk_ccs.cmd" -l"libc.a" 

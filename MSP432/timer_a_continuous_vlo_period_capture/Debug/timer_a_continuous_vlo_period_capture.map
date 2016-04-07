@@ -1,0 +1,263 @@
+******************************************************************************
+                  TI ARM Linker PC v5.2.6                      
+******************************************************************************
+>> Linked Fri Mar 25 22:38:42 2016
+
+OUTPUT FILE NAME:   <timer_a_continuous_vlo_period_capture.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00000a5d
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00000d5c  0003f2a4  R  X
+  FLASH_OTP             00200000   00004000  00000000  00004000  R  X
+  SRAM                  20000000   00010000  00000239  0000fdc7  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000d60   00000d60    r-x
+  00000000    00000000    00000144   00000144    r-- .intvecs
+  00000144    00000144    00000b14   00000b14    r-x .text
+  00000c58    00000c58    000000cc   000000cc    r-- .const
+  00000d28    00000d28    00000038   00000038    r-- .cinit
+20000000    20000000    0000003c   00000000    rw-
+  20000000    20000000    00000025   00000000    rw- .bss
+  20000028    20000028    00000014   00000000    rw- .data
+2000fe00    2000fe00    00000200   00000000    rw-
+  2000fe00    2000fe00    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    00000144     
+                  00000000    00000144     msp432_startup_ccs.obj (.intvecs)
+
+.text      0    00000144    00000b14     
+                  00000144    000003f4     timer_a_continuous_vlo_period_capture.obj (.text)
+                  00000538    00000254     printf.obj (.text)
+                  0000078c    000000e0     msp432p4xx_driverlib.lib : cs.o (.text:CS_initClockSignal)
+                  0000086c    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  00000908    0000007a                                   : memset_t2.obj (.text)
+                  00000982    00000002     --HOLE-- [fill = 0]
+                  00000984    0000006c                                   : autoinit.obj (.text)
+                  000009f0    0000006a                                   : copy_decompress_rle.obj (.text)
+                  00000a5a    00000002     --HOLE-- [fill = 0]
+                  00000a5c    00000050                                   : boot.obj (.text)
+                  00000aac    0000004c     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_setAsPeripheralModuleFunctionInputPin)
+                  00000af8    0000004c     rtsv7M4_T_le_v4SPD16_eabi.lib : cpy_tbl.obj (.text)
+                  00000b44    00000044                                   : exit.obj (.text)
+                  00000b88    00000024     msp432p4xx_driverlib.lib : cs.o (.text:CS_setDCOCenteredFrequency)
+                  00000bac    00000024                              : gpio.o (.text:GPIO_setAsOutputPin)
+                  00000bd0    00000018                              : gpio.o (.text:GPIO_setOutputLowOnPin)
+                  00000be8    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  00000c00    00000014     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_setOutputHighOnPin)
+                  00000c14    00000014     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.text)
+                  00000c28    0000000e                                   : copy_decompress_none.obj (.text:decompress:none)
+                  00000c36    0000000c                                   : copy_zero_init.obj (.text:decompress:ZI)
+                  00000c42    0000000c     msp432_startup_ccs.obj (.text)
+                  00000c4e    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+                  00000c54    00000004                                   : pre_init.obj (.text)
+
+.const     0    00000c58    000000cc     
+                  00000c58    00000040     timer_a_continuous_vlo_period_capture.obj (.const)
+                  00000c98    00000030     msp432p4xx_driverlib.lib : gpio.o (.const:GPIO_PORT_TO_BASE)
+                  00000cc8    00000028     printf.obj (.const:dv)
+                  00000cf0    00000024     timer_a_continuous_vlo_period_capture.obj (.const:debugLoggingConfig)
+                  00000d14    00000010     printf.obj (.const:.string)
+
+.cinit     0    00000d28    00000038     
+                  00000d28    0000000f     (.cinit..data.load) [load image, compression = rle]
+                  00000d37    00000001     --HOLE-- [fill = 0]
+                  00000d38    0000000c     (__TI_handler_table)
+                  00000d44    00000004     --HOLE-- [fill = 0]
+                  00000d48    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00000d50    00000010     (__TI_cinit_table)
+
+.bss       0    20000000    00000025     UNINITIALIZED
+                  20000000    00000008     (.common:currCnt)
+                  20000008    00000008     (.common:prevCnt)
+                  20000010    00000008     (.common:recentDirDistances)
+                  20000018    00000008     (.common:timerFlag)
+                  20000020    00000004     (.common:temp)
+                  20000024    00000001     (.common:currSafety)
+
+.data      0    20000028    00000014     UNINITIALIZED
+                  20000028    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
+                  20000030    00000008                                   : exit.obj (.data)
+                  20000038    00000004                                   : stkdepth_vars.obj (.data)
+
+.TI.noinit 
+*          0    20000000    00000000     UNINITIALIZED
+
+.TI.persistent 
+*          0    20000028    00000000     UNINITIALIZED
+
+.stack     0    2000fe00    00000200     UNINITIALIZED
+                  2000fe00    00000200     --HOLE--
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00000d50 records: 2, size/record: 8, table size: 16
+	.data: load addr=00000d28, load size=0000000f bytes, run addr=20000028, run size=00000014 bytes, compression=rle
+	.bss: load addr=00000d48, load size=00000008 bytes, run addr=20000000, run size=00000025 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00000d38 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                                      
+-------   ----                                      
+00000b45  C$$EXIT                                   
+0000078d  CS_initClockSignal                        
+00000b89  CS_setDCOCenteredFrequency                
+00000bad  GPIO_setAsOutputPin                       
+00000aad  GPIO_setAsPeripheralModuleFunctionInputPin
+00000c01  GPIO_setOutputHighOnPin                   
+00000bd1  GPIO_setOutputLowOnPin                    
+00000c43  ResetISR                                  
+UNDEFED   SHT$$INIT_ARRAY$$Base                     
+UNDEFED   SHT$$INIT_ARRAY$$Limit                    
+20010000  __STACK_END                               
+00000200  __STACK_SIZE                              
+00000d50  __TI_CINIT_Base                           
+00000d60  __TI_CINIT_Limit                          
+00000d38  __TI_Handler_Table_Base                   
+00000d44  __TI_Handler_Table_Limit                  
+00000985  __TI_auto_init                            
+20000030  __TI_cleanup_ptr                          
+00000c29  __TI_decompress_none                      
+00000c4f  __TI_decompress_rle24                     
+20000034  __TI_dtors_ptr                            
+00000000  __TI_static_base__                        
+00000c37  __TI_zero_init                            
+00000909  __aeabi_memclr                            
+00000909  __aeabi_memclr4                           
+00000909  __aeabi_memclr8                           
+0000086d  __aeabi_memcpy                            
+0000086d  __aeabi_memcpy4                           
+0000086d  __aeabi_memcpy8                           
+0000090b  __aeabi_memset                            
+0000090b  __aeabi_memset4                           
+0000090b  __aeabi_memset8                           
+ffffffff  __binit__                                 
+ffffffff  __c_args__                                
+2000fe00  __stack                                   
+00000be9  _args_main                                
+00000a5d  _c_int00                                  
+20000028  _lock                                     
+00000c23  _nop                                      
+00000c1b  _register_lock                            
+00000c15  _register_unlock                          
+00000c55  _system_pre_init                          
+2000002c  _unlock                                   
+00000b49  abort                                     
+ffffffff  binit                                     
+0000017d  calculateDistance                         
+00000c68  captureModeConfig_CCR1                    
+00000c80  captureModeConfig_CCR2                    
+00000c58  continuousModeConfig                      
+00000af9  copy_in                                   
+00000cf0  debugLoggingConfig                        
+00000193  evaluateQuadCopterSafety                  
+00000b51  exit                                      
+00000000  g_pfnVectors                              
+000001cf  main                                      
+20000038  main_func_sp                              
+0000086d  memcpy                                    
+00000911  memset                                    
+0000061d  printf                                    
+00000577  putc                                      
+00000553  puts                                      
+00000539  sendByte                                  
+0000047d  sendTrigger                               
+00000145  setupSerialLogging                        
+000002ed  timer_a_ccr_isr                           
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                                      
+-------   ----                                      
+00000000  __TI_static_base__                        
+00000000  g_pfnVectors                              
+00000145  setupSerialLogging                        
+0000017d  calculateDistance                         
+00000193  evaluateQuadCopterSafety                  
+000001cf  main                                      
+00000200  __STACK_SIZE                              
+000002ed  timer_a_ccr_isr                           
+0000047d  sendTrigger                               
+00000539  sendByte                                  
+00000553  puts                                      
+00000577  putc                                      
+0000061d  printf                                    
+0000078d  CS_initClockSignal                        
+0000086d  __aeabi_memcpy                            
+0000086d  __aeabi_memcpy4                           
+0000086d  __aeabi_memcpy8                           
+0000086d  memcpy                                    
+00000909  __aeabi_memclr                            
+00000909  __aeabi_memclr4                           
+00000909  __aeabi_memclr8                           
+0000090b  __aeabi_memset                            
+0000090b  __aeabi_memset4                           
+0000090b  __aeabi_memset8                           
+00000911  memset                                    
+00000985  __TI_auto_init                            
+00000a5d  _c_int00                                  
+00000aad  GPIO_setAsPeripheralModuleFunctionInputPin
+00000af9  copy_in                                   
+00000b45  C$$EXIT                                   
+00000b49  abort                                     
+00000b51  exit                                      
+00000b89  CS_setDCOCenteredFrequency                
+00000bad  GPIO_setAsOutputPin                       
+00000bd1  GPIO_setOutputLowOnPin                    
+00000be9  _args_main                                
+00000c01  GPIO_setOutputHighOnPin                   
+00000c15  _register_unlock                          
+00000c1b  _register_lock                            
+00000c23  _nop                                      
+00000c29  __TI_decompress_none                      
+00000c37  __TI_zero_init                            
+00000c43  ResetISR                                  
+00000c4f  __TI_decompress_rle24                     
+00000c55  _system_pre_init                          
+00000c58  continuousModeConfig                      
+00000c68  captureModeConfig_CCR1                    
+00000c80  captureModeConfig_CCR2                    
+00000cf0  debugLoggingConfig                        
+00000d38  __TI_Handler_Table_Base                   
+00000d44  __TI_Handler_Table_Limit                  
+00000d50  __TI_CINIT_Base                           
+00000d60  __TI_CINIT_Limit                          
+20000028  _lock                                     
+2000002c  _unlock                                   
+20000030  __TI_cleanup_ptr                          
+20000034  __TI_dtors_ptr                            
+20000038  main_func_sp                              
+2000fe00  __stack                                   
+20010000  __STACK_END                               
+ffffffff  __binit__                                 
+ffffffff  __c_args__                                
+ffffffff  binit                                     
+UNDEFED   SHT$$INIT_ARRAY$$Base                     
+UNDEFED   SHT$$INIT_ARRAY$$Limit                    
+
+[65 symbols]
