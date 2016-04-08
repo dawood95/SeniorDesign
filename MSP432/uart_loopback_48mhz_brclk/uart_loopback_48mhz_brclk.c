@@ -162,11 +162,36 @@ Timer_A_PWMConfig pwmConfigD = {
 };
 
 
-/********************************Ultrasonic Sensor Configuration********************************/
+/* Ultrasonic Sensor Configuration */
+const Timer_A_ContinuousModeConfig continuousModeConfig =
+{
+        TIMER_A_CLOCKSOURCE_SMCLK,           // SMCLK Clock Source
+        TIMER_A_CLOCKSOURCE_DIVIDER_1,       // SMCLK/1 = 3MHz
+        TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
+        TIMER_A_SKIP_CLEAR                   // Skup Clear Counter
+};
+
+/* Timer_A Capture Mode Configuration Parameter */
+const Timer_A_CaptureModeConfig captureModeConfig_CCR1 =
+{
+        TIMER_A_CAPTURECOMPARE_REGISTER_1,        // CC Register 2
+		TIMER_A_CAPTUREMODE_RISING_AND_FALLING_EDGE,          // Rising Edge
+        TIMER_A_CAPTURE_INPUTSELECT_CCIxA,        // CCIxB Input Select
+        TIMER_A_CAPTURE_SYNCHRONOUS,              // Synchronized Capture
+        TIMER_A_CAPTURECOMPARE_INTERRUPT_ENABLE,  // Enable interrupt
+        TIMER_A_OUTPUTMODE_OUTBITVALUE            // Output bit value
+};
 
 
-
-
+const Timer_A_CaptureModeConfig captureModeConfig_CCR2 =
+{
+        TIMER_A_CAPTURECOMPARE_REGISTER_2,        // CC Register 2
+		TIMER_A_CAPTUREMODE_RISING_AND_FALLING_EDGE,          // Rising Edge
+        TIMER_A_CAPTURE_INPUTSELECT_CCIxA,        // CCIxB Input Select
+        TIMER_A_CAPTURE_SYNCHRONOUS,              // Synchronized Capture
+        TIMER_A_CAPTURECOMPARE_INTERRUPT_ENABLE,  // Enable interrupt
+        TIMER_A_OUTPUTMODE_OUTBITVALUE            // Output bit value
+};
 
 
 void printFrame() {
@@ -187,9 +212,9 @@ void printFrame() {
 	float voltage = (voltage_raw / 2100.0) * 4.2;
 	printf(EUSCI_A0_MODULE, "Cell %i is at %iV (received %x %x %x %x)\r\n", cell_num, (int) voltage,
 			telemetry_buff[(byte_cnt + 1) % 4], telemetry_buff[(byte_cnt + 2) % 4], telemetry_buff[(byte_cnt + 3) % 4], telemetry_buff[byte_cnt]);*/
-	printf(EUSCI_A0_MODULE, "pitch: %i\r\n", telemetry_buff[(byte_cnt + 2) % 6]);
-	printf(EUSCI_A0_MODULE, "roll: %i\r\n", telemetry_buff[(byte_cnt + 3) % 6]);
-	printf(EUSCI_A0_MODULE, "yaw: %i\r\n", telemetry_buff[(byte_cnt + 4) % 6]);
+	//printf(EUSCI_A0_MODULE, "pitch: %i\r\n", telemetry_buff[(byte_cnt + 2) % 6]);
+	//printf(EUSCI_A0_MODULE, "roll: %i\r\n", telemetry_buff[(byte_cnt + 3) % 6]);
+	//printf(EUSCI_A0_MODULE, "yaw: %i\r\n", telemetry_buff[(byte_cnt + 4) % 6]);
 	printf(EUSCI_A0_MODULE, "thrust: %i\r\n\n", telemetry_buff[(byte_cnt + 5) % 6]);
 }
 void setupSerialLogging(void)
@@ -219,10 +244,10 @@ int main(void)
     /* Selecting P1.2 and P1.3 in UART mode and P1.0 as output (LED) */
     MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P3,
              GPIO_PIN2 | GPIO_PIN3, GPIO_PRIMARY_MODULE_FUNCTION);
-    //MAP_GPIO_setAsOutputPin(GPIO_PORT_P4, GPIO_PIN1);
-    //MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P4, GPIO_PIN1);
-    //MAP_GPIO_setAsOutputPin(GPIO_PORT_P4, GPIO_PIN0);
-    //MAP_GPIO_setOutputHighOnPin(GPIO_PORT_P4, GPIO_PIN0);
+    MAP_GPIO_setAsOutputPin(GPIO_PORT_P4, GPIO_PIN1);
+    MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P4, GPIO_PIN1);
+    MAP_GPIO_setAsOutputPin(GPIO_PORT_P4, GPIO_PIN0);
+    MAP_GPIO_setOutputHighOnPin(GPIO_PORT_P4, GPIO_PIN0);
 
     /* Setting DCO to 48MHz (upping Vcore) */
     MAP_PCM_setCoreVoltageLevel(PCM_VCORE0);
@@ -258,8 +283,8 @@ int main(void)
     MAP_GPIO_clearInterruptFlag(GPIO_PORT_P1, GPIO_PIN1);
     MAP_GPIO_enableInterrupt(GPIO_PORT_P1, GPIO_PIN1);
 
-    /* Configuring GPIO2.5 as peripheral output for PWM */
-    MAP_GPIO_setAsPeripheralModuleFunctionOutputPin(GPIO_PORT_P2, GPIO_PIN5,
+    /* Configuring GPIO7.6 as peripheral output for PWM */
+    MAP_GPIO_setAsPeripheralModuleFunctionOutputPin(GPIO_PORT_P7, GPIO_PIN6,
             GPIO_PRIMARY_MODULE_FUNCTION);
 
     /* Configuring GPIO2.6 as peripheral output for PWM  and P1.4 for button
@@ -271,16 +296,16 @@ int main(void)
     MAP_GPIO_enableInterrupt(GPIO_PORT_P1, GPIO_PIN4);
 
     /* Configuring GPIO2.7 as peripheral output for PWM */
-    MAP_GPIO_setAsPeripheralModuleFunctionOutputPin(GPIO_PORT_P2, GPIO_PIN7,
+    MAP_GPIO_setAsPeripheralModuleFunctionOutputPin(GPIO_PORT_P7, GPIO_PIN4,
            GPIO_PRIMARY_MODULE_FUNCTION);
    // MAP_GPIO_setAsOutputPin(GPIO_PORT_P2, GPIO_PIN5);
    // MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P2, GPIO_PIN5);
     /* Configuring Timer_A to have a period of approximately 500ms and
      * an initial duty cycle of 10% of that (3200 ticks)  */
     MAP_Timer_A_generatePWM(TIMER_A0_MODULE, &pwmConfigA);
-    MAP_Timer_A_generatePWM(TIMER_A0_MODULE, &pwmConfigB);
+    MAP_Timer_A_generatePWM(TIMER_A1_MODULE, &pwmConfigB);
     MAP_Timer_A_generatePWM(TIMER_A0_MODULE, &pwmConfigC);
-    MAP_Timer_A_generatePWM(TIMER_A0_MODULE, &pwmConfigD);
+    MAP_Timer_A_generatePWM(TIMER_A1_MODULE, &pwmConfigD);
 
     /* Enabling interrupts and starting the watchdog timer */
     MAP_Interrupt_enableInterrupt(INT_PORT1);
@@ -292,7 +317,6 @@ int main(void)
     {
 
         //MAP_UART_transmitData(EUSCI_A2_MODULE, TXData);
-
         //MAP_Interrupt_enableSleepOnIsrExit();
         //MAP_PCM_gotoLPM0InterruptSafe();
     }
@@ -355,7 +379,7 @@ void euscia0_isr(void)
 
     		if (telemetry_buff[(byte_cnt + 3) % 6] != pwmConfigB.dutyCycle) {
     			pwmConfigB.dutyCycle = telemetry_buff[(byte_cnt + 3) % 6];
-    			MAP_Timer_A_generatePWM(TIMER_A0_MODULE, &pwmConfigB);
+    			MAP_Timer_A_generatePWM(TIMER_A1_MODULE, &pwmConfigB);
     		}
 
     		if (telemetry_buff[(byte_cnt + 4) % 6] != pwmConfigC.dutyCycle) {
@@ -365,10 +389,10 @@ void euscia0_isr(void)
 
     		if (telemetry_buff[(byte_cnt + 5) % 6] != pwmConfigD.dutyCycle) {
     			pwmConfigD.dutyCycle = telemetry_buff[(byte_cnt + 5) % 6];
-    			//MAP_Timer_A_generatePWM(TIMER_A0_MODULE, &pwmConfigD);
+    			MAP_Timer_A_generatePWM(TIMER_A1_MODULE, &pwmConfigD);
     		}
 
-    		//printFrame();
+    		printFrame();
     	}
     }
     //MAP_Interrupt_disableSleepOnIsrExit();

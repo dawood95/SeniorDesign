@@ -12,6 +12,6 @@
 	<ignoreDefaultDeviceSettings value="true"/>
 	<origin value="C:\ti\msp430\MSPWare_2_40_00_37\driverlib\examples\MSP432P4xx\uart\uart_loopback_48mhz_brclk\ccs\uart_loopback_48mhz_brclk.projectspec"/>
 	<templateProperties value="id=uart_loopback_48mhz_brclk.projectspec.uart_loopback_48mhz_brclk,"/>
-	<connection value="common/targetdb/connections/TIXDS110_Connection.xml"/>
+	<connection value="common/targetdb/connections/TIXDS100v2_Connection.xml"/>
 	<isTargetManual value="false"/>
 </projectOptions>
