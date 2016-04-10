@@ -68,31 +68,57 @@
 #include "uart_test.h"
 
 /* Header Includes */
-#define START_BYTE 0xFF
-#define END_BYTE 0x00
+// UART Remote Controller
+#define MMAX_START_BYTE 0xFF
+#define MMAX_END_BYTE 0x00
 #define NO_SUPPORTED_INSTR 0x0a
-#define MAX_FRAME_LENGTH 10
+#define MAX_FRAME_LENGTH 6
+
+// FC Telemetry Data
+#define TELEM_DELIMIT_BYTE 0x5e
 #define CELL_NUM_MASK 0x0000000F
 #define NUM_VOLTAGE_BITS_BYTE2 8
 #define VOLTAGE_MASK 0x000000F0
 #define MAX_CELL_VOLTAGE 4.2
 #define MAX_VOLTAGE_DATA 2100
+#define FRAME_BUFFER_SIZE 10
+
+// Ultrasonic Sensor Data
+#define NUMBER_SENSORS        6
+
+/* Timer Module Specific Defs */
+#define ULTRA_COUNTER_PERIOD       333
+#define MAX_COUNT 				0x0FFFF
+#define TRIGGER_PULSE_WIDTH        10000
+#define TRIGGER_PULSE_DELAY       500
+#define TIMCCTL_ENBIT             0x0010
+#define TIMCCTL_INTBIT            0x0001
 
 /* Static Definitions */
-static Instr currFrame;
-uint8_t recvFrame[MAX_FRAME_LENGTH], framewidth_count = 0;
-static uint8_t validFrame = 0;
+
+// Remote Controller Instructions
+static uint8_t currFrame[MAX_FRAME_LENGTH];
+static uint8_t instr_byte_count = 0;
+//uint8_t recvFrame[MAX_FRAME_LENGTH], framewidth_count = 0;
+//static uint8_t validFrame = 0;
 volatile int RXData = 0;
-volatile uint8_t TXData = 100;
-uint32_t LED_status = 0;
+//volatile uint8_t TXData = 100;
+//uint32_t LED_status = 0;
+
+// Telemetry Data
 char telemetry_buff[6];
 volatile int byte_cnt = 0;
 //volatile int prev_byte = 0;
 
+// Ultrasonic Sensors Data
+static uint8_t sensors_data[NUM_SENSORS];
+static bool sensors_track[NUM_SENSORS];
+static volatile uint16_t prevCnt[NUM_SENSORS], currCnt[NUM_SENSORS];
+
 /************Execution State Flags************/
 bool lowBattery_flag;
 bool sensor_flags[6];
-
+bool safetyAlert;
 
 
 
@@ -163,9 +189,46 @@ Timer_A_PWMConfig pwmConfigD = {
 
 
 /********************************Ultrasonic Sensor Configuration********************************/
+const Timer_A_UpModeConfig upModeconfig_sensor1 =
+{
+		TIMER_A_CLOCKSOURCE_SMCLK,           // SMCLK Clock Source
+        TIMER_A_CLOCKSOURCE_DIVIDER_1,       // SMCLK/1 = 3MHz
+
+		TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
+        TIMER_A_SKIP_CLEAR                   // Skup Clear Counter
+};
+
+/* Timer_A Capture Mode Configuration Parameter */
+const Timer_A_CompareModeConfig upModeConfig_sensor1 =
+{
+		TIMER_A_CAPTURECOMPARE_REGISTER_6
+		TIMER_A_OUTPUTMODE_SET,
+
+		64
+};
 
 
+/* Timer_A Capture Mode Configuration Parameter */
+const Timer_A_CaptureModeConfig captureModeConfig_sensor1 =
+{
+        TIMER_A_CAPTURECOMPARE_REGISTER_1,        // CC Register 2
+		TIMER_A_CAPTUREMODE_RISING_AND_FALLING_EDGE,          // Rising Edge
+        TIMER_A_CAPTURE_INPUTSELECT_CCIxA,        // CCIxB Input Select
+        TIMER_A_CAPTURE_SYNCHRONOUS,              // Synchronized Capture
+        TIMER_A_CAPTURECOMPARE_INTERRUPT_ENABLE,  // Enable interrupt
+        TIMER_A_OUTPUTMODE_OUTBITVALUE            // Output bit value
+};
 
+
+const Timer_A_CaptureModeConfig captureModeConfig_sensor2 =
+{
+        TIMER_A_CAPTURECOMPARE_REGISTER_2,        // CC Register 2
+		TIMER_A_CAPTUREMODE_RISING_AND_FALLING_EDGE,          // Rising Edge
+        TIMER_A_CAPTURE_INPUTSELECT_CCIxA,        // CCIxB Input Select
+        TIMER_A_CAPTURE_SYNCHRONOUS,              // Synchronized Capture
+        TIMER_A_CAPTURECOMPARE_INTERRUPT_ENABLE,  // Enable interrupt
+        TIMER_A_OUTPUTMODE_OUTBITVALUE            // Output bit value
+};
 
 
 
@@ -287,6 +350,45 @@ int main(void)
     MAP_Interrupt_enableSleepOnIsrExit();
     MAP_Interrupt_enableMaster();
 
+    /*************************Sensors***************************/
+    // TODO - Expad the interfacing senspr code to 6 sensors
+    /*Configure P2.5 and  P2.4 as module input pins*/
+     MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P5, GPIO_PIN7,
+               GPIO_PRIMARY_MODULE_FUNCTION);
+     MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P6, GPIO_PIN7,
+                   GPIO_PRIMARY_MODULE_FUNCTION);
+
+     /*Configure P2.5 and  P2.4 as module output pins*/
+     MAP_GPIO_setAsPeripheralModuleFunctionOutputPin(GPIO_PORT_P5, GPIO_PIN6,
+               GPIO_PRIMARY_MODULE_FUNCTION);
+     MAP_GPIO_setAsPeripheralModuleFunctionOutputPin(GPIO_PORT_P6, GPIO_PIN6,
+                GPIO_PRIMARY_MODULE_FUNCTION);
+
+     /* Configuring Capture Mode */
+     MAP_Timer_A_initCapture(TIMER_A2_MODULE, &captureModeConfig_CCR1);
+     MAP_Timer_A_initCapture(TIMER_A0_MODULE, &captureModeConfig_CCR2);
+
+     /* Configuring Continuous Mode */
+     //MAP_Timer_A_configureContinuousMode(TIMER_A0_MODULE, &continuousModeConfig);
+     MAP_Timer_A_configureUpMode(TIMER_A0_MODULE, &upModeConfig_sensor1);
+
+        /* Enabling interrupts and going to sleep */
+        MAP_Interrupt_enableSleepOnIsrExit();
+        MAP_Timer_A_clearCaptureCompareInterrupt(TIMER_A0_MODULE,TIMER_A_CAPTURECOMPARE_REGISTER_2);
+        MAP_Timer_A_clearCaptureCompareInterrupt(TIMER_A0_MODULE,TIMER_A_CAPTURECOMPARE_REGISTER_1);
+
+        MAP_Timer_A_enableCaptureCompareInterrupt(TIMER_A0_MODULE, TIMER_A_CAPTURECOMPARE_REGISTER_2);
+        MAP_Timer_A_enableCaptureCompareInterrupt(TIMER_A0_MODULE, TIMER_A_CAPTURECOMPARE_REGISTER_1);
+       // MAP_Timer_A_enableCaptureCompareInterrupt(TIMER_A0_MODULE, TIMER_A_CAPTURECOMPARE_REGISTER_3);
+       // MAP_Timer_A_enableCaptureCompareInterrupt(TIMER_A0_MODULE, TIMER_A_CAPTURECOMPARE_REGISTER_4);
+        MAP_Interrupt_enableInterrupt(INT_TA0_N);
+       // MAP_Interrupt_enableMaster();
+
+        /* Starting the Timer_A0 in continuous mode */
+        MAP_Timer_A_startCounter(TIMER_A0_MODULE, TIMER_A_CONTINUOUS_MODE);
+
+
+
     printf(EUSCI_A0_MODULE, "Testing UART\r\n");
     while(1)
     {
@@ -398,3 +500,79 @@ void port1_isr(void)
     }
 }
 
+/*
+ *  ISR for TIM 3 Input Capture
+ */
+void timer_a_ccr_isr(void)
+{
+    uint32_t  temp,jj;
+    uint32_t diffTime, debug_prev, debug_curr;
+    char sensor = -1;
+    uint8_t port, pin;
+
+    MAP_Timer_A_clearCaptureCompareInterrupt(TIMER_A0_MODULE,TIMER_A_CAPTURECOMPARE_REGISTER_2);
+
+    if((TA0CCTL1 & TIMCCTL_ENBIT) && (TA0CCTL1 & TIMCCTL_INTBIT))
+    {
+    	//printf(EUSCI_A0_MODULE, "Detected Timer A0.1 interrupt at Capture Pin\r\n");
+    	MAP_Timer_A_clearCaptureCompareInterrupt(TIMER_A0_MODULE, TIMER_A_CAPTURECOMPARE_REGISTER_1);
+    	sensor = 0;
+    	currCnt[0] = MAP_Timer_A_getCaptureCompareCount(TIMER_A0_MODULE, TIMER_A_CAPTURECOMPARE_REGISTER_1);
+    }
+
+    if((TA0CCTL2 & TIMCCTL_ENBIT) && (TA0CCTL2 & TIMCCTL_INTBIT))
+    {
+    	//printf(EUSCI_A0_MODULE, "Detected Timer A0.2 interrupt at Capture Pin\r\n");
+    	MAP_Timer_A_clearCaptureCompareInterrupt(TIMER_A0_MODULE, TIMER_A_CAPTURECOMPARE_REGISTER_2);
+    	sensor = 1;
+    	currCnt[1] = MAP_Timer_A_getCaptureCompareCount(TIMER_A0_MODULE, TIMER_A_CAPTURECOMPARE_REGISTER_2);
+    }
+
+   // printf(EUSCI_A0_MODULE, "Status of CCTL registers TA0.1 %x TA0.2 %x\r\n", TA0CCTL1, TA0CCTL2);
+    //debug_prev = prevCnt;
+    //debug_curr = currCnt;
+    //printf(EUSCI_A0_MODULE, "CCR2 current value : %i\r\n", currCnt);
+    if(sensor != -1)
+    {
+     if (currCnt[sensor] < prevCnt[sensor]) {
+    	diffTime = (MAX_COUNT - prevCnt[sensor]) + currCnt[sensor];
+    	temp = diffTime;
+    } else {
+    	diffTime = currCnt[sensor] - prevCnt[sensor];
+    	temp = diffTime;
+    }
+
+    prevCnt[sensor] = currCnt[sensor];
+    //if (timerFlag == 1) {
+    //	sendTrigger();
+    //}
+    if (timerFlag[sensor] == 0) {
+    	timerFlag[sensor] = 1;
+    	//diffTime = 0;
+    } else {
+    	timerFlag[sensor] = 0;
+
+    	if(sensor == 0)
+    	{	pin = GPIO_PIN1; port = GPIO_PORT_P5;}
+    	else
+    	{   pin = GPIO_PIN3; port = GPIO_PORT_P2;}
+
+    	if(diffTime < 15000)
+    		GPIO_setOutputHighOnPin(port, pin);
+    	else
+    		GPIO_setOutputLowOnPin(port, pin);
+
+    	recentDirDistances[sensor] = diffTime;
+
+    	/* Processing existing nearest obtscle distance to evaluate next course of action */
+    	evaluateQuadCopterSafety();
+
+    	//printf(EUSCI_A0_MODULE, "Obtained Echo count : %u\r\n Calcuated distance = %n\r\n", diffTime, calculateDistance(diffTime));
+    	//printf(EUSCI_A0_MODULE, "Obtained Echo count : %u\r\n", diffTime);
+    	//for(jj = 0; jj <= 100; jj++)
+       // sendTrigger();
+       // sendTrigger();
+
+    }
+    }
+}

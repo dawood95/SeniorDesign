@@ -4,7 +4,7 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6
+CG_TOOL_ROOT := C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5
 
 GEN_OPTS__FLAG := 
 GEN_CMDS__FLAG := 
@@ -139,14 +139,14 @@ all: uart_loopback_48mhz_brclk.out
 uart_loopback_48mhz_brclk.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MSP432 Linker'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me --advice:power="all" -g --define=__MSP432P401R__ --define=TARGET_IS_MSP432P4XX --define=ccs --diag_warning=225 --display_error_number --diag_wrap=off -z -m"uart_loopback_48mhz_brclk.map" --stack_size=512 -i"C:/ti/ccsv6/ccs_base/arm/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/include" --reread_libs --warn_sections --diag_wrap=off --display_error_number --xml_link_info="uart_loopback_48mhz_brclk_linkInfo.xml" --rom_model -o "uart_loopback_48mhz_brclk.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me --advice:power="all" -g --define=__MSP432P401R__ --define=TARGET_IS_MSP432P4XX --define=ccs --display_error_number --diag_warning=225 --diag_wrap=off -z -m"uart_loopback_48mhz_brclk.map" --stack_size=512 -i"C:/ti/ccsv6/ccs_base/arm/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="uart_loopback_48mhz_brclk_linkInfo.xml" --rom_model -o "uart_loopback_48mhz_brclk.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	@$(MAKE) --no-print-directory post-build
 
 uart_loopback_48mhz_brclk.bin: $(EXE_OUTPUTS)
 	@echo 'Invoking: MSP432 Hex Utility'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/bin/armhex"  -o "uart_loopback_48mhz_brclk.bin" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armhex"  -o "uart_loopback_48mhz_brclk.bin" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $@'
 	@echo ' '
 	@$(MAKE) --no-print-directory post-build
@@ -160,7 +160,7 @@ clean:
 	-@echo ' '
 
 post-build:
-	-C:/ti/ccsv6/utils/tiobj2bin/tiobj2bin uart_loopback_48mhz_brclk.out uart_loopback_48mhz_brclk.bin C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/bin/armofd C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.6/bin/armhex C:/ti/ccsv6/utils/tiobj2bin/mkhex4bin
+	-C:/ti/ccsv6/utils/tiobj2bin/tiobj2bin uart_loopback_48mhz_brclk.out uart_loopback_48mhz_brclk.bin C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armofd C:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.5/bin/armhex C:/ti/ccsv6/utils/tiobj2bin/mkhex4bin
 	-@echo ' '
 
 .PHONY: all clean dependents

@@ -12,4 +12,6 @@
 	<ignoreDefaultDeviceSettings value="true"/>
 	<origin value="C:\ti\msp430\MSPWare_2_40_00_37\driverlib\examples\MSP432P4xx\timer_a\timer_a_continuous_vlo_period_capture\ccs\timer_a_continuous_vlo_period_capture.projectspec"/>
 	<templateProperties value="id=timer_a_continuous_vlo_period_capture.projectspec.timer_a_continuous_vlo_period_capture,"/>
+	<connection value="common/targetdb/connections/TIXDS110_Connection.xml"/>
+	<isTargetManual value="true"/>
 </projectOptions>
