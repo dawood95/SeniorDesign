@@ -83,7 +83,7 @@
 /* Static Definitions */
 uint8_t joy_buff[JOY_BUFF_SIZE];
 volatile int joy_idx = 0;
-char telemetry_buff[TELEMETRY_BUFF_SIZE];
+uint8_t telemetry_buff[TELEMETRY_BUFF_SIZE];
 volatile int telemetry_idx = 0;
 float vbat;
 int vbat_flag;
@@ -253,7 +253,7 @@ void setupSerialLogging(void)
 }
 
 int main(void)
-{
+ {
 	/* Halting WDT  */
     MAP_WDT_A_holdTimer();
 
@@ -265,6 +265,8 @@ int main(void)
     MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P2,
     		GPIO_PIN2, GPIO_PRIMARY_MODULE_FUNCTION);
 
+    //MAP_GPIO_setAsOutputPin(GPIO_PORT_P3, GPIO_PIN2);
+    //MAP_GPIO_setOutputHighOnPin(GPIO_PORT_P3, GPIO_PIN2);
     /* Setting DCO to 48MHz (upping Vcore) */
     MAP_PCM_setCoreVoltageLevel(PCM_VCORE0);
     CS_setDCOCenteredFrequency(CS_DCO_FREQUENCY_12);
@@ -399,6 +401,10 @@ void euscia0_isr(void)
 void euscia1_isr(void)
 {
 	volatile uint8_t RXData = 0;
+	int cell_num;
+	int raw_voltage;
+	float voltage;
+	uint8_t int_voltage, frac_voltage;
 
 	/* UART_TX Low Level RX Funtionality */
     uint32_t status = MAP_UART_getEnabledInterruptStatus(EUSCI_A1_MODULE);
@@ -410,10 +416,19 @@ void euscia1_isr(void)
     	telemetry_buff[telemetry_idx] = RXData;
     	if (telemetry_buff[(telemetry_idx + 1) % TELEMETRY_BUFF_SIZE] == 0x5e && telemetry_buff[(telemetry_idx + 2) % TELEMETRY_BUFF_SIZE] == 0x6) {
         	MAP_Interrupt_disableInterrupt(INT_EUSCIA1);
-    		MAP_UART_transmitData(EUSCI_A2_MODULE, telemetry_buff[(telemetry_idx + 1) % TELEMETRY_BUFF_SIZE]);
+    		/*MAP_UART_transmitData(EUSCI_A2_MODULE, telemetry_buff[(telemetry_idx + 1) % TELEMETRY_BUFF_SIZE]);
     		MAP_UART_transmitData(EUSCI_A2_MODULE, telemetry_buff[(telemetry_idx + 3) % TELEMETRY_BUFF_SIZE]);
     		MAP_UART_transmitData(EUSCI_A2_MODULE, telemetry_buff[telemetry_idx]);
-    		MAP_UART_transmitData(EUSCI_A2_MODULE, (char) 0xe5);
+    		MAP_UART_transmitData(EUSCI_A2_MODULE, (char) 0xe5);*/
+        	cell_num = telemetry_buff[(telemetry_idx + 3) % 4] >> 4;
+        	raw_voltage = ((telemetry_buff[(telemetry_idx + 3) % 4] & 0x0F) << 8) + telemetry_buff[telemetry_idx];
+        	voltage = (raw_voltage / 2100.0) * 4.2;
+        	int_voltage = ((int) voltage) > 3 ? 1 : 0;
+        	frac_voltage = ((int) ((voltage - ((int) voltage)) * 32));
+        	MAP_UART_transmitData(EUSCI_A2_MODULE, ((cell_num << 6) | (int_voltage << 5) | (frac_voltage)));
+        	//MAP_UART_transmitData(EUSCI_A2_MODULE, cell_num << 6);
+        	//printf(EUSCI_A0_MODULE, "Cell %i is at %iV (received %x %x %x %x)\r\n", cell_num, (int) voltage,
+        	//		telemetry_buff[(telemetry_idx + 1) % 4], telemetry_buff[(telemetry_idx + 2) % 4], telemetry_buff[(telemetry_idx + 3) % 4], telemetry_buff[telemetry_idx]);
     		MAP_Interrupt_enableInterrupt(INT_EUSCIA1);
     	}
     	telemetry_idx = (telemetry_idx + 1) % TELEMETRY_BUFF_SIZE;
