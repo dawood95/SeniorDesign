@@ -68,35 +68,27 @@
 #include "uart_test.h"
 
 /* Header Includes */
-#define START_BYTE 0xFF
-#define END_BYTE 0x00
-#define NO_SUPPORTED_INSTR 0x0a
+//#define START_BYTE 0xFF
+//#define END_BYTE 0x00
+//#define NO_SUPPORTED_INSTR 0x0a
 #define MAX_FRAME_LENGTH 10
-#define CELL_NUM_MASK 0x0000000F
-#define NUM_VOLTAGE_BITS_BYTE2 8
-#define VOLTAGE_MASK 0x000000F0
-#define MAX_CELL_VOLTAGE 4.2
-#define MAX_VOLTAGE_DATA 2100
+//#define CELL_NUM_MASK 0x0000000F
+//#define NUM_VOLTAGE_BITS_BYTE2 8
+//#define VOLTAGE_MASK 0x000000F0
+//#define MAX_CELL_VOLTAGE 4.2
+//#define MAX_VOLTAGE_DATA 2100
+#define JOY_BUFF_SIZE 7
+#define TELEMETRY_BUFF_SIZE 4
 
 /* Static Definitions */
-static Instr currFrame;
-uint8_t recvFrame[MAX_FRAME_LENGTH], framewidth_count = 0;
-static uint8_t validFrame = 0;
-volatile int RXData = 0;
-volatile uint8_t TXData = 100;
-uint32_t LED_status = 0;
-char telemetry_buff[6];
-volatile int byte_cnt = 0;
-//volatile int prev_byte = 0;
+uint8_t joy_buff[JOY_BUFF_SIZE];
+volatile int joy_idx = 0;
+char telemetry_buff[TELEMETRY_BUFF_SIZE];
+volatile int telemetry_idx = 0;
+float vbat;
+int vbat_flag;
 
-/************Execution State Flags************/
-bool lowBattery_flag;
-bool sensor_flags[6];
-
-
-
-
-/*********************************Serial Debugging (through USB-UART) Setup********************************/
+/*************************** Serial Debugging (through USB-UART) Setup ***************************/
 const eUSCI_UART_Config debugLoggingConfig =
 {
 		EUSCI_A_UART_CLOCKSOURCE_SMCLK,          // SMCLK Clock Source
@@ -123,13 +115,27 @@ const eUSCI_UART_Config uartConfig =
     EUSCI_A_UART_OVERSAMPLING_BAUDRATE_GENERATION  // Oversampling
 };
 
-/* Timer_A PWM Configuration Parameter */
+const eUSCI_UART_Config vbatUartConfig =
+{
+    EUSCI_A_UART_CLOCKSOURCE_SMCLK,          // SMCLK Clock Source
+    78,                                      // BRDIV = 78
+    2,                                       // UCxBRF = 2
+    0,                                       // UCxBRS = 0
+    EUSCI_A_UART_NO_PARITY,                  // No Parity
+    EUSCI_A_UART_LSB_FIRST,                  // MSB First
+    EUSCI_A_UART_ONE_STOP_BIT,               // One stop bit
+    EUSCI_A_UART_MODE,                       // UART mode
+    EUSCI_A_UART_OVERSAMPLING_BAUDRATE_GENERATION  // Oversampling
+};
+
+/****************************** Timer_A PWM Configuration Parameter ******************************/
+/* AETR Channels */
 Timer_A_PWMConfig pwmConfigA =
 {
         TIMER_A_CLOCKSOURCE_ACLK,
         TIMER_A_CLOCKSOURCE_DIVIDER_1,
         128,
-        TIMER_A_CAPTURECOMPARE_REGISTER_1,
+        TIMER_A_CAPTURECOMPARE_REGISTER_4,
 		TIMER_A_OUTPUTMODE_TOGGLE_SET,
         64
 };
@@ -138,7 +144,7 @@ Timer_A_PWMConfig pwmConfigB = {
 		TIMER_A_CLOCKSOURCE_ACLK,
 		TIMER_A_CLOCKSOURCE_DIVIDER_1,
 		128,
-		TIMER_A_CAPTURECOMPARE_REGISTER_2,
+		TIMER_A_CAPTURECOMPARE_REGISTER_3,
 		TIMER_A_OUTPUTMODE_TOGGLE_SET,
 		64
 };
@@ -147,7 +153,7 @@ Timer_A_PWMConfig pwmConfigC = {
 		TIMER_A_CLOCKSOURCE_ACLK,
 		TIMER_A_CLOCKSOURCE_DIVIDER_1,
 		128,
-		TIMER_A_CAPTURECOMPARE_REGISTER_3,
+		TIMER_A_CAPTURECOMPARE_REGISTER_2,
 		TIMER_A_OUTPUTMODE_TOGGLE_SET,
 		64
 };
@@ -156,11 +162,20 @@ Timer_A_PWMConfig pwmConfigD = {
 		TIMER_A_CLOCKSOURCE_ACLK,
 		TIMER_A_CLOCKSOURCE_DIVIDER_1,
 		128,
-		TIMER_A_CAPTURECOMPARE_REGISTER_4,
+		TIMER_A_CAPTURECOMPARE_REGISTER_1,
 		TIMER_A_OUTPUTMODE_TOGGLE_SET,
 		64
 };
 
+/* AUX Channels */
+Timer_A_PWMConfig pwmConfigE = {
+		TIMER_A_CLOCKSOURCE_ACLK,
+		TIMER_A_CLOCKSOURCE_DIVIDER_1,
+		128,
+		TIMER_A_CAPTURECOMPARE_REGISTER_1,
+		TIMER_A_OUTPUTMODE_TOGGLE_SET,
+		80
+};
 
 /* Ultrasonic Sensor Configuration */
 const Timer_A_ContinuousModeConfig continuousModeConfig =
@@ -182,7 +197,6 @@ const Timer_A_CaptureModeConfig captureModeConfig_CCR1 =
         TIMER_A_OUTPUTMODE_OUTBITVALUE            // Output bit value
 };
 
-
 const Timer_A_CaptureModeConfig captureModeConfig_CCR2 =
 {
         TIMER_A_CAPTURECOMPARE_REGISTER_2,        // CC Register 2
@@ -192,7 +206,6 @@ const Timer_A_CaptureModeConfig captureModeConfig_CCR2 =
         TIMER_A_CAPTURECOMPARE_INTERRUPT_ENABLE,  // Enable interrupt
         TIMER_A_OUTPUTMODE_OUTBITVALUE            // Output bit value
 };
-
 
 void printFrame() {
 	/*int i = 0;
@@ -206,16 +219,19 @@ void printFrame() {
 	for (i = 0; i < 4; i++) {
 		printf(EUSCI_A0_MODULE, "Received Byte:  %x\r\n", telemetry_buff[i]);
 	}*/
-	/*int cell_num = telemetry_buff[(byte_cnt + 3) % 4] >> 4;
-	int voltage_raw = ((telemetry_buff[(byte_cnt + 3) % 4] & 0x0F) << 8) + telemetry_buff[byte_cnt];
+	int cell_num = telemetry_buff[(telemetry_idx + 3) % 4] >> 4;
+	int voltage_raw = ((telemetry_buff[(telemetry_idx + 3) % 4] & 0x0F) << 8) + telemetry_buff[telemetry_idx];
 
 	float voltage = (voltage_raw / 2100.0) * 4.2;
 	printf(EUSCI_A0_MODULE, "Cell %i is at %iV (received %x %x %x %x)\r\n", cell_num, (int) voltage,
-			telemetry_buff[(byte_cnt + 1) % 4], telemetry_buff[(byte_cnt + 2) % 4], telemetry_buff[(byte_cnt + 3) % 4], telemetry_buff[byte_cnt]);*/
+			telemetry_buff[(telemetry_idx + 1) % 4], telemetry_buff[(telemetry_idx + 2) % 4], telemetry_buff[(telemetry_idx + 3) % 4], telemetry_buff[telemetry_idx]);
+	//printf(EUSCI_A0_MODULE, "%x\r\n", telemetry_buff[telemetry_idx]);
 	//printf(EUSCI_A0_MODULE, "pitch: %i\r\n", telemetry_buff[(byte_cnt + 2) % 6]);
 	//printf(EUSCI_A0_MODULE, "roll: %i\r\n", telemetry_buff[(byte_cnt + 3) % 6]);
-	//printf(EUSCI_A0_MODULE, "yaw: %i\r\n", telemetry_buff[(byte_cnt + 4) % 6]);
-	printf(EUSCI_A0_MODULE, "thrust: %i\r\n\n", telemetry_buff[(byte_cnt + 5) % 6]);
+	//if (telemetry_buff[(byte_cnt + 4) % 6] < 64 )
+	//	printf(EUSCI_A0_MODULE, "yaw: %i\r\n", telemetry_buff[(byte_cnt + 4) % 6]);
+	//printf(EUSCI_A0_MODULE, "throttle: %i\r\n\n", telemetry_buff[(byte_cnt + 5) % 6]);
+	//int voltage_raw = ((telemetry_buff[2] & CELL_NUM_MASK) << NUM_VOLTAGE_BITS_BYTE2) + telemetry_buff[3];
 }
 void setupSerialLogging(void)
 {
@@ -238,16 +254,16 @@ void setupSerialLogging(void)
 
 int main(void)
 {
-    /* Halting WDT  */
+	/* Halting WDT  */
     MAP_WDT_A_holdTimer();
 
-    /* Selecting P1.2 and P1.3 in UART mode and P1.0 as output (LED) */
+    /*Selecting P3.2 and P3.3 in UART mode */
     MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P3,
-             GPIO_PIN2 | GPIO_PIN3, GPIO_PRIMARY_MODULE_FUNCTION);
-    MAP_GPIO_setAsOutputPin(GPIO_PORT_P4, GPIO_PIN1);
-    MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P4, GPIO_PIN1);
-    MAP_GPIO_setAsOutputPin(GPIO_PORT_P4, GPIO_PIN0);
-    MAP_GPIO_setOutputHighOnPin(GPIO_PORT_P4, GPIO_PIN0);
+    		GPIO_PIN2 | GPIO_PIN3, GPIO_PRIMARY_MODULE_FUNCTION);
+
+    /*Uart Pin 2.2 for Battery Monitoring*/
+    MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P2,
+    		GPIO_PIN2, GPIO_PRIMARY_MODULE_FUNCTION);
 
     /* Setting DCO to 48MHz (upping Vcore) */
     MAP_PCM_setCoreVoltageLevel(PCM_VCORE0);
@@ -258,142 +274,149 @@ int main(void)
 
     /* Configuring UART Module */
     MAP_UART_initModule(EUSCI_A2_MODULE, &uartConfig);
+    MAP_UART_initModule(EUSCI_A1_MODULE, &vbatUartConfig);
 
     /* Enable UART module */
     MAP_UART_enableModule(EUSCI_A2_MODULE);
+    MAP_UART_enableModule(EUSCI_A1_MODULE);
 
     /* Enabling interrupts */
     MAP_UART_enableInterrupt(EUSCI_A2_MODULE, EUSCI_A_UART_RECEIVE_INTERRUPT);
     MAP_Interrupt_enableInterrupt(INT_EUSCIA2);
+
+    MAP_UART_enableInterrupt(EUSCI_A1_MODULE, EUSCI_A_UART_RECEIVE_INTERRUPT);
+    MAP_Interrupt_enableInterrupt(INT_EUSCIA1);
     // MAP_Interrupt_enableSleepOnIsrExit();
 
     /********************************* PWM *********************************/
-    /* Setting MCLK to REFO at 128Khz for LF mode
+    /* Setting ACLK to REFO at 128Khz for LF mode
      * Setting SMCLK to 64Khz */
     MAP_CS_setReferenceOscillatorFrequency(CS_REFO_128KHZ);
     //MAP_CS_initClockSignal(CS_MCLK, CS_REFOCLK_SELECT, CS_CLOCK_DIVIDER_1);
     MAP_CS_initClockSignal(CS_ACLK, CS_REFOCLK_SELECT, CS_CLOCK_DIVIDER_2);
     MAP_PCM_setPowerState(PCM_AM_LF_VCORE0);
 
-    /* Configuring GPIO2.4 as peripheral output for PWM  and P1.1 for button
+    /* Configuring GPIO2.4 as peripheral output for PWM and P1.1 for button
      * interrupt */
     MAP_GPIO_setAsPeripheralModuleFunctionOutputPin(GPIO_PORT_P2, GPIO_PIN4,
             GPIO_PRIMARY_MODULE_FUNCTION);
-    MAP_GPIO_setAsInputPinWithPullUpResistor(GPIO_PORT_P1, GPIO_PIN1);
+    /*MAP_GPIO_setAsInputPinWithPullUpResistor(GPIO_PORT_P1, GPIO_PIN1);
     MAP_GPIO_clearInterruptFlag(GPIO_PORT_P1, GPIO_PIN1);
-    MAP_GPIO_enableInterrupt(GPIO_PORT_P1, GPIO_PIN1);
+    MAP_GPIO_enableInterrupt(GPIO_PORT_P1, GPIO_PIN1);*/
 
-    /* Configuring GPIO7.6 as peripheral output for PWM */
-    MAP_GPIO_setAsPeripheralModuleFunctionOutputPin(GPIO_PORT_P7, GPIO_PIN6,
+    /* Configuring GPIO2.5 as peripheral output for PWM */
+    MAP_GPIO_setAsPeripheralModuleFunctionOutputPin(GPIO_PORT_P2, GPIO_PIN5,
             GPIO_PRIMARY_MODULE_FUNCTION);
 
     /* Configuring GPIO2.6 as peripheral output for PWM  and P1.4 for button
      * interrupt */
     MAP_GPIO_setAsPeripheralModuleFunctionOutputPin(GPIO_PORT_P2, GPIO_PIN6,
             GPIO_PRIMARY_MODULE_FUNCTION);
-    MAP_GPIO_setAsInputPinWithPullUpResistor(GPIO_PORT_P1, GPIO_PIN4);
+    /*MAP_GPIO_setAsInputPinWithPullUpResistor(GPIO_PORT_P1, GPIO_PIN4);
     MAP_GPIO_clearInterruptFlag(GPIO_PORT_P1, GPIO_PIN4);
-    MAP_GPIO_enableInterrupt(GPIO_PORT_P1, GPIO_PIN4);
+    MAP_GPIO_enableInterrupt(GPIO_PORT_P1, GPIO_PIN4);*/
 
     /* Configuring GPIO2.7 as peripheral output for PWM */
-    MAP_GPIO_setAsPeripheralModuleFunctionOutputPin(GPIO_PORT_P7, GPIO_PIN4,
+    MAP_GPIO_setAsPeripheralModuleFunctionOutputPin(GPIO_PORT_P2, GPIO_PIN7,
            GPIO_PRIMARY_MODULE_FUNCTION);
-   // MAP_GPIO_setAsOutputPin(GPIO_PORT_P2, GPIO_PIN5);
-   // MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P2, GPIO_PIN5);
+
+    /* Configuring GPIO7.7 as peripheral output for PWM */
+    MAP_GPIO_setAsPeripheralModuleFunctionOutputPin(GPIO_PORT_P7, GPIO_PIN7,
+           GPIO_PRIMARY_MODULE_FUNCTION);
+
     /* Configuring Timer_A to have a period of approximately 500ms and
      * an initial duty cycle of 10% of that (3200 ticks)  */
     MAP_Timer_A_generatePWM(TIMER_A0_MODULE, &pwmConfigA);
-    MAP_Timer_A_generatePWM(TIMER_A1_MODULE, &pwmConfigB);
+    MAP_Timer_A_generatePWM(TIMER_A0_MODULE, &pwmConfigB);
     MAP_Timer_A_generatePWM(TIMER_A0_MODULE, &pwmConfigC);
-    MAP_Timer_A_generatePWM(TIMER_A1_MODULE, &pwmConfigD);
+    MAP_Timer_A_generatePWM(TIMER_A0_MODULE, &pwmConfigD);
+    MAP_Timer_A_generatePWM(TIMER_A1_MODULE, &pwmConfigE);
 
     /* Enabling interrupts and starting the watchdog timer */
-    MAP_Interrupt_enableInterrupt(INT_PORT1);
+    //MAP_Interrupt_enableInterrupt(INT_PORT1);
     MAP_Interrupt_enableSleepOnIsrExit();
     MAP_Interrupt_enableMaster();
 
-    printf(EUSCI_A0_MODULE, "Testing UART\r\n");
+    printf(EUSCI_A0_MODULE, "Init done\r\n");
     while(1)
     {
-
         //MAP_UART_transmitData(EUSCI_A2_MODULE, TXData);
         //MAP_Interrupt_enableSleepOnIsrExit();
         //MAP_PCM_gotoLPM0InterruptSafe();
     }
 }
 
-void processMotherboardFrame()
-{
-	int ind = 0;
-	// Debugginh variable
-	uint8_t instr = 1;
-
-	//Local Storage of saved Frame (for data protection)
-	// TODO - Curret approach does not guarantee data protection (when interrupt is received while copying data)
-	uint8_t frame_instructions[MAX_FRAME_LENGTH];
-
-	for(ind = 0; ind < MAX_FRAME_LENGTH; ind++)
-	{
-		frame_instructions[ind] = recvFrame[ind];
-	}
-
-	while(frame_instructions[ind] >= 0)
-	{
-		switch(frame_instructions[ind])
-		{
-			case 1 : currFrame.THROTTLE = frame_instructions[++ind]; ind++; break;
-			case 2 : currFrame.ROLL = frame_instructions[++ind]; ind++; break;
-			case 3 : currFrame.PITCH = frame_instructions[++ind]; ind++; break;
-			case 4 : currFrame.YAW = frame_instructions[++ind]; ind++; break;
-			case 5 : currFrame.STOP = 1; break;
-			case 6 : currFrame.LAND = 1; break;
-			case 7 : currFrame.BEEP = 1;
-		}
-	}
-	printf(EUSCI_A0_MODULE, "Processing of copied instructions' frame is complete!\r\n");
-}
-
 /* EUSCI A0 UART ISR - Echos data back to PC host */
 void euscia0_isr(void)
 {
+	volatile uint8_t RXData = 0;
 
 	/* UART_TX Low Level RX Funtionality */
     uint32_t status = MAP_UART_getEnabledInterruptStatus(EUSCI_A2_MODULE);
     MAP_UART_clearInterruptFlag(EUSCI_A2_MODULE, status);
-    uint8_t i = 0;
 
     if(status & EUSCI_A_UART_RECEIVE_INTERRUPT)
     {
     	RXData = MAP_UART_receiveData(EUSCI_A2_MODULE);
-    	telemetry_buff[byte_cnt] = RXData;
-    	/*byte_cnt = (byte_cnt + 1) % 4;
-    	if (telemetry_buff[(byte_cnt + 1) % 4] == 0x5e && telemetry_buff[(byte_cnt + 2) % 4] == 0x6) {
-    		printFrame();
-    	}*/
-    	byte_cnt = (byte_cnt + 1) % 6;
-    	if (telemetry_buff[(byte_cnt + 1) % 6] == 0x9e && telemetry_buff[byte_cnt] == 0xe9) {
-    		if (telemetry_buff[(byte_cnt + 2) % 6] != pwmConfigA.dutyCycle) {
-    			pwmConfigA.dutyCycle = telemetry_buff[(byte_cnt + 2) % 6];
-    			MAP_Timer_A_generatePWM(TIMER_A0_MODULE, &pwmConfigA);
-    		}
+    	joy_buff[joy_idx] = RXData;
+    	if (joy_buff[(joy_idx + 1) % JOY_BUFF_SIZE] == 0x9e && joy_buff[joy_idx] == 0xe9) {
+    		pwmConfigA.dutyCycle = joy_buff[(joy_idx + 2) % JOY_BUFF_SIZE];
+    		MAP_Timer_A_setCompareValue(TIMER_A0_MODULE, pwmConfigA.compareRegister, pwmConfigA.dutyCycle);
 
-    		if (telemetry_buff[(byte_cnt + 3) % 6] != pwmConfigB.dutyCycle) {
-    			pwmConfigB.dutyCycle = telemetry_buff[(byte_cnt + 3) % 6];
-    			MAP_Timer_A_generatePWM(TIMER_A1_MODULE, &pwmConfigB);
-    		}
+    		pwmConfigB.dutyCycle = joy_buff[(joy_idx + 5) % JOY_BUFF_SIZE];
+    		MAP_Timer_A_setCompareValue(TIMER_A0_MODULE, pwmConfigB.compareRegister, pwmConfigB.dutyCycle);
 
-    		if (telemetry_buff[(byte_cnt + 4) % 6] != pwmConfigC.dutyCycle) {
-    			pwmConfigC.dutyCycle = telemetry_buff[(byte_cnt + 4) % 6];
-    			MAP_Timer_A_generatePWM(TIMER_A0_MODULE, &pwmConfigC);
-    		}
+    		pwmConfigC.dutyCycle = joy_buff[(joy_idx + 3) % JOY_BUFF_SIZE];
+    		MAP_Timer_A_setCompareValue(TIMER_A0_MODULE, pwmConfigC.compareRegister, pwmConfigC.dutyCycle);
 
-    		if (telemetry_buff[(byte_cnt + 5) % 6] != pwmConfigD.dutyCycle) {
-    			pwmConfigD.dutyCycle = telemetry_buff[(byte_cnt + 5) % 6];
-    			MAP_Timer_A_generatePWM(TIMER_A1_MODULE, &pwmConfigD);
-    		}
+    		pwmConfigD.dutyCycle = joy_buff[(joy_idx + 4) % JOY_BUFF_SIZE];
+    		MAP_Timer_A_setCompareValue(TIMER_A0_MODULE, pwmConfigD.compareRegister, pwmConfigD.dutyCycle);
 
-    		printFrame();
+    		pwmConfigE.dutyCycle = 80 + 32*(joy_buff[(joy_idx + 6) % JOY_BUFF_SIZE]);
+    		MAP_Timer_A_setCompareValue(TIMER_A1_MODULE, pwmConfigE.compareRegister, pwmConfigE.dutyCycle);
     	}
+    	joy_idx = (joy_idx + 1) % JOY_BUFF_SIZE;
+    	    	/*RXData = MAP_UART_receiveData(EUSCI_A2_MODULE);
+    	    	telemetry_buff[telemetry_idx] = RXData;
+
+    	    	if ((telemetry_buff[(telemetry_idx + 1) % TELEMETRY_BUFF_SIZE] == 0x5e) && (telemetry_buff[(telemetry_idx + 2) % TELEMETRY_BUFF_SIZE] == 0x6)) {
+    	        	//MAP_Interrupt_disableInterrupt(INT_EUSCIA1);
+    	        	//vbat_flag = 1;
+    	    		//MAP_UART_transmitData(EUSCI_A2_MODULE, telemetry_buff[(telemetry_idx + 1) % TELEMETRY_BUFF_SIZE]);
+    	    		//MAP_UART_transmitData(EUSCI_A2_MODULE, telemetry_buff[(telemetry_idx + 3) % TELEMETRY_BUFF_SIZE]);
+    	    		//MAP_UART_transmitData(EUSCI_A2_MODULE, telemetry_buff[telemetry_idx]);
+    	    		//MAP_UART_transmitData(EUSCI_A2_MODULE, (char) 0xe5);
+    	    		//MAP_Interrupt_enableInterrupt(INT_EUSCIA1);
+    	    		printFrame();
+    	    	}
+    	    	//printFrame();
+    	    	telemetry_idx = (telemetry_idx + 1) % TELEMETRY_BUFF_SIZE;*/
+
+    }
+    //MAP_Interrupt_disableSleepOnIsrExit();
+}
+
+void euscia1_isr(void)
+{
+	volatile uint8_t RXData = 0;
+
+	/* UART_TX Low Level RX Funtionality */
+    uint32_t status = MAP_UART_getEnabledInterruptStatus(EUSCI_A1_MODULE);
+    MAP_UART_clearInterruptFlag(EUSCI_A1_MODULE, status);
+
+    if(status & EUSCI_A_UART_RECEIVE_INTERRUPT)
+    {
+    	RXData = MAP_UART_receiveData(EUSCI_A1_MODULE);
+    	telemetry_buff[telemetry_idx] = RXData;
+    	if (telemetry_buff[(telemetry_idx + 1) % TELEMETRY_BUFF_SIZE] == 0x5e && telemetry_buff[(telemetry_idx + 2) % TELEMETRY_BUFF_SIZE] == 0x6) {
+        	MAP_Interrupt_disableInterrupt(INT_EUSCIA1);
+    		MAP_UART_transmitData(EUSCI_A2_MODULE, telemetry_buff[(telemetry_idx + 1) % TELEMETRY_BUFF_SIZE]);
+    		MAP_UART_transmitData(EUSCI_A2_MODULE, telemetry_buff[(telemetry_idx + 3) % TELEMETRY_BUFF_SIZE]);
+    		MAP_UART_transmitData(EUSCI_A2_MODULE, telemetry_buff[telemetry_idx]);
+    		MAP_UART_transmitData(EUSCI_A2_MODULE, (char) 0xe5);
+    		MAP_Interrupt_enableInterrupt(INT_EUSCIA1);
+    	}
+    	telemetry_idx = (telemetry_idx + 1) % TELEMETRY_BUFF_SIZE;
     }
     //MAP_Interrupt_disableSleepOnIsrExit();
 }

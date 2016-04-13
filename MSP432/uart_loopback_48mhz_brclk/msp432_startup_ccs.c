@@ -66,6 +66,7 @@ extern unsigned long __STACK_END;
 //*****************************************************************************
 extern void port1_isr(void);
 extern void euscia0_isr(void);
+extern void euscia1_isr(void);
 
 //*****************************************************************************
 //
@@ -111,8 +112,8 @@ void (* const g_pfnVectors[])(void) =
     IntDefaultHandler,                      // TA3_0 ISR
     IntDefaultHandler,                      // TA3_N ISR
     IntDefaultHandler,                      // EUSCIA0 ISR
-    IntDefaultHandler,                      // EUSCIA1 ISR
-    euscia0_isr,                      // EUSCIA2 ISR
+    euscia1_isr,                      // EUSCIA1 ISR
+	euscia0_isr,                      // EUSCIA2 ISR
     IntDefaultHandler,                      // EUSCIA3 ISR
     IntDefaultHandler,                      // EUSCIB0 ISR
     IntDefaultHandler,                      // EUSCIB1 ISR
