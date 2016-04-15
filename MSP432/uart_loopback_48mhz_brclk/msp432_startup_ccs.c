@@ -67,7 +67,8 @@ extern unsigned long __STACK_END;
 extern void port1_isr(void);
 extern void euscia0_isr(void);
 extern void euscia1_isr(void);
-
+extern void timer_a2_n_isr(void);
+//extern void timer_a3_n_isr(void);
 //*****************************************************************************
 //
 // The vector table.  Note that the proper constructs must be placed on this to
@@ -108,7 +109,7 @@ void (* const g_pfnVectors[])(void) =
     IntDefaultHandler,                      // TA1_0 ISR
     IntDefaultHandler,                      // TA1_N ISR
     IntDefaultHandler,                      // TA2_0 ISR
-    IntDefaultHandler,                      // TA2_N ISR
+    timer_a2_n_isr,                          // TA2_N ISR
     IntDefaultHandler,                      // TA3_0 ISR
     IntDefaultHandler,                      // TA3_N ISR
     IntDefaultHandler,                      // EUSCIA0 ISR

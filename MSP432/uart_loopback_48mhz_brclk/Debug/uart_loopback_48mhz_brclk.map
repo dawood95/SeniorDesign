@@ -1,33 +1,33 @@
 ******************************************************************************
                   TI ARM Linker PC v5.2.6                      
 ******************************************************************************
->> Linked Wed Apr 13 12:48:38 2016
+>> Linked Fri Apr 15 01:30:18 2016
 
 OUTPUT FILE NAME:   <uart_loopback_48mhz_brclk.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 00000fb5
+ENTRY POINT SYMBOL: "_c_int00"  address: 000012fd
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00040000  000013d4  0003ec2c  R  X
+  FLASH                 00000000   00040000  0000189e  0003e762  R  X
   FLASH_OTP             00200000   00004000  00000000  00004000  R  X
-  SRAM                  20000000   00010000  000002a0  0000fd60  RW X
+  SRAM                  20000000   00010000  000002c4  0000fd3c  RW X
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    000013d8   000013d8    r-x
+00000000    00000000    000018a0   000018a0    r-x
   00000000    00000000    00000144   00000144    r-- .intvecs
-  00000144    00000144    0000110c   0000110c    r-x .text
-  00001250    00001250    000000d4   000000d4    r-- .const
-  00001328    00001328    000000b0   000000b0    r-- .cinit
-20000000    20000000    000000a0   00000000    rw-
-  20000000    20000000    00000094   00000000    rw- .data
-  20000094    20000094    0000000c   00000000    rw- .bss
+  00000144    00000144    00001526   00001526    r-x .text
+  0000166c    0000166c    00000184   00000184    r-- .const
+  000017f0    000017f0    000000b0   000000b0    r-- .cinit
+20000000    20000000    000000c4   00000000    rw-
+  20000000    20000000    000000a0   00000000    rw- .data
+  200000a0    200000a0    00000024   00000000    rw- .bss
 2000fe00    2000fe00    00000200   00000000    rw-
   2000fe00    2000fe00    00000200   00000000    rw- .stack
 
@@ -40,70 +40,81 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    00000144     
                   00000000    00000144     msp432_startup_ccs.obj (.intvecs)
 
-.text      0    00000144    0000110c     
-                  00000144    000006ac     uart_loopback_48mhz_brclk.obj (.text)
-                  000007f0    00000254     printf.obj (.text)
-                  00000a44    00000136     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_div_t2.obj (.text)
-                  00000b7a    000000fc                                   : fd_mul_t2.obj (.text)
-                  00000c76    00000002     --HOLE-- [fill = 0]
-                  00000c78    000000e0     msp432p4xx_driverlib.lib : cs.o (.text:CS_initClockSignal)
-                  00000d58    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
-                  00000df4    0000007a                                   : memset_t2.obj (.text)
-                  00000e6e    0000006e                                   : fd_tos_t2.obj (.text)
-                  00000edc    0000006c                                   : autoinit.obj (.text)
-                  00000f48    0000006a                                   : copy_decompress_rle.obj (.text)
-                  00000fb2    00000002     --HOLE-- [fill = 0]
-                  00000fb4    00000050                                   : boot.obj (.text)
-                  00001004    0000004c     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_setAsPeripheralModuleFunctionInputPin)
-                  00001050    0000004c                              : gpio.o (.text:GPIO_setAsPeripheralModuleFunctionOutputPin)
-                  0000109c    0000004c     rtsv7M4_T_le_v4SPD16_eabi.lib : cpy_tbl.obj (.text)
-                  000010e8    00000044                                   : exit.obj (.text)
-                  0000112c    00000030     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_getEnabledInterruptStatus)
-                  0000115c    0000002e     rtsv7M4_T_le_v4SPD16_eabi.lib : i_tofd_t2.obj (.text)
-                  0000118a    00000002     --HOLE-- [fill = 0]
-                  0000118c    00000024     msp432p4xx_driverlib.lib : cs.o (.text:CS_setDCOCenteredFrequency)
-                  000011b0    0000001c                              : cs.o (.text:CS_setReferenceOscillatorFrequency)
-                  000011cc    00000018                              : gpio.o (.text:GPIO_clearInterruptFlag)
-                  000011e4    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
-                  000011fc    00000014                                   : _lock.obj (.text)
-                  00001210    00000010     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_getInterruptStatus)
-                  00001220    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
-                  0000122e    0000000c                                   : copy_zero_init.obj (.text:decompress:ZI)
-                  0000123a    0000000c     msp432_startup_ccs.obj (.text)
-                  00001246    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
-                  0000124c    00000004                                   : pre_init.obj (.text)
+.text      0    00000144    00001526     
+                  00000144    000009f4     uart_loopback_48mhz_brclk.obj (.text)
+                  00000b38    00000254     printf.obj (.text)
+                  00000d8c    00000136     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_div_t2.obj (.text)
+                  00000ec2    000000fc                                   : fd_mul_t2.obj (.text)
+                  00000fbe    00000002     --HOLE-- [fill = 0]
+                  00000fc0    000000e0     msp432p4xx_driverlib.lib : cs.o (.text:CS_initClockSignal)
+                  000010a0    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  0000113c    0000007a                                   : memset_t2.obj (.text)
+                  000011b6    0000006e                                   : fd_tos_t2.obj (.text)
+                  00001224    0000006c                                   : autoinit.obj (.text)
+                  00001290    0000006a                                   : copy_decompress_rle.obj (.text)
+                  000012fa    00000002     --HOLE-- [fill = 0]
+                  000012fc    00000050                                   : boot.obj (.text)
+                  0000134c    0000004c     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_setAsPeripheralModuleFunctionInputPin)
+                  00001398    0000004c                              : gpio.o (.text:GPIO_setAsPeripheralModuleFunctionOutputPin)
+                  000013e4    0000004c     rtsv7M4_T_le_v4SPD16_eabi.lib : cpy_tbl.obj (.text)
+                  00001430    00000044                                   : exit.obj (.text)
+                  00001474    00000038                                   : fs_tod_t2.obj (.text)
+                  000014ac    00000030     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_getEnabledInterruptStatus)
+                  000014dc    00000030                              : timer_a.o (.text:Timer_A_getCaptureCompareEnabledInterruptStatus)
+                  0000150c    0000002e     rtsv7M4_T_le_v4SPD16_eabi.lib : i_tofd_t2.obj (.text)
+                  0000153a    00000002     --HOLE-- [fill = 0]
+                  0000153c    00000024     msp432p4xx_driverlib.lib : cs.o (.text:CS_setDCOCenteredFrequency)
+                  00001560    00000024                              : gpio.o (.text:GPIO_setAsOutputPin)
+                  00001584    0000001c                              : cs.o (.text:CS_setReferenceOscillatorFrequency)
+                  000015a0    00000018                              : gpio.o (.text:GPIO_clearInterruptFlag)
+                  000015b8    00000018                              : gpio.o (.text:GPIO_setOutputLowOnPin)
+                  000015d0    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  000015e8    00000014     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_setOutputHighOnPin)
+                  000015fc    00000014     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.text)
+                  00001610    00000010     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_getInterruptStatus)
+                  00001620    0000000e                              : timer_a.o (.text:Timer_A_getSynchronizedCaptureCompareInput)
+                  0000162e    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
+                  0000163c    0000000c                                   : copy_zero_init.obj (.text:decompress:ZI)
+                  00001648    0000000c     msp432_startup_ccs.obj (.text)
+                  00001654    00000006     msp432p4xx_driverlib.lib : timer_a.o (.text:Timer_A_getCaptureCompareCount)
+                  0000165a    00000006                              : timer_a.o (.text:Timer_A_getCaptureCompareInterruptStatus)
+                  00001660    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+                  00001666    00000004                                   : pre_init.obj (.text)
 
-.const     0    00001250    000000d4     
-                  00001250    00000030     msp432p4xx_driverlib.lib : gpio.o (.const:GPIO_PORT_TO_BASE)
-                  00001280    00000028     printf.obj (.const:dv)
-                  000012a8    00000024     uart_loopback_48mhz_brclk.obj (.const:debugLoggingConfig)
-                  000012cc    00000024     uart_loopback_48mhz_brclk.obj (.const:uartConfig)
-                  000012f0    00000024     uart_loopback_48mhz_brclk.obj (.const:vbatUartConfig)
-                  00001314    00000010     printf.obj (.const:.string)
+.const     0    0000166c    00000184     
+                  0000166c    000000b0     uart_loopback_48mhz_brclk.obj (.const)
+                  0000171c    00000030     msp432p4xx_driverlib.lib : gpio.o (.const:GPIO_PORT_TO_BASE)
+                  0000174c    00000028     printf.obj (.const:dv)
+                  00001774    00000024     uart_loopback_48mhz_brclk.obj (.const:debugLoggingConfig)
+                  00001798    00000024     uart_loopback_48mhz_brclk.obj (.const:uartConfig)
+                  000017bc    00000024     uart_loopback_48mhz_brclk.obj (.const:vbatUartConfig)
+                  000017e0    00000010     printf.obj (.const:.string)
 
-.cinit     0    00001328    000000b0     
-                  00001328    00000085     (.cinit..data.load) [load image, compression = rle]
-                  000013ad    00000003     --HOLE-- [fill = 0]
-                  000013b0    0000000c     (__TI_handler_table)
-                  000013bc    00000004     --HOLE-- [fill = 0]
-                  000013c0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  000013c8    00000010     (__TI_cinit_table)
+.cinit     0    000017f0    000000b0     
+                  000017f0    00000085     (.cinit..data.load) [load image, compression = rle]
+                  00001875    00000003     --HOLE-- [fill = 0]
+                  00001878    0000000c     (__TI_handler_table)
+                  00001884    00000004     --HOLE-- [fill = 0]
+                  00001888    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00001890    00000010     (__TI_cinit_table)
 
-.data      0    20000000    00000094     UNINITIALIZED
-                  20000000    00000080     uart_loopback_48mhz_brclk.obj (.data)
-                  20000080    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
-                  20000088    00000008                                   : exit.obj (.data)
-                  20000090    00000004                                   : stkdepth_vars.obj (.data)
+.data      0    20000000    000000a0     UNINITIALIZED
+                  20000000    0000008c     uart_loopback_48mhz_brclk.obj (.data)
+                  2000008c    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
+                  20000094    00000008                                   : exit.obj (.data)
+                  2000009c    00000004                                   : stkdepth_vars.obj (.data)
 
-.bss       0    20000094    0000000c     UNINITIALIZED
-                  20000094    00000008     (.common:joy_buff)
-                  2000009c    00000004     (.common:telemetry_buff)
+.bss       0    200000a0    00000024     UNINITIALIZED
+                  200000a0    0000000c     (.common:timerFlag)
+                  200000ac    0000000c     (.common:warnCount)
+                  200000b8    00000008     (.common:joy_buff)
+                  200000c0    00000004     (.common:telemetry_buff)
 
 .TI.persistent 
 *          0    20000000    00000000     UNINITIALIZED
 
 .TI.noinit 
-*          0    20000094    00000000     UNINITIALIZED
+*          0    200000a0    00000000     UNINITIALIZED
 
 .stack     0    2000fe00    00000200     UNINITIALIZED
                   2000fe00    00000200     --HOLE--
@@ -111,14 +122,14 @@ section   page    origin      length       input sections
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 000013c8 records: 2, size/record: 8, table size: 16
-	.data: load addr=00001328, load size=00000085 bytes, run addr=20000000, run size=00000094 bytes, compression=rle
-	.bss: load addr=000013c0, load size=00000008 bytes, run addr=20000094, run size=0000000c bytes, compression=zero_init
+__TI_cinit_table @ 00001890 records: 2, size/record: 8, table size: 16
+	.data: load addr=000017f0, load size=00000085 bytes, run addr=20000000, run size=000000a0 bytes, compression=rle
+	.bss: load addr=00001888, load size=00000008 bytes, run addr=200000a0, run size=00000024 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 000013b0 records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 00001878 records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_decompress_rle24
 	index: 1, handler: __TI_decompress_none
 	index: 2, handler: __TI_zero_init
@@ -126,171 +137,217 @@ __TI_handler_table @ 000013b0 records: 3, size/record: 4, table size: 12
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
-address   name                                       
--------   ----                                       
-000010e9  C$$EXIT                                    
-00000c79  CS_initClockSignal                         
-0000118d  CS_setDCOCenteredFrequency                 
-000011b1  CS_setReferenceOscillatorFrequency         
-000011cd  GPIO_clearInterruptFlag                    
-0000112d  GPIO_getEnabledInterruptStatus             
-00001211  GPIO_getInterruptStatus                    
-00001005  GPIO_setAsPeripheralModuleFunctionInputPin 
-00001051  GPIO_setAsPeripheralModuleFunctionOutputPin
-0000123b  ResetISR                                   
-UNDEFED   SHT$$INIT_ARRAY$$Base                      
-UNDEFED   SHT$$INIT_ARRAY$$Limit                     
-20010000  __STACK_END                                
-00000200  __STACK_SIZE                               
-000013c8  __TI_CINIT_Base                            
-000013d8  __TI_CINIT_Limit                           
-000013b0  __TI_Handler_Table_Base                    
-000013bc  __TI_Handler_Table_Limit                   
-00000edd  __TI_auto_init                             
-20000088  __TI_cleanup_ptr                           
-00001221  __TI_decompress_none                       
-00001247  __TI_decompress_rle24                      
-2000008c  __TI_dtors_ptr                             
-00000000  __TI_static_base__                         
-0000122f  __TI_zero_init                             
-00000e6f  __aeabi_d2f                                
-00000a45  __aeabi_ddiv                               
-00000b7b  __aeabi_dmul                               
-0000115d  __aeabi_i2d                                
-00000df5  __aeabi_memclr                             
-00000df5  __aeabi_memclr4                            
-00000df5  __aeabi_memclr8                            
-00000d59  __aeabi_memcpy                             
-00000d59  __aeabi_memcpy4                            
-00000d59  __aeabi_memcpy8                            
-00000df7  __aeabi_memset                             
-00000df7  __aeabi_memset4                            
-00000df7  __aeabi_memset8                            
-ffffffff  __binit__                                  
-ffffffff  __c_args__                                 
-2000fe00  __stack                                    
-000011e5  _args_main                                 
-00000fb5  _c_int00                                   
-20000080  _lock                                      
-0000120b  _nop                                       
-00001203  _register_lock                             
-000011fd  _register_unlock                           
-0000124d  _system_pre_init                           
-20000084  _unlock                                    
-000010ed  abort                                      
-ffffffff  binit                                      
-0000109d  copy_in                                    
-000012a8  debugLoggingConfig                         
-000003b9  euscia0_isr                                
-0000059d  euscia1_isr                                
-000010f5  exit                                       
-00000000  g_pfnVectors                               
-20000094  joy_buff                                   
-20000000  joy_idx                                    
-0000024b  main                                       
-20000090  main_func_sp                               
-00000d59  memcpy                                     
-00000dfd  memset                                     
-00000725  port1_isr                                  
-00000145  printFrame                                 
-000008d5  printf                                     
-0000082f  putc                                       
-0000080b  puts                                       
-20000008  pwmConfigA                                 
-20000020  pwmConfigB                                 
-20000038  pwmConfigC                                 
-20000050  pwmConfigD                                 
-20000068  pwmConfigE                                 
-000007f1  sendByte                                   
-0000021b  setupSerialLogging                         
-2000009c  telemetry_buff                             
-20000004  telemetry_idx                              
-000012cc  uartConfig                                 
-000012f0  vbatUartConfig                             
+address   name                                           
+-------   ----                                           
+00001431  C$$EXIT                                        
+00000fc1  CS_initClockSignal                             
+0000153d  CS_setDCOCenteredFrequency                     
+00001585  CS_setReferenceOscillatorFrequency             
+000015a1  GPIO_clearInterruptFlag                        
+000014ad  GPIO_getEnabledInterruptStatus                 
+00001611  GPIO_getInterruptStatus                        
+00001561  GPIO_setAsOutputPin                            
+0000134d  GPIO_setAsPeripheralModuleFunctionInputPin     
+00001399  GPIO_setAsPeripheralModuleFunctionOutputPin    
+000015e9  GPIO_setOutputHighOnPin                        
+000015b9  GPIO_setOutputLowOnPin                         
+00001649  ResetISR                                       
+UNDEFED   SHT$$INIT_ARRAY$$Base                          
+UNDEFED   SHT$$INIT_ARRAY$$Limit                         
+00001655  Timer_A_getCaptureCompareCount                 
+000014dd  Timer_A_getCaptureCompareEnabledInterruptStatus
+0000165b  Timer_A_getCaptureCompareInterruptStatus       
+00001621  Timer_A_getSynchronizedCaptureCompareInput     
+20010000  __STACK_END                                    
+00000200  __STACK_SIZE                                   
+00001890  __TI_CINIT_Base                                
+000018a0  __TI_CINIT_Limit                               
+00001878  __TI_Handler_Table_Base                        
+00001884  __TI_Handler_Table_Limit                       
+00001225  __TI_auto_init                                 
+20000094  __TI_cleanup_ptr                               
+0000162f  __TI_decompress_none                           
+00001661  __TI_decompress_rle24                          
+20000098  __TI_dtors_ptr                                 
+00000000  __TI_static_base__                             
+0000163d  __TI_zero_init                                 
+000011b7  __aeabi_d2f                                    
+00000d8d  __aeabi_ddiv                                   
+00000ec3  __aeabi_dmul                                   
+00001475  __aeabi_f2d                                    
+0000150d  __aeabi_i2d                                    
+0000113d  __aeabi_memclr                                 
+0000113d  __aeabi_memclr4                                
+0000113d  __aeabi_memclr8                                
+000010a1  __aeabi_memcpy                                 
+000010a1  __aeabi_memcpy4                                
+000010a1  __aeabi_memcpy8                                
+0000113f  __aeabi_memset                                 
+0000113f  __aeabi_memset4                                
+0000113f  __aeabi_memset8                                
+ffffffff  __binit__                                      
+ffffffff  __c_args__                                     
+2000fe00  __stack                                        
+000015d1  _args_main                                     
+000012fd  _c_int00                                       
+2000008c  _lock                                          
+0000160b  _nop                                           
+00001603  _register_lock                                 
+000015fd  _register_unlock                               
+00001667  _system_pre_init                               
+20000090  _unlock                                        
+00001435  abort                                          
+ffffffff  binit                                          
+000016d4  captureModeConfig_CCR1                         
+000016ec  captureModeConfig_CCR3                         
+00001704  captureModeConfig_CCR4                         
+000016b4  compareModeConfig_CCR2                         
+000016c4  compareModeConfig_CCR4                         
+000013e5  copy_in                                        
+000008b5  countOverflowSinceStart                        
+00001774  debugLoggingConfig                             
+2000000c  distance                                       
+00001684  echoConfig                                     
+0000057d  euscia0_isr                                    
+00000741  euscia1_isr                                    
+0000143d  exit                                           
+00000000  g_pfnVectors                                   
+200000b8  joy_buff                                       
+20000000  joy_idx                                        
+00000265  main                                           
+2000009c  main_func_sp                                   
+000010a1  memcpy                                         
+00001145  memset                                         
+00000a19  port1_isr                                      
+00000145  printFrame                                     
+00000c1d  printf                                         
+00000b77  putc                                           
+00000b53  puts                                           
+20000014  pwmConfigA                                     
+2000002c  pwmConfigB                                     
+20000044  pwmConfigC                                     
+2000005c  pwmConfigD                                     
+20000074  pwmConfigE                                     
+00000b39  sendByte                                       
+00000a95  sendTrigger                                    
+0000021b  setupSerialLogging                             
+20000008  start                                          
+200000c0  telemetry_buff                                 
+20000004  telemetry_idx                                  
+20000010  timerCount                                     
+000008e9  timer_a2_n_isr                                 
+0000166c  triggerConfig                                  
+00001798  uartConfig                                     
+0000169c  upModeConfig                                   
+000017bc  vbatUartConfig                                 
+200000ac  warnCount                                      
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
 
-address   name                                       
--------   ----                                       
-00000000  __TI_static_base__                         
-00000000  g_pfnVectors                               
-00000145  printFrame                                 
-00000200  __STACK_SIZE                               
-0000021b  setupSerialLogging                         
-0000024b  main                                       
-000003b9  euscia0_isr                                
-0000059d  euscia1_isr                                
-00000725  port1_isr                                  
-000007f1  sendByte                                   
-0000080b  puts                                       
-0000082f  putc                                       
-000008d5  printf                                     
-00000a45  __aeabi_ddiv                               
-00000b7b  __aeabi_dmul                               
-00000c79  CS_initClockSignal                         
-00000d59  __aeabi_memcpy                             
-00000d59  __aeabi_memcpy4                            
-00000d59  __aeabi_memcpy8                            
-00000d59  memcpy                                     
-00000df5  __aeabi_memclr                             
-00000df5  __aeabi_memclr4                            
-00000df5  __aeabi_memclr8                            
-00000df7  __aeabi_memset                             
-00000df7  __aeabi_memset4                            
-00000df7  __aeabi_memset8                            
-00000dfd  memset                                     
-00000e6f  __aeabi_d2f                                
-00000edd  __TI_auto_init                             
-00000fb5  _c_int00                                   
-00001005  GPIO_setAsPeripheralModuleFunctionInputPin 
-00001051  GPIO_setAsPeripheralModuleFunctionOutputPin
-0000109d  copy_in                                    
-000010e9  C$$EXIT                                    
-000010ed  abort                                      
-000010f5  exit                                       
-0000112d  GPIO_getEnabledInterruptStatus             
-0000115d  __aeabi_i2d                                
-0000118d  CS_setDCOCenteredFrequency                 
-000011b1  CS_setReferenceOscillatorFrequency         
-000011cd  GPIO_clearInterruptFlag                    
-000011e5  _args_main                                 
-000011fd  _register_unlock                           
-00001203  _register_lock                             
-0000120b  _nop                                       
-00001211  GPIO_getInterruptStatus                    
-00001221  __TI_decompress_none                       
-0000122f  __TI_zero_init                             
-0000123b  ResetISR                                   
-00001247  __TI_decompress_rle24                      
-0000124d  _system_pre_init                           
-000012a8  debugLoggingConfig                         
-000012cc  uartConfig                                 
-000012f0  vbatUartConfig                             
-000013b0  __TI_Handler_Table_Base                    
-000013bc  __TI_Handler_Table_Limit                   
-000013c8  __TI_CINIT_Base                            
-000013d8  __TI_CINIT_Limit                           
-20000000  joy_idx                                    
-20000004  telemetry_idx                              
-20000008  pwmConfigA                                 
-20000020  pwmConfigB                                 
-20000038  pwmConfigC                                 
-20000050  pwmConfigD                                 
-20000068  pwmConfigE                                 
-20000080  _lock                                      
-20000084  _unlock                                    
-20000088  __TI_cleanup_ptr                           
-2000008c  __TI_dtors_ptr                             
-20000090  main_func_sp                               
-20000094  joy_buff                                   
-2000009c  telemetry_buff                             
-2000fe00  __stack                                    
-20010000  __STACK_END                                
-ffffffff  __binit__                                  
-ffffffff  __c_args__                                 
-ffffffff  binit                                      
-UNDEFED   SHT$$INIT_ARRAY$$Base                      
-UNDEFED   SHT$$INIT_ARRAY$$Limit                     
+address   name                                           
+-------   ----                                           
+00000000  __TI_static_base__                             
+00000000  g_pfnVectors                                   
+00000145  printFrame                                     
+00000200  __STACK_SIZE                                   
+0000021b  setupSerialLogging                             
+00000265  main                                           
+0000057d  euscia0_isr                                    
+00000741  euscia1_isr                                    
+000008b5  countOverflowSinceStart                        
+000008e9  timer_a2_n_isr                                 
+00000a19  port1_isr                                      
+00000a95  sendTrigger                                    
+00000b39  sendByte                                       
+00000b53  puts                                           
+00000b77  putc                                           
+00000c1d  printf                                         
+00000d8d  __aeabi_ddiv                                   
+00000ec3  __aeabi_dmul                                   
+00000fc1  CS_initClockSignal                             
+000010a1  __aeabi_memcpy                                 
+000010a1  __aeabi_memcpy4                                
+000010a1  __aeabi_memcpy8                                
+000010a1  memcpy                                         
+0000113d  __aeabi_memclr                                 
+0000113d  __aeabi_memclr4                                
+0000113d  __aeabi_memclr8                                
+0000113f  __aeabi_memset                                 
+0000113f  __aeabi_memset4                                
+0000113f  __aeabi_memset8                                
+00001145  memset                                         
+000011b7  __aeabi_d2f                                    
+00001225  __TI_auto_init                                 
+000012fd  _c_int00                                       
+0000134d  GPIO_setAsPeripheralModuleFunctionInputPin     
+00001399  GPIO_setAsPeripheralModuleFunctionOutputPin    
+000013e5  copy_in                                        
+00001431  C$$EXIT                                        
+00001435  abort                                          
+0000143d  exit                                           
+00001475  __aeabi_f2d                                    
+000014ad  GPIO_getEnabledInterruptStatus                 
+000014dd  Timer_A_getCaptureCompareEnabledInterruptStatus
+0000150d  __aeabi_i2d                                    
+0000153d  CS_setDCOCenteredFrequency                     
+00001561  GPIO_setAsOutputPin                            
+00001585  CS_setReferenceOscillatorFrequency             
+000015a1  GPIO_clearInterruptFlag                        
+000015b9  GPIO_setOutputLowOnPin                         
+000015d1  _args_main                                     
+000015e9  GPIO_setOutputHighOnPin                        
+000015fd  _register_unlock                               
+00001603  _register_lock                                 
+0000160b  _nop                                           
+00001611  GPIO_getInterruptStatus                        
+00001621  Timer_A_getSynchronizedCaptureCompareInput     
+0000162f  __TI_decompress_none                           
+0000163d  __TI_zero_init                                 
+00001649  ResetISR                                       
+00001655  Timer_A_getCaptureCompareCount                 
+0000165b  Timer_A_getCaptureCompareInterruptStatus       
+00001661  __TI_decompress_rle24                          
+00001667  _system_pre_init                               
+0000166c  triggerConfig                                  
+00001684  echoConfig                                     
+0000169c  upModeConfig                                   
+000016b4  compareModeConfig_CCR2                         
+000016c4  compareModeConfig_CCR4                         
+000016d4  captureModeConfig_CCR1                         
+000016ec  captureModeConfig_CCR3                         
+00001704  captureModeConfig_CCR4                         
+00001774  debugLoggingConfig                             
+00001798  uartConfig                                     
+000017bc  vbatUartConfig                                 
+00001878  __TI_Handler_Table_Base                        
+00001884  __TI_Handler_Table_Limit                       
+00001890  __TI_CINIT_Base                                
+000018a0  __TI_CINIT_Limit                               
+20000000  joy_idx                                        
+20000004  telemetry_idx                                  
+20000008  start                                          
+2000000c  distance                                       
+20000010  timerCount                                     
+20000014  pwmConfigA                                     
+2000002c  pwmConfigB                                     
+20000044  pwmConfigC                                     
+2000005c  pwmConfigD                                     
+20000074  pwmConfigE                                     
+2000008c  _lock                                          
+20000090  _unlock                                        
+20000094  __TI_cleanup_ptr                               
+20000098  __TI_dtors_ptr                                 
+2000009c  main_func_sp                                   
+200000ac  warnCount                                      
+200000b8  joy_buff                                       
+200000c0  telemetry_buff                                 
+2000fe00  __stack                                        
+20010000  __STACK_END                                    
+ffffffff  __binit__                                      
+ffffffff  __c_args__                                     
+ffffffff  binit                                          
+UNDEFED   SHT$$INIT_ARRAY$$Base                          
+UNDEFED   SHT$$INIT_ARRAY$$Limit                         
 
-[79 symbols]
+[102 symbols]
