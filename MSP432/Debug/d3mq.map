@@ -1,0 +1,278 @@
+******************************************************************************
+                  TI ARM Linker PC v5.2.6                      
+******************************************************************************
+>> Linked Fri Apr 15 06:14:38 2016
+
+OUTPUT FILE NAME:   <d3mq.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00000b85
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00000ecc  0003f134  R  X
+  FLASH_OTP             00200000   00004000  00000000  00004000  R  X
+  SRAM                  20000000   00010000  00000228  0000fdd8  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000ecc   00000ecc    r-x
+  00000000    00000000    00000144   00000144    r-- .intvecs
+  00000144    00000144    00000ca0   00000ca0    r-x .text
+  00000de4    00000de4    000000bc   000000bc    r-- .const
+  00000ea0    00000ea0    0000002c   0000002c    r-- .cinit
+20000000    20000000    00000028   00000000    rw-
+  20000000    20000000    00000028   00000000    rw- .data
+2000fe00    2000fe00    00000200   00000000    rw-
+  2000fe00    2000fe00    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    00000144     
+                  00000000    00000144     msp432_startup_ccs.obj (.intvecs)
+
+.text      0    00000144    00000ca0     
+                  00000144    00000264     main.obj (.text)
+                  000003a8    00000254     printf.obj (.text)
+                  000005fc    00000136     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_div_t2.obj (.text)
+                  00000732    000000fc                                   : fd_mul_t2.obj (.text)
+                  0000082e    00000002     --HOLE-- [fill = 0]
+                  00000830    000000e0     msp432p4xx_driverlib.lib : cs.o (.text:CS_initClockSignal)
+                  00000910    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  000009ac    00000086                                   : fd_cmp_t2.obj (.text:__aeabi_cdcmple)
+                  00000a32    0000007a                                   : memset_t2.obj (.text)
+                  00000aac    0000006c                                   : autoinit.obj (.text)
+                  00000b18    0000006a                                   : copy_decompress_rle.obj (.text)
+                  00000b82    00000002     --HOLE-- [fill = 0]
+                  00000b84    00000050                                   : boot.obj (.text)
+                  00000bd4    0000004c     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_setAsPeripheralModuleFunctionInputPin)
+                  00000c20    0000004c     rtsv7M4_T_le_v4SPD16_eabi.lib : cpy_tbl.obj (.text)
+                  00000c6c    00000044                                   : exit.obj (.text)
+                  00000cb0    0000002e                                   : i_tofd_t2.obj (.text)
+                  00000cde    00000002     --HOLE-- [fill = 0]
+                  00000ce0    00000024     msp432p4xx_driverlib.lib : cs.o (.text:CS_setDCOCenteredFrequency)
+                  00000d04    00000024                              : gpio.o (.text:GPIO_setAsOutputPin)
+                  00000d28    0000001c                              : cs.o (.text:CS_setReferenceOscillatorFrequency)
+                  00000d44    00000018                              : gpio.o (.text:GPIO_setOutputLowOnPin)
+                  00000d5c    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  00000d74    00000014     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_setOutputHighOnPin)
+                  00000d88    00000014     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.text)
+                  00000d9c    00000010     msp432p4xx_driverlib.lib : timer_a.o (.text:Timer_A_enableInterrupt)
+                  00000dac    0000000e                              : timer_a.o (.text:Timer_A_getSynchronizedCaptureCompareInput)
+                  00000dba    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
+                  00000dc8    0000000c     msp432_startup_ccs.obj (.text)
+                  00000dd4    00000006     msp432p4xx_driverlib.lib : timer_a.o (.text:Timer_A_getCaptureCompareCount)
+                  00000dda    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+                  00000de0    00000004                                   : pre_init.obj (.text)
+
+.const     0    00000de4    000000bc     
+                  00000de4    00000030     msp432p4xx_driverlib.lib : gpio.o (.const:GPIO_PORT_TO_BASE)
+                  00000e14    00000030     main.obj (.const)
+                  00000e44    00000028     printf.obj (.const:dv)
+                  00000e6c    00000024     main.obj (.const:debugLoggingConfig)
+                  00000e90    00000010     printf.obj (.const:.string)
+
+.cinit     0    00000ea0    0000002c     
+                  00000ea0    0000001b     (.cinit..data.load) [load image, compression = rle]
+                  00000ebb    00000001     --HOLE-- [fill = 0]
+                  00000ebc    00000008     (__TI_handler_table)
+                  00000ec4    00000008     (__TI_cinit_table)
+
+.data      0    20000000    00000028     UNINITIALIZED
+                  20000000    00000014     main.obj (.data)
+                  20000014    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
+                  2000001c    00000008                                   : exit.obj (.data)
+                  20000024    00000004                                   : stkdepth_vars.obj (.data)
+
+.TI.persistent 
+*          0    20000000    00000000     UNINITIALIZED
+
+.stack     0    2000fe00    00000200     UNINITIALIZED
+                  2000fe00    00000200     --HOLE--
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00000ec4 records: 1, size/record: 8, table size: 8
+	.data: load addr=00000ea0, load size=0000001b bytes, run addr=20000000, run size=00000028 bytes, compression=rle
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00000ebc records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                                      
+-------   ----                                      
+00000c6d  C$$EXIT                                   
+00000831  CS_initClockSignal                        
+00000ce1  CS_setDCOCenteredFrequency                
+00000d29  CS_setReferenceOscillatorFrequency        
+00000d05  GPIO_setAsOutputPin                       
+00000bd5  GPIO_setAsPeripheralModuleFunctionInputPin
+00000d75  GPIO_setOutputHighOnPin                   
+00000d45  GPIO_setOutputLowOnPin                    
+00000dc9  ResetISR                                  
+UNDEFED   SHT$$INIT_ARRAY$$Base                     
+UNDEFED   SHT$$INIT_ARRAY$$Limit                    
+00000d9d  Timer_A_enableInterrupt                   
+00000dd5  Timer_A_getCaptureCompareCount            
+00000dad  Timer_A_getSynchronizedCaptureCompareInput
+20010000  __STACK_END                               
+00000200  __STACK_SIZE                              
+00000ec4  __TI_CINIT_Base                           
+00000ecc  __TI_CINIT_Limit                          
+00000ebc  __TI_Handler_Table_Base                   
+00000ec4  __TI_Handler_Table_Limit                  
+00000aad  __TI_auto_init                            
+2000001c  __TI_cleanup_ptr                          
+00000dbb  __TI_decompress_none                      
+00000ddb  __TI_decompress_rle24                     
+20000020  __TI_dtors_ptr                            
+00000000  __TI_static_base__                        
+000009ad  __aeabi_cdcmpeq                           
+000009ad  __aeabi_cdcmple                           
+000005fd  __aeabi_ddiv                              
+00000733  __aeabi_dmul                              
+00000cb1  __aeabi_i2d                               
+00000a33  __aeabi_memclr                            
+00000a33  __aeabi_memclr4                           
+00000a33  __aeabi_memclr8                           
+00000911  __aeabi_memcpy                            
+00000911  __aeabi_memcpy4                           
+00000911  __aeabi_memcpy8                           
+00000a35  __aeabi_memset                            
+00000a35  __aeabi_memset4                           
+00000a35  __aeabi_memset8                           
+ffffffff  __binit__                                 
+ffffffff  __c_args__                                
+2000fe00  __stack                                   
+00000d5d  _args_main                                
+00000b85  _c_int00                                  
+20000014  _lock                                     
+00000d97  _nop                                      
+00000d8f  _register_lock                            
+00000d89  _register_unlock                          
+00000de1  _system_pre_init                          
+20000018  _unlock                                   
+00000c71  abort                                     
+ffffffff  binit                                     
+0000021f  calculateEcho                             
+00000c21  copy_in                                   
+000002e9  countOverflowSinceStart                   
+00000e6c  debugLoggingConfig                        
+00000e2c  echoConfig                                
+2000000c  echo_neg_edge_rcvd                        
+00000c79  exit                                      
+00000000  g_pfnVectors                              
+0000017d  main                                      
+20000024  main_func_sp                              
+00000911  memcpy                                    
+00000a3b  memset                                    
+20000010  overflow_count                            
+0000048d  printf                                    
+20000008  pulsewidth                                
+000003e7  putc                                      
+000003c3  puts                                      
+20000000  risingedge                                
+000003a9  sendByte                                  
+20000004  sensorflag                                
+00000145  setupSerialLogging                        
+000002f9  trigger_sensor                            
+00000e14  upModeConfig                              
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                                      
+-------   ----                                      
+00000000  __TI_static_base__                        
+00000000  g_pfnVectors                              
+00000145  setupSerialLogging                        
+0000017d  main                                      
+00000200  __STACK_SIZE                              
+0000021f  calculateEcho                             
+000002e9  countOverflowSinceStart                   
+000002f9  trigger_sensor                            
+000003a9  sendByte                                  
+000003c3  puts                                      
+000003e7  putc                                      
+0000048d  printf                                    
+000005fd  __aeabi_ddiv                              
+00000733  __aeabi_dmul                              
+00000831  CS_initClockSignal                        
+00000911  __aeabi_memcpy                            
+00000911  __aeabi_memcpy4                           
+00000911  __aeabi_memcpy8                           
+00000911  memcpy                                    
+000009ad  __aeabi_cdcmpeq                           
+000009ad  __aeabi_cdcmple                           
+00000a33  __aeabi_memclr                            
+00000a33  __aeabi_memclr4                           
+00000a33  __aeabi_memclr8                           
+00000a35  __aeabi_memset                            
+00000a35  __aeabi_memset4                           
+00000a35  __aeabi_memset8                           
+00000a3b  memset                                    
+00000aad  __TI_auto_init                            
+00000b85  _c_int00                                  
+00000bd5  GPIO_setAsPeripheralModuleFunctionInputPin
+00000c21  copy_in                                   
+00000c6d  C$$EXIT                                   
+00000c71  abort                                     
+00000c79  exit                                      
+00000cb1  __aeabi_i2d                               
+00000ce1  CS_setDCOCenteredFrequency                
+00000d05  GPIO_setAsOutputPin                       
+00000d29  CS_setReferenceOscillatorFrequency        
+00000d45  GPIO_setOutputLowOnPin                    
+00000d5d  _args_main                                
+00000d75  GPIO_setOutputHighOnPin                   
+00000d89  _register_unlock                          
+00000d8f  _register_lock                            
+00000d97  _nop                                      
+00000d9d  Timer_A_enableInterrupt                   
+00000dad  Timer_A_getSynchronizedCaptureCompareInput
+00000dbb  __TI_decompress_none                      
+00000dc9  ResetISR                                  
+00000dd5  Timer_A_getCaptureCompareCount            
+00000ddb  __TI_decompress_rle24                     
+00000de1  _system_pre_init                          
+00000e14  upModeConfig                              
+00000e2c  echoConfig                                
+00000e6c  debugLoggingConfig                        
+00000ebc  __TI_Handler_Table_Base                   
+00000ec4  __TI_CINIT_Base                           
+00000ec4  __TI_Handler_Table_Limit                  
+00000ecc  __TI_CINIT_Limit                          
+20000000  risingedge                                
+20000004  sensorflag                                
+20000008  pulsewidth                                
+2000000c  echo_neg_edge_rcvd                        
+20000010  overflow_count                            
+20000014  _lock                                     
+20000018  _unlock                                   
+2000001c  __TI_cleanup_ptr                          
+20000020  __TI_dtors_ptr                            
+20000024  main_func_sp                              
+2000fe00  __stack                                   
+20010000  __STACK_END                               
+ffffffff  __binit__                                 
+ffffffff  __c_args__                                
+ffffffff  binit                                     
+UNDEFED   SHT$$INIT_ARRAY$$Base                     
+UNDEFED   SHT$$INIT_ARRAY$$Limit                    
+
+[76 symbols]
